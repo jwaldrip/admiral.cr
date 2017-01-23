@@ -1,0 +1,7 @@
+name: admiral
+version: 0.1.0
+authors:
+  - Jason Waldrip <jason@waldrip.net>
+description: |
+  A command line builder for Crystal
+license: MIT
