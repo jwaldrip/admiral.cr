@@ -1,9 +1,11 @@
 abstract class Admiral::Command
   private macro argument(attr, description = "", default = nil, required = false)
-    {% ARGS << attr.var.stringify %}
+    {% var = attr.is_a?(TypeDeclaration) ? attr.var : attr.id %}
+    {% type = attr.is_a?(TypeDeclaration) ? attr.type : String %}
+    {% ARGS << var.stringify %}
 
     private struct Arguments
-      getter {{ attr.var }} : {{ attr.type }}
+      getter {{ var }} : {{ type }}
 
       def initialize(command : ::Admiral::Command)
         {% for a in ARGS %}
@@ -11,7 +13,7 @@ abstract class Admiral::Command
         @rest = parse_rest(command)
       end
 
-      def parse_{{ attr.var }}(command : ::Admiral::Command) : {{ attr.type }}
+      def parse_{{ var }}(command : ::Admiral::Command) : {{ type }}
         pos_only = false
         index = {{ ARGS.size - 1 }}
         while command.@argv[index]?.to_s.starts_with?("-") && !pos_only
@@ -21,13 +23,20 @@ abstract class Admiral::Command
         value = if command.@argv[index]?
                   command.@argv.delete_at index
                 else
-                  {% if required %}raise "Missing required attribute: <{{attr.var}}>"{% else %}return nil{% end %}
+                  {% if required %}raise "Missing required attribute: <{{var}}>"{% else %}return nil{% end %}
                 end
-        {{ attr.type }}.new(value)
+        {{ type }}.new(value)
+      end
+
+      # Test the usage of the flag
+      begin
+        new([] of String).arguments.{{ var }}
+      rescue
+        ::Admiral::Command::Error
       end
     end
 
     # Add the attr to the description constant
-    DESCS[:args][{{ attr.var.stringify }}] = {{ description }}
+    DESCS[:args][{{ var.stringify }}] = {{ description }}
   end
 end

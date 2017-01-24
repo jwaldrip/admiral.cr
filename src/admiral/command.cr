@@ -31,21 +31,21 @@ abstract class Admiral::Command
   def initialize(argv : Admiral::ARGV, program_name : String, input : IO = STDIN, output : IO = STDOUT, error : IO = STDERR)
     @argv = argv
     @program_name = program_name
-    @input = input
-    @output = output
-    @error = error
+    @input_io = input
+    @output_io = output
+    @error_io = error
   end
 
   def puts(*args)
-    @output.puts(*args)
+    @output_io.puts(*args)
   end
 
   def error(*args)
-    @error.puts(*args)
+    @error_io.puts(*args)
   end
 
   def gets(*args)
-    @input.gets(*args)
+    @input_io.gets(*args)
   end
 
   protected def run_with_help
@@ -55,7 +55,7 @@ abstract class Admiral::Command
     else
       run
     end
-  rescue e : Error
+  rescue e : ::Admiral::Command::Error
     error e.message
     exit 1
   end

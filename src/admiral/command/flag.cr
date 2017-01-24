@@ -1,8 +1,7 @@
 abstract class Admiral::Command
-  private macro flag(flag, description = "", default = nil, short = nil, long = nil, optional = nil)
+  private macro flag(flag, description = "", default = nil, short = nil, long = nil, required = false)
     {% var = flag.is_a?(TypeDeclaration) ? flag.var : flag.id %}
     {% type = flag.is_a?(TypeDeclaration) ? flag.type : String %}
-    {% optional = optional != nil ? optional : flag.is_a?(TypeDeclaration) ? false : true  %}
     {% FLAGS << var.stringify %}
 
     # Setup Helper Vars
@@ -12,16 +11,12 @@ abstract class Admiral::Command
     {% is_nil   = type.is_a?(Path) && type == Nil %}
 
     # Cast defaults
-    {% optional = optional || is_nil || (is_union && flag.type.types.any? { |t| t.is_a?(Path) && t.resolve == Nil }) %}
-    {% default = default != nil ? default : is_bool ? false : nil %}
+    {% default = default != nil ? default : is_bool ? false : is_enum ? "#{type}.new".id : nil %}
     {% long = long || var %}
 
     # Validate
     {% if short != nil && short.id.stringify.size > 1 %}
       {% raise "The short flag of #{@type}(#{long}) can only be a single character, you specified: `#{short}`" %}
-    {% end %}
-    {% unless default != nil || is_enum || optional  %}
-      {% raise "The flag #{@type}(#{long}) must either be nilable or define a default value" %}
     {% end %}
 
     # Make short and long into flag strings
@@ -43,7 +38,7 @@ abstract class Admiral::Command
 
     # Extend the flags class to include the flag
     private struct Flags
-      getter {{ var }} : {{ type }}{% if optional %}| Nil{% end %}{% if default != nil %} = {{ default }}{% end %}
+      getter {{ var }} : {{ type }}{% unless required %}| Nil{% end %}{% if default != nil %} = {{ default }}{% end %}
 
       def initialize(command : ::Admiral::Command)
         {% for f in FLAGS %}
@@ -51,7 +46,7 @@ abstract class Admiral::Command
         raise_on_undefined_flags!(command)
       end
 
-      private def parse_{{var}}(command : ::Admiral::Command) : {{ type }} {% if optional %}| Nil{% end %}
+      private def parse_{{var}}(command : ::Admiral::Command) : {{ type }} {% unless required %}| Nil{% end %}
         values = ::Admiral::ARGV.new
         index = 0
         while arg = command.@argv[index]?
@@ -87,9 +82,9 @@ abstract class Admiral::Command
         end
 
         {% if is_enum %} # Enum Type Flag
-          {{ type }}.new(values)
+          values.empty? ? {{ default }} : {{ type }}.new(values)
         {% else %} # Boolean and value type flags
-          values[-1]? ? {{ type }}.new(values[-1]) : {% if default != nil %}{{ default }}{% else %}nil{% end %}
+          values[-1]? != nil ? {{ type }}.new(values[-1]) : {% if required == true %}raise ::Admiral::Command::Error.new("Flag: {{ long.id }} is required"){% else %}{{ default }}{% end %}
         {% end %}
       end
     end
@@ -98,6 +93,10 @@ abstract class Admiral::Command
     DESCS[:flags][{{ long + (short ? ", #{short}" : "") }}{% if default != nil %} + "=" + {{default}}.to_s{% end %}] = {{ description }}
 
     # Test the usage of the flag
-    new([] of String).flags.{{var}}
+    begin
+      new([] of String).flags.{{var}}
+    rescue
+      ::Admiral::Command::Error
+    end
   end
 end
