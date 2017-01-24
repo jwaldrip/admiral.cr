@@ -1,14 +1,15 @@
 abstract class Admiral::Command
   private macro inherited
-    FLAGS = [] of String
-    ARGS = [] of String
-    flag help : Bool
-    private OPTIONS = { strict: false }
-    private DESCS = {
-      args: {} of String => String,
+    FLAG_NAMES = [] of String
+    ARGUMENT_NAMES = [] of String
+    SUB_COMMAND_NAMES = [] of String
+
+    private DESCRIPTIONS = {
+      arguments: {} of String => String,
       flags: {} of String => String,
-      subcm: {} of String => String,
+      sub_commands: {} of String => String,
     }
+
     private struct Flags
       def initialize(command : ::Admiral::Command)
         raise_on_undefined_flags!(command)
@@ -26,15 +27,70 @@ abstract class Admiral::Command
     end
 
     private struct Arguments
-      getter rest : Array(String) = [] of String
+      delegate :[], :each, to: @__rest__
+
+      @__rest__ : Array(String) = [] of String
 
       def initialize(command : ::Admiral::Command)
-        @rest = parse_rest(command)
+        @__rest__ = parse_rest(command)
       end
 
       private def parse_rest(command : ::Admiral::Command)
         command.@argv.select(&.!= "--").map(&.value)
       end
+    end
+
+    private struct SubCommands
+      def self.locate(name : ::Admiral::StringValue)
+        new(name).locate
+      end
+
+      def self.invoke(name : ::Admiral::StringValue, command : ::Admiral::Command)
+        new(name).invoke(command)
+      end
+
+      def initialize(@name : ::Admiral::StringValue)
+      end
+
+      def invoke(command : ::Admiral::Command)
+        if sub_command_class = locate
+          command.@argv.shift
+          sub_command_class.new(command).run_with_help
+        else
+          raise ::Admiral::Command::Error.new("Invalid subcommand: #{@name}")
+        end
+      end
+
+      def locate : Nil; end
+    end
+
+    def self.run(*args, **params)
+      new(*args, **params).run_with_help
+    end
+
+    def initialize(string : String = ::ARGV.clone, program_name = PROGRAM_NAME, input = STDIN, output = STDOUT, error = STDERR)
+      initialize(string.split(" "), program_name, input, output, error)
+    end
+
+    def initialize(argv : Array(String) = ::ARGV.clone, program_name = PROGRAM_NAME, input = STDIN, output = STDOUT, error = STDERR)
+      initialize(::Admiral::ARGV.new(argv), program_name, input, output, error)
+    end
+
+    def initialize(argv : ::Admiral::ARGV, program_name : String, input : IO = STDIN, output : IO = STDOUT, error : IO = STDERR)
+      @argv = argv
+      @program_name = program_name
+      @input_io = input
+      @output_io = output
+      @error_io = error
+    end
+
+    def initialize(command : ::Admiral::Command)
+      @argv = command.@argv
+      @program_name = command.@program_name
+      @input_io = command.@input_io
+      @output_io = command.@output_io
+      @error_io = command.@error_io
+      @parent = command
     end
 
     def flags
@@ -45,24 +101,50 @@ abstract class Admiral::Command
       @arguments ||= Arguments.new(self)
     end
 
-    def help
-      left_col_len = DESCS[:args].merge(DESCS[:subcm].merge(DESCS[:flags])).keys.map(&.size).sort[-1]? || 0
+    private def puts(*args)
+      @output_io.puts(*args)
+    end
+
+    private def error(*args)
+      @error_io.puts(*args)
+    end
+
+    private def gets(*args)
+      @input_io.gets(*args)
+    end
+
+    protected def run_with_help : Nil
+      if flags.help
+        puts help
+        exit
+      elsif @argv[0]? && SubCommands.locate(@argv[0])
+        SubCommands.invoke(@argv[0], self)
+      else
+        run
+      end
+    rescue e : ::Admiral::Command::Error
+      error e.message
+      exit 1
+    end
+
+    private def help : String
+      left_col_len = DESCRIPTIONS.values.flat_map(&.keys).map(&.size).sort[-1]? || 0
       String.build do |str|
         # Add Usage
         str << "Usage:"
         commands = [] of String
         commands << begin
           String.build do |cmd|
-            DESCS[:args].keys.each do |attr|
+            DESCRIPTIONS[:arguments].keys.each do |attr|
               cmd << " <#{attr}>"
             end
-            cmd << " [arg...]" unless OPTIONS[:strict]
+            cmd << " [arg...]"
           end
         end
-        commands << " {command}" unless DESCS[:subcm].empty?
+        commands << " {command}" unless DESCRIPTIONS[:sub_commands].empty?
         commands.each do |cmd|
           str << "\n  #{@program_name}"
-          str << " [flags...]" unless DESCS[:flags].empty?
+          str << " [flags...]" unless DESCRIPTIONS[:flags].empty?
           str << cmd unless cmd.empty?
         end
         str << "\n\n" # add newlines
@@ -71,9 +153,9 @@ abstract class Admiral::Command
         str << "#{description}\n" if description
 
         # Add Flags
-        unless DESCS[:flags].empty?
+        unless DESCRIPTIONS[:flags].empty?
           str << "\nFlags:\n"
-          DESCS[:flags].each do |string, desc|
+          DESCRIPTIONS[:flags].each do |string, desc|
             str << "  #{string}"
             if desc.size > 1
               str << " " * (left_col_len - string.size)
@@ -84,9 +166,9 @@ abstract class Admiral::Command
         end
 
         # Add Args
-        unless DESCS[:args].empty?
+        unless DESCRIPTIONS[:arguments].empty?
           str << "\nArguments:\n"
-          DESCS[:args].each do |string, desc|
+          DESCRIPTIONS[:arguments].each do |string, desc|
             str << "  #{string}"
             if desc.size > 1
               str << " " * (left_col_len - string.size)
@@ -97,9 +179,9 @@ abstract class Admiral::Command
         end
 
         # Add Commands
-        unless DESCS[:subcm].empty?
+        unless DESCRIPTIONS[:sub_commands].empty?
           str << "\nCommands:\n"
-          DESCS[:subcm].each do |string, desc|
+          DESCRIPTIONS[:sub_commands].each do |string, desc|
             str << "  #{string}"
             if desc.size > 1
               str << " " * (left_col_len - string.size)
@@ -113,5 +195,9 @@ abstract class Admiral::Command
 
     def description : Nil
     end
+
+    @parent : ::Admiral::Command = ::Admiral::Command::Stub::INSTANCE
+    delegate exit, to: @parent
+    flag help : Bool
   end
 end

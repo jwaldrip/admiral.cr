@@ -2,7 +2,7 @@ abstract class Admiral::Command
   private macro flag(flag, description = "", default = nil, short = nil, long = nil, required = false)
     {% var = flag.is_a?(TypeDeclaration) ? flag.var : flag.id %}
     {% type = flag.is_a?(TypeDeclaration) ? flag.type : String %}
-    {% FLAGS << var.stringify %}
+    {% FLAG_NAMES << var.stringify unless FLAG_NAMES.includes? var.stringify %}
 
     # Setup Helper Vars
     {% is_bool  = type.is_a?(Path) && type.resolve == Bool %}
@@ -41,7 +41,7 @@ abstract class Admiral::Command
       getter {{ var }} : {{ type }}{% unless required %}| Nil{% end %}{% if default != nil %} = {{ default }}{% end %}
 
       def initialize(command : ::Admiral::Command)
-        {% for f in FLAGS %}
+        {% for f in FLAG_NAMES %}
         @{{ f.id }} = parse_{{ f.id }}(command){% end %}
         raise_on_undefined_flags!(command)
       end
@@ -51,7 +51,7 @@ abstract class Admiral::Command
         index = 0
         while arg = command.@argv[index]?
           flag = arg.split("=")[0]
-          if arg == "--"
+          if arg == "--" || SUB_COMMAND_NAMES.any? { |name| arg == name }
             break
           elsif flag == {{ long }}{% if short %} || flag == {{short}}{% end %}
             del = command.@argv.delete_at index
@@ -90,7 +90,7 @@ abstract class Admiral::Command
     end
 
     # Add the flag to the description constant
-    DESCS[:flags][{{ long + (short ? ", #{short}" : "") }}{% if default != nil %} + "=" + {{default}}.to_s{% end %}] = {{ description }}
+    {% DESCRIPTIONS[:flags]["#{long}#{", " + short.stringify if short}#{"=" + default.stringify if default != nil}"] = description %}
 
     # Test the usage of the flag
     begin

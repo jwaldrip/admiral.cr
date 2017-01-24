@@ -12,5 +12,11 @@ module Admiral
     {% end %}
   end
 
-  class ARGV < Array(StringValue); end
+  class ARGV < Array(StringValue)
+    def self.new(strings : Array(String))
+      new.tap do |ary|
+        strings.each { |v| ary << StringValue.new v }
+      end
+    end
+  end
 end
