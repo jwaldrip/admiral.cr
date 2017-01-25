@@ -47,6 +47,14 @@ Here are some tools using Odin in the wild. Have your own you would like to plug
 
 ## Todo
 
+- [x] Basic Flags
+- [x] Typed Flags
+- [x] Boolean Flags
+- [x] Enum Flags
+- [x] Named Arguments
+- [x] Positional Arguments
+- [x] Sub Commands
+- [ ] Fully Tested
 - [ ] Bash Completion
 - [ ] Zsh Completion
 
