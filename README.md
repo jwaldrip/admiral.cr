@@ -336,9 +336,68 @@ Hello Denver
 
 ### Auto-generated Help
 
+You can add a help command to your CLI by using the `define_help` macro.
+`define_help` also takes a description argument to give additional information
+about your command.
+
+```crystal
+# hello.cr
+class Hello < Admiral::Command
+  define_help description: "A command that says hello"
+  define_argument planet, default: "World"
+
+  def run
+    puts "Hello #{arguments.planet}"
+  end
+end
+```
+
+```sh
+$ crystal build ./hello.cr
+$ ./hello --help
+Usage:
+  ./hello [flags...] <planet> [arg...]
+
+A command that says hello
+
+Flags:
+  --help (default: false)
+
+Arguments:
+  planet (default: World)
+```
+
 ### Custom Help
+You can also generate your own custom help text.
+
+```crystal
+# hello.cr
+class Hello < Admiral::Command
+  define_help custom: "This is the help for my command"
+
+  def run
+  end
+end
+```
 
 ## Command Version
+Like most CLI applications, you can set a version flag.
+
+```crystal
+# hello.cr
+class Hello < Admiral::Command
+  define_version "1.0.0"
+
+  def run
+  end
+end
+```
+
+```sh
+$ crystal build ./hello.cr
+$ hello --version
+1.0.0
+```
 
 ## Examples
 
