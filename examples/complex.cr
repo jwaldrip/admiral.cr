@@ -14,7 +14,7 @@ class MyCommand < Admiral::Command
   define_flag foo : Array(String), "the value of foo", short: f
   define_flag verbose : Bool, short: v, long: verbose
 
-  # argument foo : String, "the value of foo", required: true
+  define_argument foo : String, "the value of foo", required: true
 
   define_sub_command exec : Exec, "a sub_command"
 
