@@ -76,6 +76,6 @@ abstract class Admiral::Command
     end
 
     # Add the attr to the description constant
-    Arguments::DESCRIPTIONS[{{ var.stringify }}] = {{ description }}
+    Arguments::DESCRIPTIONS[{{ var.stringify }}{% if required %} + " (required)"{% end %}] = {{ description }}
   end
 end
