@@ -47,8 +47,8 @@ Here are some tools using Odin in the wild. Have your own you would like to plug
 
 ## Todo
 
-[ ] Bash Completion
-[ ] Zsh Completion
+- [ ] Bash Completion
+- [ ] Zsh Completion
 
 ## Contributing
 
