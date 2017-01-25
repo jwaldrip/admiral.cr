@@ -3,5 +3,5 @@ crystal:
   - latest
 script:
   - crystal spec
-  - cd ./examples && for f in `ls -1 ./*.cr` ; do (crystal run $f &> /dev/null && print ".") || print "F" ; done && cd ..
-  - cd ./examples && for f in `ls -1 ./*.cr` ; do (crystal run $f &> /dev/null ; done && cd ..
+  - cd ./examples && for f in `ls -1 ./*.cr` ; do (crystal run $f &> /dev/null && print "\e[32m.\e[0m") || print "\e[31mF\e[0m" ; done && cd ..
+  - cd ./examples && for f in `ls -1 ./*.cr` ; do crystal run $f &> /dev/null ; done && cd ..
