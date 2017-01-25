@@ -3,6 +3,7 @@ require "../src/admiral"
 class MyCommand < Admiral::Command
   class Exec < Admiral::Command
     def run
+      puts parent.flags
       puts arguments
     end
   end
