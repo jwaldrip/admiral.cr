@@ -208,7 +208,7 @@ HelloWorld.run
 
 ```sh
 $ crystal build ./world.cr
-$ ./hello World
+$ ./hello
 Hello World
 $ ./hello Alderaan
 Hello Alderaan
