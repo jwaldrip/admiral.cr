@@ -41,7 +41,7 @@ abstract class Admiral::Command
     {% Arguments::NAMES << var.stringify unless Arguments::NAMES.includes? var.stringify %}
 
     private struct Arguments
-      getter {{ var }} : {{ type }}
+      getter {{ var }} : {{ type }}{% unless required %} | Nil{% end %}
 
       def initialize(command : ::Admiral::Command)
         {% for a in Arguments::NAMES %}
@@ -49,7 +49,7 @@ abstract class Admiral::Command
         @__rest__ = parse_rest(command)
       end
 
-      def parse_{{ var }}(command : ::Admiral::Command) : {{ type }}
+      def parse_{{ var }}(command : ::Admiral::Command) : {{ type }}{% unless required %} | Nil{% end %}
         pos_only = false
         index = {{ Arguments::NAMES.size - 1 }}
         while command.@argv[index]?.to_s.starts_with?("-") && !pos_only
