@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/jwaldrip/admiral.cr">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>Set(T) - github.com/jwaldrip/admiral.cr</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent " data-id="github.com/jwaldrip/admiral.cr/Admiral" data-name="admiral">
+      <a href="Admiral.html">Admiral</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/ARGV" data-name="admiral::argv">
+      <a href="Admiral/ARGV.html">ARGV</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command" data-name="admiral::command">
+      <a href="Admiral/Command.html">Command</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command/Error" data-name="admiral::command::error">
+      <a href="Admiral/Command/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command/Stub" data-name="admiral::command::stub">
+      <a href="Admiral/Command/Stub.html">Stub</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/StringValue" data-name="admiral::stringvalue">
+      <a href="Admiral/StringValue.html">StringValue</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Array" data-name="array(t)">
+      <a href="Array.html">Array</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/jwaldrip/admiral.cr/Set" data-name="set(t)">
+      <a href="Set.html">Set</a>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">struct</span> Set(T)
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="Set.html">Set(T)</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Set implements a collection of unordered values with no duplicates.</p>
+
+<p>An <code>Enumerable</code> object can be converted to <code><a href="Set.html">Set</a></code> using the <code>#to_set</code> method.</p>
+
+<p>Set uses <code>Hash</code> as storage, so you must note the following points:</p>
+
+<ul><li>Equality of elements is determined according to <code>Object#==</code> and <code>Object#hash</code>.</li><li><code><a href="Set.html">Set</a></code> assumes that the identity of each element does not change while it is stored. Modifying an element of a set will render the set to an unreliable state.</li></ul>
+
+<h3>Example</h3>
+
+<pre><code>s1 <span class="o">=</span> <span class="t">Set</span>{<span class="n">1</span>, <span class="n">2</span>}
+s2 <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>].to_set
+s3 <span class="o">=</span> <span class="t">Set</span>.<span class="k">new</span> [<span class="n">1</span>, <span class="n">2</span>]
+s1 <span class="o">==</span> s2 <span class="c"># &#61;&gt; true</span>
+s1 <span class="o">==</span> s3 <span class="c"># &#61;&gt; true</span>
+s1.add(<span class="n">2</span>)
+s1.merge!([<span class="n">6</span>, <span class="n">8</span>])
+s1.subset? s2 <span class="c"># &#61;&gt; false</span>
+s2.subset? s1 <span class="c"># &#61;&gt; true</span></code></pre>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type">Enumerable(T)</li>
+  
+    <li class="other-type">Iterable(T)</li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/64623e12fb2554a0a10c5db59e1570c9c5723118/src/core_ext/types.cr#L7" target="_blank">core_ext/types.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28argv%3AAdmiral%3A%3AARGV%29-class-method" class="signature"><strong>.new</strong>(argv : Admiral::ARGV)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new&#40;argv:Admiral::ARGV&#41;-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(argv : <a href="Admiral/ARGV.html">Admiral::ARGV</a>)
+
+        <a class="method-permalink" href="#new%28argv%3AAdmiral%3A%3AARGV%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/64623e12fb2554a0a10c5db59e1570c9c5723118/src/core_ext/types.cr#L8" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

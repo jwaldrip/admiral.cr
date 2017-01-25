@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/jwaldrip/admiral.cr">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>README - github.com/jwaldrip/admiral.cr</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li class="current"><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent " data-id="github.com/jwaldrip/admiral.cr/Admiral" data-name="admiral">
+      <a href="Admiral.html">Admiral</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/ARGV" data-name="admiral::argv">
+      <a href="Admiral/ARGV.html">ARGV</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command" data-name="admiral::command">
+      <a href="Admiral/Command.html">Command</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command/Error" data-name="admiral::command::error">
+      <a href="Admiral/Command/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command/Stub" data-name="admiral::command::stub">
+      <a href="Admiral/Command/Stub.html">Stub</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/StringValue" data-name="admiral::stringvalue">
+      <a href="Admiral/StringValue.html">StringValue</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Array" data-name="array(t)">
+      <a href="Array.html">Array</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Set" data-name="set(t)">
+      <a href="Set.html">Set</a>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1>Admiral.cr</h1>
+
+<p><a href="https://travis-ci.org/jwaldrip/admiral.cr" target="_blank"><img src="https://travis-ci.org/jwaldrip/admiral.cr.svg?branch=master" alt="Build Status"/></a>
+<a href="https://github.com/jwaldrip/promise.cr/releases" target="_blank"><img src="https://img.shields.io/github/tag/jwaldrip/admiral.cr.svg" alt="GitHub release"/></a>
+<a href="https://jwaldrip.github.com/admiral.cr" target="_blank"><img src="https://img.shields.io/badge/Crystal-Docs-8A2BE2.svg" alt="Crystal Docs"/></a></p>
+
+<p>A robust command line DSL for terminal applications written in <a href="https://crystal-lang.org" target="_blank">Crystal</a>.</p>
+
+<hr/><blockquote>[Installation](#installation) |
+  [Usage](#usage) |
+  [Examples](https://github.com/jwaldrip/admiral.cr/tree/master/examples) | [Contributing](https://github.com/jwaldrip/admiral.cr/blob/master/CONTRIBUTING.md) |
+  [In the Wild](#in-the-wild)</blockquote>
+
+<h2>Installation</h2>
+
+<p>Add the following to your application's <code>shard.yml</code> file.</p>
+
+<pre><code class='language-yml'>dependencies:
+  admiral:
+    github: jwaldrip/admiral.cr</code></pre>
+
+<h2>Usage</h2>
+
+<blockquote>[Creating a new CLI](#creating-a-new-cli) |
+  [Flags](#flags) |
+  [Arguments](#arguments) |
+  [Sub Commands](#sub-commands) |
+  [Command Help](#command-help) |
+  [Command Version](#command-version)</blockquote>
+
+<h2>Creating a new CLI</h2>
+
+<p>You can define a CLI by creating a new class that inherits from <code><a href="Admiral/Command.html">Admiral::Command</a></code>.
+All your class needs to implement is a run method. Inside the run method will be
+the logic of your cli application. The following is a very basic CLI. You can
+run the command by invoking <code>HelloWorld.run</code>. By default this method will use
+<code>ARGV</code>, but you can also pass <code><a href="Array.html">Array</a>(String)</code> or <code>String</code>.</p>
+
+<pre><code class='language-crystal'><span class="c"># hello_world.cr</span>
+<span class="k">require</span> <span class="s">&quot;admiral&quot;</span>
+
+<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+  <span class="k">def</span> <span class="m">run</span>
+    puts <span class="s">&quot;Hello World&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="t">HelloWorld</span>.run</code></pre>
+
+<pre><code class='language-sh'>$ crystal run ./hello_world.cr
+Hello World</code></pre>
+
+<h2>Flags</h2>
+
+<p>Flags can be added to the command. To define a flag use the <code>define_flag</code> macro.</p>
+
+<blockquote>NOTE: When defining flags, the underscore method name will translate to a hyphen
+  on the command line. This can be overridden with the `long: my_name` option when
+  defining the flag.</blockquote>
+
+<h3>Simple</h3>
+
+<p>Simple flags are denoted only by a name and will compile to returning a <code>String | Nil</code>.</p>
+
+<pre><code class='language-crystal'><span class="c"># hello_world.cr</span>
+<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+  define_flag planet
+
+  <span class="k">def</span> <span class="m">run</span>
+    puts <span class="s">&quot;Hello </span><span class="i">#{</span></span>flags.planet || <span class="s">&quot;World&quot;</span><span class="s"><span class="i">}</span>&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="t">HelloWorld</span>.run</code></pre>
+
+<pre><code class='language-sh'>$ crystal build ./hello_world.cr
+$ ./hello_world
+Hello World
+$ ./hello_world --planet Alderaan
+Hello Alderaan</code></pre>
+
+<h3>Typed Flags</h3>
+
+<p>Flags can also be assigned a type. This will result in a properly typed value when
+calling <code>flags.flag_name</code>. By default flags are not required and will return a
+<code>Union</code> including the type and <code>Nil</code>.</p>
+
+<pre><code class='language-crystal'><span class="c"># hello_world.cr</span>
+<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+  define_flag number_of_greetings : <span class="t">UInt32</span>, default: <span class="n">1_u32</span>, long: times
+
+  <span class="k">def</span> <span class="m">run</span>
+    flags.times.times <span class="k">do</span>
+      puts <span class="s">&quot;Hello World&quot;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="t">HelloWorld</span>.run</code></pre>
+
+<pre><code class='language-sh'>$ crystal build ./hello_world.cr
+$ ./hello_world  --times 3
+Hello World
+Hello World
+Hello World</code></pre>
+
+<h4>Built in flag types</h4>
+
+<p>The following classes are assignable as flags by default:</p>
+
+<ul><li><code>String</code></li><li><code>Bool</code></li><li><code>Float32</code></li><li><code>Float64</code></li><li><code>Int8</code></li><li><code>Int16</code></li><li><code>Int32</code></li><li><code>Int64</code></li><li><code>UInt8</code></li><li><code>UInt16</code></li><li><code>UInt32</code></li><li><code>UInt64</code></li></ul>
+
+<blockquote>**Pro Tip**  
+  To make any `Class` or `Struct` assignable as a flag, define a `.new(value : ::Admiral::StringValue)` or  
+  `#initialize(value : ::Admiral::StringValue)`.</blockquote>
+
+<h3>Enumerable Flags</h3>
+
+<p>Enumerable flags allow for multiple values to be passed on the command line. For
+example with a defined flag with <code><a href="Array.html">Array</a>(String)</code> would return an array of <code>String</code>
+values when calling the flag.</p>
+
+<pre><code class='language-crystal'><span class="c"># hello_world.cr</span>
+<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+  define_flag citizens : <span class="t">Array</span>(<span class="t">String</span>), long: citizen
+
+  <span class="k">def</span> <span class="m">run</span>
+    flags.citizen.each <span class="k">do</span> <span class="o">|</span>citizen<span class="o">|</span>
+      puts <span class="s">&quot;Hello </span><span class="i">#{</span></span>citizen<span class="s"><span class="i">}</span>, citizen of Earth&#33;&quot;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="t">HelloWorld</span>.run</code></pre>
+
+<pre><code class='language-sh'>$ crystal build ./hello_world.cr
+$ ./hello_world  --citizen Jim --citizen Harry
+Hello Jim, citizen of Earth!
+Hello Harry, citizen of Earth!</code></pre>
+
+<h3>Additional Flag Options</h3>
+
+<pre><code class='language-crystal'><span class="c"># hello_world.cr</span>
+<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+  define_flag number_of_greetings : <span class="t">UInt32</span>,
+              description: <span class="s">&quot;The number of times to greet the world&quot;</span>,
+              default: <span class="n">1_u32</span>,
+              long: times,
+              short: t,
+              required: <span class="n">true</span>
+
+  <span class="k">def</span> <span class="m">run</span>
+    flags.number_of_greetings.times <span class="k">do</span>
+      puts <span class="s">&quot;Hello World&quot;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="t">HelloWorld</span>.run</code></pre>
+
+<p>Option           | Description</p>
+
+<pre><code>          </code></pre>
+
+<p><code>description</code>    | The description of the flag to be used in auto generated help.
+<code>default</code>        | The default value of the flag.
+<code>long</code>           | The long version of the flag ex: <code>long: times</code> for <code>--times</code>
+<code>short</code>          | The short version of the flag ex: <code>short: t</code> for <code>-t</code>
+<code>required</code>       | Denotes if a flag is required. Required flags without a default value will raise an error when not specified at command invocation.</p>
+
+<h2>Arguments</h2>
+
+<p>Arguments can be added to the command. To define a argument use the <code>define_argument</code> macro.</p>
+
+<h3>Simple</h3>
+
+<p>Simple arguments are denoted only by a name and will compile to returning a <code>String | Nil</code>.</p>
+
+<pre><code class='language-crystal'><span class="c"># hello.cr</span>
+<span class="k">class</span> <span class="t">Hello</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+  define_argument planet
+
+  <span class="k">def</span> <span class="m">run</span>
+    puts <span class="s">&quot;Hello </span><span class="i">#{</span></span>arguments.planet || <span class="s">&quot;World&quot;</span><span class="s"><span class="i">}</span>&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="t">HelloWorld</span>.run</code></pre>
+
+<pre><code class='language-sh'>$ crystal build ./world.cr
+$ ./hello
+Hello World
+$ ./hello Alderaan
+Hello Alderaan</code></pre>
+
+<h3>Typed Arguments</h3>
+
+<p>Arguments can also be assigned a type. This will result in a properly typed value when
+calling <code>arguments.arg_name</code>. By default arguments are not required and will return a
+<code>Union</code> including the type and <code>Nil</code>.</p>
+
+<pre><code class='language-crystal'><span class="c"># hello_world.cr</span>
+<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+  define_argument number_of_greetings : <span class="t">UInt32</span>, default: <span class="n">1_u32</span>
+
+  <span class="k">def</span> <span class="m">run</span>
+    arguments.number_of_greetings.times <span class="k">do</span>
+      puts <span class="s">&quot;Hello World&quot;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="t">HelloWorld</span>.run</code></pre>
+
+<pre><code class='language-sh'>$ crystal build ./hello_world.cr
+$ ./hello_world  3
+Hello World
+Hello World
+Hello World</code></pre>
+
+<h4>Built in argument types</h4>
+
+<p>The following classes are assignable as arguments by default:</p>
+
+<ul><li><code>String</code></li><li><code>Bool</code></li><li><code>Float32</code></li><li><code>Float64</code></li><li><code>Int8</code></li><li><code>Int16</code></li><li><code>Int32</code></li><li><code>Int64</code></li><li><code>UInt8</code></li><li><code>UInt16</code></li><li><code>UInt32</code></li><li><code>UInt64</code></li></ul>
+
+<blockquote>**Pro Tip**  
+  To make any `Class` or `Struct` assignable as a argument, define a `.new(value : ::Admiral::StringValue)` or  
+  `#initialize(value : ::Admiral::StringValue)`.</blockquote>
+
+<h3>Additional Argument Options</h3>
+
+<pre><code class='language-crystal'><span class="c"># hello_world.cr</span>
+<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+  define_argument number_of_greetings : <span class="t">UInt32</span>,
+                  description: <span class="s">&quot;The number of times to greet the world&quot;</span>,
+                  default: <span class="n">1_u32</span>,
+                  required: <span class="n">true</span>
+
+  <span class="k">def</span> <span class="m">run</span>
+    arguments.number_of_greetings.times <span class="k">do</span>
+      puts <span class="s">&quot;Hello World&quot;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="t">HelloWorld</span>.run</code></pre>
+
+<p>Option           | Description</p>
+
+<pre><code>          </code></pre>
+
+<p><code>description</code>    | The description of the argument to be used in auto generated help.
+<code>default</code>        | The default value of the argument.
+<code>required</code>       | Denotes if a argument is required. Required arguments without a default value will raise an error when not specified at command invocation.</p>
+
+<blockquote>**Note:**  
+  Required arguments cannot be defined after optional arguments.</blockquote>
+
+<h2>Sub Commands</h2>
+
+<p>Sub commands can be added to the command. To define a sub command use the
+<code>register_subcommand</code> macro. You also have the option to add a description for
+the auto-generated help.</p>
+
+<pre><code class='language-crystal'><span class="c"># hello.cr</span>
+<span class="k">class</span> <span class="t">Hello</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+  <span class="k">class</span> <span class="t">Planetary</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+    <span class="k">def</span> <span class="m">run</span>
+      puts <span class="s">&quot;Hello World&quot;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">class</span> <span class="t">Municipality</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+    <span class="k">def</span> <span class="m">run</span>
+      puts <span class="s">&quot;Hello Denver&quot;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  register_subcommand planet : <span class="t">Planetary</span>
+  register_subcommand city : <span class="t">Municipality</span>
+
+  <span class="k">def</span> <span class="m">run</span>
+    puts help
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="t">HelloWorld</span>.run</code></pre>
+
+<pre><code class='language-sh'>$ crystal build ./hello.cr
+$ ./hello planet
+Hello World
+$ ./hello city
+Hello Denver</code></pre>
+
+<h2>Command Help</h2>
+
+<h3>Auto-generated Help</h3>
+
+<p>You can add a help command to your CLI by using the <code>define_help</code> macro.
+<code>define_help</code> also takes a description argument to give additional information
+about your command.</p>
+
+<pre><code class='language-crystal'><span class="c"># hello.cr</span>
+<span class="k">class</span> <span class="t">Hello</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+  define_help description: <span class="s">&quot;A command that says hello&quot;</span>
+  define_argument planet, default: <span class="s">&quot;World&quot;</span>
+
+  <span class="k">def</span> <span class="m">run</span>
+    puts <span class="s">&quot;Hello </span><span class="i">#{</span></span>arguments.planet<span class="s"><span class="i">}</span>&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<pre><code class='language-sh'>$ crystal build ./hello.cr
+$ ./hello --help
+Usage:
+  ./hello [flags...] &lt;planet> [arg...]
+
+A command that says hello
+
+Flags:
+  --help (default: false)
+
+Arguments:
+  planet (default: World)</code></pre>
+
+<h3>Custom Help</h3>
+
+<p>You can also generate your own custom help text.</p>
+
+<pre><code class='language-crystal'><span class="c"># hello.cr</span>
+<span class="k">class</span> <span class="t">Hello</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+  define_help custom: <span class="s">&quot;This is the help for my command&quot;</span>
+
+  <span class="k">def</span> <span class="m">run</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<h2>Command Version</h2>
+
+<p>Like most CLI applications, you can set a version flag.</p>
+
+<pre><code class='language-crystal'><span class="c"># hello.cr</span>
+<span class="k">class</span> <span class="t">Hello</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+  define_version <span class="s">&quot;1.0.0&quot;</span>
+
+  <span class="k">def</span> <span class="m">run</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<pre><code class='language-sh'>$ crystal build ./hello.cr
+$ hello --version
+1.0.0</code></pre>
+
+<h2>Examples</h2>
+
+<p><em>Example CLIs can be found in <a href="https://github.com/jwaldrip/admiral.cr/tree/master/examples" target="_blank">./examples</a></em></p>
+
+<h2>In the wild</h2>
+
+<p>Here are some tools using Admiral.cr in the wild. Have your own you would like to plug? Submit a pull request!</p>
+
+<ul><li><a href="https://github.com/commercialtribe/psykube" target="_blank">commercialtribe/psykube</a></li></ul>
+
+<h2>Todo</h2>
+
+<ul><li>[x] Basic Flags</li><li>[x] Typed Flags</li><li>[x] Boolean Flags</li><li>[x] Enum Flags</li><li>[x] Named Arguments</li><li>[x] Positional Arguments</li><li>[x] Sub Commands</li><li>[ ] Fully Tested</li><li>[ ] Bash Completion</li><li>[ ] Zsh Completion</li></ul>
+
+<h2>Contributing</h2>
+
+<p>See <a href="https://github.com/jwaldrip/admiral.cr/blob/master/CONTRIBUTING.md" target="_blank">CONTRIBUTING</a> for details on how to contribute.</p>
+</div>
+</body>
+</html>

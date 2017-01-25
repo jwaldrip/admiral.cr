@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/jwaldrip/admiral.cr">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>Array(T) - github.com/jwaldrip/admiral.cr</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent " data-id="github.com/jwaldrip/admiral.cr/Admiral" data-name="admiral">
+      <a href="Admiral.html">Admiral</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/ARGV" data-name="admiral::argv">
+      <a href="Admiral/ARGV.html">ARGV</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command" data-name="admiral::command">
+      <a href="Admiral/Command.html">Command</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command/Error" data-name="admiral::command::error">
+      <a href="Admiral/Command/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command/Stub" data-name="admiral::command::stub">
+      <a href="Admiral/Command/Stub.html">Stub</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/StringValue" data-name="admiral::stringvalue">
+      <a href="Admiral/StringValue.html">StringValue</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/jwaldrip/admiral.cr/Array" data-name="array(t)">
+      <a href="Array.html">Array</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Set" data-name="set(t)">
+      <a href="Set.html">Set</a>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Array(T)
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="Array.html">Array(T)</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>An <code><a href="Array.html">Array</a></code> is an ordered, integer-indexed collection of objects of type T.</p>
+
+<p>Array indexing starts at 0. A negative index is assumed to be
+relative to the end of the array: -1 indicates the last element,
+-2 is the next to last element, and so on.</p>
+
+<p>An <code><a href="Array.html">Array</a></code> can be created using the usual <code><a href="Array.html#new%28argv%3AAdmiral%3A%3AARGV%29-class-method">.new</a></code> method (several are provided), or with an array literal:</p>
+
+<pre><code><span class="t">Array</span>(<span class="t">Int32</span>).<span class="k">new</span>  <span class="c"># &#61;&gt; &#91;&#93;</span>
+[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]         <span class="c"># Array&#40;Int32&#41;</span>
+[<span class="n">1</span>, <span class="s">&quot;hello&quot;</span>, <span class="s">'x'</span>] <span class="c"># Array&#40;Int32 | String | Char&#41;</span></code></pre>
+
+<p>An <code><a href="Array.html">Array</a></code> can have mixed types, meaning T will be a union of types, but these are determined
+when the array is created, either by specifying T or by using an array literal. In the latter
+case, T will be set to the union of the array literal elements' types.</p>
+
+<p>When creating an empty array you must always specify T:</p>
+
+<pre><code><span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span> <span class="c"># same as Array&#40;Int32&#41;</span>
+<span class="o">[]</span>          <span class="c"># syntax error</span></code></pre>
+
+<p>An <code><a href="Array.html">Array</a></code> is implemented using an internal buffer of some capacity
+and is reallocated when elements are pushed to it when more capacity
+is needed. This is normally known as a <a href="http://en.wikipedia.org/wiki/Dynamic_array" target="_blank">dynamic array</a>.</p>
+
+<p>You can use a special array literal syntax with other types too, as long as they define an argless
+<code><a href="Array.html#new%28argv%3AAdmiral%3A%3AARGV%29-class-method">.new</a></code> method and a <code><<</code> method. <code><a href="Set.html">Set</a></code> is one such type:</p>
+
+<pre><code>set <span class="o">=</span> <span class="t">Set</span>{<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>} <span class="c"># &#61;&gt; Set&#123;1, 2, 3&#125;</span>
+set.<span class="k">class</span>          <span class="c"># &#61;&gt; Set&#40;Int32&#41;</span></code></pre>
+
+<p>The above is the same as this:</p>
+
+<pre><code>set <span class="o">=</span> <span class="t">Set</span>(<span class="k">typeof</span>(<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>)).<span class="k">new</span>
+set <span class="o"><<</span> <span class="n">1</span>
+set <span class="o"><<</span> <span class="n">2</span>
+set <span class="o"><<</span> <span class="n">3</span></code></pre>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type">Comparable(<a href="Array.html">Array(T)</a>)</li>
+  
+    <li class="other-type">Indexable(T)</li>
+  
+  </ul>
+
+
+
+
+
+  <h2>Direct Known Subclasses</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="Admiral/ARGV.html">Admiral::ARGV</a></li>
+  
+  </ul>
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/64623e12fb2554a0a10c5db59e1570c9c5723118/src/core_ext/types.cr#L1" target="_blank">core_ext/types.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28argv%3AAdmiral%3A%3AARGV%29-class-method" class="signature"><strong>.new</strong>(argv : Admiral::ARGV)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new&#40;argv:Admiral::ARGV&#41;-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(argv : <a href="Admiral/ARGV.html">Admiral::ARGV</a>)
+
+        <a class="method-permalink" href="#new%28argv%3AAdmiral%3A%3AARGV%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/64623e12fb2554a0a10c5db59e1570c9c5723118/src/core_ext/types.cr#L2" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

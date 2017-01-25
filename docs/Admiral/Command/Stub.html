@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/jwaldrip/admiral.cr">
+  <link href="../../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../../js/doc.js"></script>
+  <title>Admiral::Command::Stub - github.com/jwaldrip/admiral.cr</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/jwaldrip/admiral.cr/Admiral" data-name="admiral">
+      <a href="../../Admiral.html">Admiral</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/ARGV" data-name="admiral::argv">
+      <a href="../../Admiral/ARGV.html">ARGV</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/jwaldrip/admiral.cr/Admiral/Command" data-name="admiral::command">
+      <a href="../../Admiral/Command.html">Command</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command/Error" data-name="admiral::command::error">
+      <a href="../../Admiral/Command/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/jwaldrip/admiral.cr/Admiral/Command/Stub" data-name="admiral::command::stub">
+      <a href="../../Admiral/Command/Stub.html">Stub</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/StringValue" data-name="admiral::stringvalue">
+      <a href="../../Admiral/StringValue.html">StringValue</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Array" data-name="array(t)">
+      <a href="../../Array.html">Array</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Set" data-name="set(t)">
+      <a href="../../Set.html">Set</a>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Admiral::Command::Stub
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Admiral/Command/Stub.html">Admiral::Command::Stub</a></li><li class="superclass"><a href="../../Admiral/Command.html">Admiral::Command</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/64623e12fb2554a0a10c5db59e1570c9c5723118/src/admiral/command.cr#L6" target="_blank">admiral/command.cr</a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="INSTANCE">
+        <strong>INSTANCE</strong> = <code><span class="t">Stub</span>.<span class="k">new</span>(<span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)</code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#run%28%2Aargs%2C%2A%2Aparams%29-class-method" class="signature"><strong>.run</strong>(*args, **params)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#arguments-instance-method" class="signature"><strong>#arguments</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#exit%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#exit</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#exit%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#exit</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#flags-instance-method" class="signature"><strong>#flags</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#run-instance-method" class="signature"><strong>#run</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../../Admiral/Command.html">Admiral::Command</a></code></h3>
+  
+  
+    <a href="../../Admiral/Command.html#error%28%2Aargs%29-instance-method" class="tooltip">
+      <span>error(*args)</span>
+    error</a>, 
+    
+  
+    <a href="../../Admiral/Command.html#exit%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="tooltip">
+      <span>exit(*args, **options)<br/>exit(*args, **options, &block)</span>
+    exit</a>, 
+    
+  
+    <a href="../../Admiral/Command.html#gets%28%2Aargs%29-instance-method" class="tooltip">
+      <span>gets(*args)</span>
+    gets</a>, 
+    
+  
+    <a href="../../Admiral/Command.html#parent%3AAdmiral%3A%3ACommand-instance-method" class="tooltip">
+      <span>parent : Admiral::Command</span>
+    parent</a>, 
+    
+  
+    <a href="../../Admiral/Command.html#program_name%3AString-instance-method" class="tooltip">
+      <span>program_name : String</span>
+    program_name</a>, 
+    
+  
+    <a href="../../Admiral/Command.html#puts%28%2Aargs%29-instance-method" class="tooltip">
+      <span>puts(*args)</span>
+    puts</a>, 
+    
+  
+    <a href="../../Admiral/Command.html#run-instance-method" class="tooltip">
+      <span>run</span>
+    run</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../../Admiral/Command.html">Admiral::Command</a></code></h3>
+  
+  
+    <a href="../../Admiral/Command.html#new%28string%3AString%3D%3A%3AARGV.clone%2Cprogram_name%3DPROGRAM_NAME%2Cinput%3DSTDIN%2Coutput%3DSTDOUT%2Cerror%3DSTDERR%29-class-method" class="tooltip">
+      <span>new(string : String = <span class="t">::</span><span class="t">ARGV</span>.clone, program_name = <span class="t">PROGRAM_NAME</span>, input = <span class="t">STDIN</span>, output = <span class="t">STDOUT</span>, error = <span class="t">STDERR</span>)<br/>new(argv : Array(String) = <span class="t">::</span><span class="t">ARGV</span>.clone, program_name = <span class="t">PROGRAM_NAME</span>, input = <span class="t">STDIN</span>, output = <span class="t">STDOUT</span>, error = <span class="t">STDERR</span>)<br/>new(argv : Admiral::ARGV, program_name : String, input : IO = <span class="t">STDIN</span>, output : IO = <span class="t">STDOUT</span>, error : IO = <span class="t">STDERR</span>)<br/>new(command : Admiral::Command)</span>
+    new</a>
+    
+  
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="run&#40;*args,**params&#41;-class-method">
+      <div class="signature">
+        
+        def self.<strong>run</strong>(*args, **params)
+
+        <a class="method-permalink" href="#run%28%2Aargs%2C%2A%2Aparams%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/64623e12fb2554a0a10c5db59e1570c9c5723118/src/admiral/command.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="arguments-instance-method">
+      <div class="signature">
+        
+        def <strong>arguments</strong>
+
+        <a class="method-permalink" href="#arguments-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/64623e12fb2554a0a10c5db59e1570c9c5723118/src/admiral/command.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="exit&#40;*args,**options&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>exit</strong>(*args, **options)
+
+        <a class="method-permalink" href="#exit%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/64623e12fb2554a0a10c5db59e1570c9c5723118/src/admiral/command.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="exit&#40;*args,**options,&amp;block&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>exit</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#exit%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/64623e12fb2554a0a10c5db59e1570c9c5723118/src/admiral/command.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="flags-instance-method">
+      <div class="signature">
+        
+        def <strong>flags</strong>
+
+        <a class="method-permalink" href="#flags-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/64623e12fb2554a0a10c5db59e1570c9c5723118/src/admiral/command.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="run-instance-method">
+      <div class="signature">
+        
+        def <strong>run</strong>
+
+        <a class="method-permalink" href="#run-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/64623e12fb2554a0a10c5db59e1570c9c5723118/src/admiral/command.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
