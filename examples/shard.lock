@@ -1,0 +1,6 @@
+version: 1.0
+shards:
+  admiral:
+    path: ../
+    version: 0.1.0
+
