@@ -7,7 +7,6 @@ examples:
 	@bash -c '\
     set -e ; \
     cd ./examples ; \
-    shards install ;\
     for f in `ls -1 ./*.cr` ; do \
       (crystal run $$f &> /dev/null && printf "\e[32m.\e[0m") || printf "\e[31mF\e[0m" ; \
     done ; \

@@ -1,4 +1,4 @@
-require "admiral"
+require "../src/admiral"
 
 class Basic < Admiral::Command
   define_flag aa
