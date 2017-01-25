@@ -43,7 +43,7 @@ dependencies:
 
 Here are some tools using Odin in the wild. Have your own you would like to plug? Submit a pull request!
 
-* [nitrous-io/tug](https://github.com/commercialtribe/psykube)
+* [commercialtribe/psykube](https://github.com/commercialtribe/psykube)
 
 ## Todo
 
