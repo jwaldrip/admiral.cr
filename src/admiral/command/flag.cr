@@ -50,9 +50,14 @@ abstract class Admiral::Command
     # Cast defaults
     {% required = true unless default == nil %}
     {% default = default != nil ? default : is_bool ? false : is_enum ? "#{type}.new".id : nil %}
-    {% long = long || var %}
+    {% long = (long || var.id.stringify.gsub(/_/, "-")).id.stringify.gsub(/^--/, "").id %}
 
     # Validate
+    {% long_reg = /^[0-9A-Za-z][-0-9A-Za-z]*[0-9A-Za-z]?$/ %}
+    {% unless long.id.stringify =~ long_reg %}
+      {% raise "The long flag #{@type}(#{long}) must match the regex: #{long_reg}" %}
+    {% end %}
+
     {% if short != nil && short.id.stringify.size > 1 %}
       {% raise "The short flag of #{@type}(#{long}) can only be a single character, you specified: `#{short}`" %}
     {% end %}
@@ -60,7 +65,7 @@ abstract class Admiral::Command
     # Make short and long into flag strings
     {% falsey = "--no-" + long.stringify %}
     {% long = "--" + long.stringify %}
-    {% short = "-" + short.stringify if short != nil %}
+    {% short = "-" + short.id.stringify.gsub(/^-/, "") if short != nil %}
 
     # Validate types and set type var
     {% if is_union %}

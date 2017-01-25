@@ -16,6 +16,9 @@ class Complex < Admiral::Command
   define_flag enum : Array(String)
   define_flag required : String, required: true
   define_flag require_default : String, required: true, default: "default value"
+  define_flag with_description : String, description: "a described flag"
+  define_flag with_short : String, short: f
+  define_flag with_long : String, long: "with-long"
 
   define_argument required : Int32, required: true
   define_argument simple
