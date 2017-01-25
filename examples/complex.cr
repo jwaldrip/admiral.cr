@@ -1,30 +1,31 @@
 require "../src/admiral"
 
-class MyCommand < Admiral::Command
-  class Exec < Admiral::Command
+class Complex < Admiral::Command
+  class Sub < Admiral::Command
     def run
-      puts parent.flags
-      puts arguments
     end
   end
 
-  define_flag namespace : String, short: n
-  define_flag context : String, short: c
-  define_flag port : UInt16, "the port to start on", short: p, default: 8888_u16
-  define_flag foo : Array(String), "the value of foo", short: f
-  define_flag verbose : Bool, short: v, long: verbose
-
-  define_argument foo : String, "the value of foo", required: true
-
-  define_sub_command exec : Exec, "a sub_command"
-
-  define_help description: "An awesome command"
-
   define_version "1.0.0"
 
+  define_help description: "a complex command"
+
+  define_flag simple
+  define_flag typed_int : Int32
+  define_flag typed_bool : Bool
+  define_flag enum : Array(String)
+  define_flag required : String, required: true
+  define_flag require_default : String, required: true, default: "default value"
+
+  define_argument required : Int32
+  define_argument simple
+  define_argument typed : Int32
+
+  define_sub_command sub : Sub, description: "a sub command"
+
   def run
-    puts flags.port
   end
 end
 
-MyCommand.run "--version"
+Complex.run "--required foo 1 bar 2"
+Complex.run "--required sub"
