@@ -28,7 +28,7 @@ abstract class Admiral::Command
     end
   end
 
-  macro define_sub_command(command, description = "")
+  macro register_sub_command(command, description = "")
     {% raise "Subcommand: `#{command.var}` must have a type declared" unless command.is_a? TypeDeclaration %}
     {% raise "Subcommand: `#{command.var}` type must inherit from Admiral::Command" unless command.type.resolve < ::Admiral::Command %}
     {% SubCommands::NAMES << command.var.stringify unless SubCommands::NAMES.includes? command.var.stringify %}

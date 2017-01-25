@@ -68,6 +68,7 @@ Flags can be added to the command. To define a flag use the `define_flag` macro.
 Simple flags are denoted only by a name and will compile to returning a `String | Nil`.
 
 ```crystal
+# hello_world.cr
 class HelloWorld < Admiral::Command
   define_flag planet
 
@@ -93,6 +94,7 @@ calling `flags.flag_name`. By default flags are not required and will return a
 `Union` including the type and `Nil`.
 
 ```crystal
+# hello_world.cr
 class HelloWorld < Admiral::Command
   define_flag number_of_greetings : UInt32, default: 1_u32, long: times
 
@@ -139,6 +141,7 @@ example with a defined flag with `Array(String)` would return an array of `Strin
 values when calling the flag.
 
 ```crystal
+# hello_world.cr
 class HelloWorld < Admiral::Command
   define_flag citizens : Array(String), long: citizen
 
@@ -161,6 +164,7 @@ Hello Harry, citizen of Earth!
 
 ### Additional Flag Options
 ```crystal
+# hello_world.cr
 class HelloWorld < Admiral::Command
   define_flag number_of_greetings : UInt32,
               description: "The number of times to greet the world",
@@ -188,13 +192,13 @@ Option           | Description
 `required`       | Denotes if a flag is required. Required flags without a default value will raise an error when not specified at command invocation.
 
 ## Arguments
-
 Arguments can be added to the command. To define a argument use the `define_argument` macro.
 
 ### Simple
 Simple arguments are denoted only by a name and will compile to returning a `String | Nil`.
 
 ```crystal
+# hello.cr
 class Hello < Admiral::Command
   define_argument planet
 
@@ -220,6 +224,7 @@ calling `arguments.arg_name`. By default arguments are not required and will ret
 `Union` including the type and `Nil`.
 
 ```crystal
+# hello_world.cr
 class HelloWorld < Admiral::Command
   define_argument number_of_greetings : UInt32, default: 1_u32
 
@@ -262,6 +267,7 @@ The following classes are assignable as arguments by default:
 
 ### Additional Argument Options
 ```crystal
+# hello_world.cr
 class HelloWorld < Admiral::Command
   define_argument number_of_greetings : UInt32,
                   description: "The number of times to greet the world",
@@ -284,10 +290,47 @@ Option           | Description
 `default`        | The default value of the argument.
 `required`       | Denotes if a argument is required. Required arguments without a default value will raise an error when not specified at command invocation.
 
-> Note:  
+> **Note:**  
   Required arguments cannot be defined after optional arguments.
 
 ## Sub Commands
+Sub commands can be added to the command. To define a sub command use the
+`register_subcommand` macro. You also have the option to add a description for
+the auto-generated help.
+
+```crystal
+# hello.cr
+class Hello < Admiral::Command
+  class Planetary < Admiral::Command
+    def run
+      puts "Hello World"
+    end
+  end
+
+  class Municipality < Admiral::Command
+    def run
+      puts "Hello Denver"
+    end
+  end
+
+  register_subcommand planet : Planetary
+  register_subcommand city : Municipality
+
+  run
+    puts help
+  end
+end
+
+HelloWorld.run
+```
+
+```sh
+$ crystal build ./hello.cr
+$ ./hello planet
+Hello World
+$ ./hello city
+Hello Denver
+```
 
 ## Command Help
 
