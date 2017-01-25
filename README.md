@@ -60,7 +60,9 @@ Hello World
 ## Flags
 Flags can be added to the command. To define a flag use the `define_flag` macro.
 
-> NOTE: When defining flags, the underscore method name
+> NOTE: When defining flags, the underscore method name will translate to a hyphen
+  on the command line. This can be overridden with the `long: my_name` option when
+  defining the flag.
 
 ### Simple
 Simple flags are denoted only by a name and will compile to returning a `String | Nil`.
@@ -106,7 +108,9 @@ HelloWorld.run
 
 ```sh
 $ crystal build ./hello_world.cr
-$ ./hello_world$ crystal run ./hello_world.cr
+$ ./hello_world  --times 3
+Hello World
+Hello World
 Hello World
 ```
 
@@ -134,13 +138,39 @@ Enumerable flags allow for multiple values to be passed on the command line. For
 example with a defined flag with `Array(String)` would return an array of `String`
 values when calling the flag.
 
+```crystal
+class HelloWorld < Admiral::Command
+  define_flag citizens : Array(String), long: citizen
+
+  run
+    flags.citizen.each do |citizen|
+      puts "Hello #{citizen}, citizen of Earth!"
+    end
+  end
+end
+
+HelloWorld.run
+```
+
+```sh
+$ crystal build ./hello_world.cr
+$ ./hello_world  --citizen Jim --citizen Harry
+Hello Jim, citizen of Earth!
+Hello Harry, citizen of Earth!
+```
+
 ### Additional Flag Options
 ```crystal
 class HelloWorld < Admiral::Command
-  define_flag times : UInt32
+  define_flag number_of_greetings : UInt32,
+              description: "The number of times to greet the world",
+              default: 1_u32,
+              long: times,
+              short: t,
+              required: true
 
   run
-    flag.times.times do
+    flag.number_of_greetings.times do
       puts "Hello World"
     end
   end
@@ -149,6 +179,13 @@ end
 HelloWorld.run
 ```
 
+Option         | Description
+            ---|---
+description    | The description of the flag to be used in auto generated help.
+default        | The default value of the flag.
+long           | The long version of the flag ex: `long: times` for `--times`
+short          | The short version of the flag ex: `short: t` for `-t`
+required       | Denotes if a flag is required. Required flags without a default value will raise an error when not specified at command invocation.
 
 ## Arguments
 
@@ -168,7 +205,7 @@ HelloWorld.run
 
 ## In the wild
 
-Here are some tools using Odin in the wild. Have your own you would like to plug? Submit a pull request!
+Here are some tools using Admiral.cr in the wild. Have your own you would like to plug? Submit a pull request!
 
 * [commercialtribe/psykube](https://github.com/commercialtribe/psykube)
 
