@@ -44,7 +44,7 @@ run the command by invoking `HelloWorld.run`. By default this method will use
 require "admiral"
 
 class HelloWorld < Admiral::Command
-  run
+  def run
     puts "Hello World"
   end
 end
@@ -72,7 +72,7 @@ Simple flags are denoted only by a name and will compile to returning a `String 
 class HelloWorld < Admiral::Command
   define_flag planet
 
-  run
+  def run
     puts "Hello #{flags.planet || "World"}"
   end
 end
@@ -98,7 +98,7 @@ calling `flags.flag_name`. By default flags are not required and will return a
 class HelloWorld < Admiral::Command
   define_flag number_of_greetings : UInt32, default: 1_u32, long: times
 
-  run
+  def run
     flags.times.times do
       puts "Hello World"
     end
@@ -145,7 +145,7 @@ values when calling the flag.
 class HelloWorld < Admiral::Command
   define_flag citizens : Array(String), long: citizen
 
-  run
+  def run
     flags.citizen.each do |citizen|
       puts "Hello #{citizen}, citizen of Earth!"
     end
@@ -173,7 +173,7 @@ class HelloWorld < Admiral::Command
               short: t,
               required: true
 
-  run
+  def run
     flags.number_of_greetings.times do
       puts "Hello World"
     end
@@ -202,7 +202,7 @@ Simple arguments are denoted only by a name and will compile to returning a `Str
 class Hello < Admiral::Command
   define_argument planet
 
-  run
+  def run
     puts "Hello #{arguments.planet || "World"}"
   end
 end
@@ -228,7 +228,7 @@ calling `arguments.arg_name`. By default arguments are not required and will ret
 class HelloWorld < Admiral::Command
   define_argument number_of_greetings : UInt32, default: 1_u32
 
-  run
+  def run
     arguments.number_of_greetings.times do
       puts "Hello World"
     end
@@ -274,7 +274,7 @@ class HelloWorld < Admiral::Command
                   default: 1_u32,
                   required: true
 
-  run
+  def run
     arguments.number_of_greetings.times do
       puts "Hello World"
     end
@@ -316,7 +316,7 @@ class Hello < Admiral::Command
   register_subcommand planet : Planetary
   register_subcommand city : Municipality
 
-  run
+  def run
     puts help
   end
 end
