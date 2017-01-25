@@ -5,6 +5,7 @@ abstract class Admiral::Command
       include Iterable(String)
 
       NAMES = [] of String
+      REQUIRED_NAMES = [] of String
       DESCRIPTIONS = {} of String => String
 
       delegate :[], :each, to: @__rest__
@@ -38,7 +39,9 @@ abstract class Admiral::Command
   macro define_argument(attr, description = "", default = nil, required = false)
     {% var = attr.is_a?(TypeDeclaration) ? attr.var : attr.id %}
     {% type = attr.is_a?(TypeDeclaration) ? attr.type : String %}
+    {% raise "Cannot define required argument `#{var}` after optional arguments" if required && Arguments::NAMES != Arguments::REQUIRED_NAMES %}
     {% Arguments::NAMES << var.stringify unless Arguments::NAMES.includes? var.stringify %}
+    {% Arguments::REQUIRED_NAMES << var.stringify if required == true && !Arguments::REQUIRED_NAMES.includes?(var.stringify) %}
 
     private struct Arguments
       getter {{ var }} : {{ type }}{% unless required %} | Nil{% end %}

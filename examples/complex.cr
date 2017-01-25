@@ -17,7 +17,7 @@ class Complex < Admiral::Command
   define_flag required : String, required: true
   define_flag require_default : String, required: true, default: "default value"
 
-  define_argument required : Int32
+  define_argument required : Int32, required: true
   define_argument simple
   define_argument typed : Int32
 
