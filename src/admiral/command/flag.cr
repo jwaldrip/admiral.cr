@@ -8,9 +8,6 @@ abstract class Admiral::Command
 
       def initialize(command : ::Admiral::Command)
         raise_on_undefined_flags!(command)
-      rescue e : ::Admiral::Command::Error
-        command.error e.message.colorize(:red)
-        exit 1
       end
 
       def raise_on_undefined_flags!(command)
@@ -51,6 +48,7 @@ abstract class Admiral::Command
     {% is_nil   = type.is_a?(Path) && type == Nil %}
 
     # Cast defaults
+    {% required = true unless default == nil %}
     {% default = default != nil ? default : is_bool ? false : is_enum ? "#{type}.new".id : nil %}
     {% long = long || var %}
 
@@ -84,9 +82,6 @@ abstract class Admiral::Command
         {% for f in Flags::NAMES %}
         @{{ f.id }} = parse_{{ f.id }}(command){% end %}
         raise_on_undefined_flags!(command)
-      rescue e : ::Admiral::Command::Error
-        command.error e.message.colorize(:red)
-        exit 1
       end
 
       private def parse_{{var}}(command : ::Admiral::Command) : {{ type }} {% unless required %}| Nil{% end %}
@@ -131,7 +126,7 @@ abstract class Admiral::Command
         {% if is_enum %} # Enum Type Flag
           values.empty? ? {{ default }} : {{ type }}.new(values)
         {% else %} # Boolean and value type flags
-          values[-1]? != nil ? {{ type }}.new(values[-1]) : {% if required == true %}raise ::Admiral::Command::Error.new("Flag: {{ long.id }} is required"){% else %}{{ default }}{% end %}
+          values[-1]? != nil ? {{ type }}.new(values[-1]) : {% if required == true && default == nil %}raise ::Admiral::Command::Error.new("Flag: {{ long.id }} is required"){% else %}{{ default }}{% end %}
         {% end %}
       end
     end

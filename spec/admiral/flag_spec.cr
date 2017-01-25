@@ -26,7 +26,7 @@ describe "flags" do
         io = IO::Memory.new
         BasicFlaggedCommand.run(["--aa"], error: io)
         io.rewind
-        io.gets_to_end.should eq "Flag: --aa is missing a value\n"
+        io.gets_to_end.should eq "Flag: --aa is missing a value".colorize(:red).to_s + "\n"
       end
     end
 
@@ -66,15 +66,6 @@ describe "flags" do
       end
     end
 
-    context "without a value" do
-      it "should raise an error" do
-        io = IO::Memory.new
-        TypedFlaggedCommand.run(["--aa"], error: io)
-        io.rewind
-        io.gets_to_end.should eq "Flag: --aa is missing a value\n"
-      end
-    end
-
     context "with a default" do
       it "should return the default" do
         io = IO::Memory.new
@@ -94,7 +85,7 @@ describe "flags" do
         io = IO::Memory.new
         RequiredTypedFlaggedCommand.run([] of String, error: io)
         io.rewind
-        io.gets_to_end.should eq "Flag: --aa is required\n"
+        io.gets_to_end.should eq "Flag: --aa is required".colorize(:red).to_s + "\n"
       end
     end
   end

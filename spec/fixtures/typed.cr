@@ -1,7 +1,7 @@
 require "../../src/admiral"
 
 class TypedFlaggedCommand < Admiral::Command
-  flag aa : UInt16
+  define_flag aa : UInt16
 
   def run
     puts flags.aa
