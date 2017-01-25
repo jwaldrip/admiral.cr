@@ -94,10 +94,10 @@ calling `flags.flag_name`. By default flags are not required and will return a
 
 ```crystal
 class HelloWorld < Admiral::Command
-  define_flag times : UInt32, default: 1_u32
+  define_flag number_of_greetings : UInt32, default: 1_u32, long: times
 
   run
-    flag.times.times do
+    flags.times.times do
       puts "Hello World"
     end
   end
@@ -170,7 +170,7 @@ class HelloWorld < Admiral::Command
               required: true
 
   run
-    flag.number_of_greetings.times do
+    flags.number_of_greetings.times do
       puts "Hello World"
     end
   end
@@ -188,6 +188,104 @@ Option           | Description
 `required`       | Denotes if a flag is required. Required flags without a default value will raise an error when not specified at command invocation.
 
 ## Arguments
+
+Arguments can be added to the command. To define a argument use the `define_argument` macro.
+
+### Simple
+Simple arguments are denoted only by a name and will compile to returning a `String | Nil`.
+
+```crystal
+class Hello < Admiral::Command
+  define_argument planet
+
+  run
+    puts "Hello #{arguments.planet || "World"}"
+  end
+end
+
+HelloWorld.run
+```
+
+```sh
+$ crystal build ./world.cr
+$ ./hello World
+Hello World
+$ ./hello Alderaan
+Hello Alderaan
+```
+
+### Typed Arguments
+Arguments can also be assigned a type. This will result in a properly typed value when
+calling `arguments.arg_name`. By default arguments are not required and will return a
+`Union` including the type and `Nil`.
+
+```crystal
+class HelloWorld < Admiral::Command
+  define_argument number_of_greetings : UInt32, default: 1_u32
+
+  run
+    arguments.number_of_greetings.times do
+      puts "Hello World"
+    end
+  end
+end
+
+HelloWorld.run
+```
+
+```sh
+$ crystal build ./hello_world.cr
+$ ./hello_world  3
+Hello World
+Hello World
+Hello World
+```
+
+#### Built in argument types
+The following classes are assignable as arguments by default:
+* `String`
+* `Bool`
+* `Float32`
+* `Float64`
+* `Int8`
+* `Int16`
+* `Int32`
+* `Int64`
+* `UInt8`
+* `UInt16`
+* `UInt32`
+* `UInt64`
+
+> **Pro Tip**  
+  To make any `Class` or `Struct` assignable as a argument, define a `.new(value : ::Admiral::StringValue)` or  
+  `#initialize(value : ::Admiral::StringValue)`.
+
+### Additional Argument Options
+```crystal
+class HelloWorld < Admiral::Command
+  define_argument number_of_greetings : UInt32,
+                  description: "The number of times to greet the world",
+                  default: 1_u32,
+                  required: true
+
+  run
+    arguments.number_of_greetings.times do
+      puts "Hello World"
+    end
+  end
+end
+
+HelloWorld.run
+```
+
+Option           | Description
+              ---|---
+`description`    | The description of the argument to be used in auto generated help.
+`default`        | The default value of the argument.
+`required`       | Denotes if a argument is required. Required arguments without a default value will raise an error when not specified at command invocation.
+
+> Note:  
+  Required arguments cannot be defined after optional arguments.
 
 ## Sub Commands
 
