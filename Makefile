@@ -19,4 +19,9 @@ examples:
     done ; \
   '
 
-.PHONY: examples spec ci
+docs:
+	@crystal doc
+	@rm -rf ./docs
+	@mv ./doc ./docs
+
+.PHONY: examples spec ci docs
