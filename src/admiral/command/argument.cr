@@ -2,20 +2,20 @@ abstract class Admiral::Command
   private macro argument(attr, description = "", default = nil, required = false)
     {% var = attr.is_a?(TypeDeclaration) ? attr.var : attr.id %}
     {% type = attr.is_a?(TypeDeclaration) ? attr.type : String %}
-    {% ARGUMENT_NAMES << var.stringify unless ARGUMENT_NAMES.includes? var.stringify %}
+    {% Arguments::NAMES << var.stringify unless Arguments::NAMES.includes? var.stringify %}
 
     private struct Arguments
       getter {{ var }} : {{ type }}
 
       def initialize(command : ::Admiral::Command)
-        {% for a in ARGUMENT_NAMES %}
+        {% for a in Arguments::NAMES %}
         @{{ a.id }} = parse_{{ a.id }}(command){% end %}
         @__rest__ = parse_rest(command)
       end
 
       def parse_{{ var }}(command : ::Admiral::Command) : {{ type }}
         pos_only = false
-        index = {{ ARGUMENT_NAMES.size - 1 }}
+        index = {{ Arguments::NAMES.size - 1 }}
         while command.@argv[index]?.to_s.starts_with?("-") && !pos_only
           index += 1
           pos_only = command.@argv[index]? == "--"
@@ -37,6 +37,6 @@ abstract class Admiral::Command
     end
 
     # Add the attr to the description constant
-    {% DESCRIPTIONS[:arguments][var.stringify] = description %}
+    {% Arguments::DESCRIPTIONS[var.stringify] = description %}
   end
 end

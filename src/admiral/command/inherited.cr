@@ -1,16 +1,9 @@
 abstract class Admiral::Command
   private macro inherited
-    FLAG_NAMES = [] of String
-    ARGUMENT_NAMES = [] of String
-    SUB_COMMAND_NAMES = [] of String
-
-    private DESCRIPTIONS = {
-      arguments: {} of String => String,
-      flags: {} of String => String,
-      sub_commands: {} of String => String,
-    }
-
     private struct Flags
+      NAMES = [] of String
+      DESCRIPTIONS = {} of String => String
+
       def initialize(command : ::Admiral::Command)
         raise_on_undefined_flags!(command)
       end
@@ -24,9 +17,23 @@ abstract class Admiral::Command
           raise Admiral::Command::Error.new "The following flags are not defined: #{undefined_flags.join(", ")}"
         end
       end
+
+      def inspect(io)
+        io << "<#{self.class}"
+        io << "("
+        io << NAMES.join(", ") unless NAMES.empty?
+        io << ")"
+        io << ">"
+      end
     end
 
     private struct Arguments
+      include Enumerable(String)
+      include Iterable(String)
+
+      NAMES = [] of String
+      DESCRIPTIONS = {} of String => String
+
       delegate :[], :each, to: @__rest__
 
       @__rest__ : Array(String) = [] of String
@@ -38,9 +45,22 @@ abstract class Admiral::Command
       private def parse_rest(command : ::Admiral::Command)
         command.@argv.select(&.!= "--").map(&.value)
       end
+
+      def inspect(io)
+        names = NAMES.clone
+        names << "..." if size > 0
+        io << "<#{self.class}"
+        io << "("
+        io << names.join(", ") unless names.empty?
+        io << ")"
+        io << ">"
+      end
     end
 
     private struct SubCommands
+      NAMES = [] of String
+      DESCRIPTIONS = {} of String => String
+
       def self.locate(name : ::Admiral::StringValue)
         new(name).locate
       end
@@ -128,23 +148,23 @@ abstract class Admiral::Command
     end
 
     private def help : String
-      left_col_len = DESCRIPTIONS.values.flat_map(&.keys).map(&.size).sort[-1]? || 0
+      left_col_len = [Flags::DESCRIPTIONS, Arguments::DESCRIPTIONS, SubCommands::DESCRIPTIONS].flat_map(&.keys).map(&.size).sort[-1]? || 0
       String.build do |str|
         # Add Usage
         str << "Usage:"
         commands = [] of String
         commands << begin
           String.build do |cmd|
-            DESCRIPTIONS[:arguments].keys.each do |attr|
+            Arguments::DESCRIPTIONS.keys.each do |attr|
               cmd << " <#{attr}>"
             end
             cmd << " [arg...]"
           end
         end
-        commands << " {command}" unless DESCRIPTIONS[:sub_commands].empty?
+        commands << " {command}" unless SubCommands::NAMES.empty?
         commands.each do |cmd|
           str << "\n  #{@program_name}"
-          str << " [flags...]" unless DESCRIPTIONS[:flags].empty?
+          str << " [flags...]" unless Flags::NAMES.empty?
           str << cmd unless cmd.empty?
         end
         str << "\n\n" # add newlines
@@ -153,9 +173,9 @@ abstract class Admiral::Command
         str << "#{description}\n" if description
 
         # Add Flags
-        unless DESCRIPTIONS[:flags].empty?
+        unless Flags::NAMES.empty?
           str << "\nFlags:\n"
-          DESCRIPTIONS[:flags].each do |string, desc|
+          Flags::DESCRIPTIONS.each do |string, desc|
             str << "  #{string}"
             if desc.size > 1
               str << " " * (left_col_len - string.size)
@@ -166,9 +186,9 @@ abstract class Admiral::Command
         end
 
         # Add Args
-        unless DESCRIPTIONS[:arguments].empty?
+        unless Arguments::NAMES.empty?
           str << "\nArguments:\n"
-          DESCRIPTIONS[:arguments].each do |string, desc|
+          Arguments::DESCRIPTIONS.each do |string, desc|
             str << "  #{string}"
             if desc.size > 1
               str << " " * (left_col_len - string.size)
@@ -179,9 +199,9 @@ abstract class Admiral::Command
         end
 
         # Add Commands
-        unless DESCRIPTIONS[:sub_commands].empty?
-          str << "\nCommands:\n"
-          DESCRIPTIONS[:sub_commands].each do |string, desc|
+        unless SubCommands::NAMES.empty?
+          str << "\nSubcommands:\n"
+          SubCommands::DESCRIPTIONS.each do |string, desc|
             str << "  #{string}"
             if desc.size > 1
               str << " " * (left_col_len - string.size)
@@ -196,7 +216,7 @@ abstract class Admiral::Command
     def description : Nil
     end
 
-    @parent : ::Admiral::Command = ::Admiral::Command::Stub::INSTANCE
+    getter parent : ::Admiral::Command = ::Admiral::Command::Stub::INSTANCE
     delegate exit, to: @parent
     flag help : Bool
   end
