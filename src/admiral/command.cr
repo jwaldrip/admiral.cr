@@ -11,7 +11,7 @@ abstract class Admiral::Command
   getter program_name : String = PROGRAM_NAME
 
   # Initializes a command with a `String`, which will be split into arguments.
-  def initialize(string : String = ::ARGV.clone, program_name = PROGRAM_NAME, input = STDIN, output = STDOUT, error = STDERR, parent : ::Admiral::Command? = nil)
+  def initialize(string : String, program_name = PROGRAM_NAME, input = STDIN, output = STDOUT, error = STDERR, parent : ::Admiral::Command? = nil)
     initialize(string.split(" "), program_name, input, output, error, parent)
   end
 
