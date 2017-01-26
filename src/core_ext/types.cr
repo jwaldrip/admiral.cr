@@ -1,11 +1,11 @@
 class Array(T)
-  def self.new(argv : ::Admiral::ARGV)
+  def self.new(argv : ::Admiral::ArgumentList)
     argv.map { |arg| T.new arg }
   end
 end
 
 struct Set(T)
-  def self.new(argv : ::Admiral::ARGV)
+  def self.new(argv : ::Admiral::ArgumentList)
     argv.map { |arg| T.new arg }.to_set
   end
 end

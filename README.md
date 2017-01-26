@@ -418,6 +418,7 @@ Here are some tools using Admiral.cr in the wild. Have your own you would like t
 - [x] Named Arguments
 - [x] Positional Arguments
 - [x] Sub Commands
+- [ ] Documentation
 - [ ] Fully Tested
 - [ ] Bash Completion
 - [ ] Zsh Completion

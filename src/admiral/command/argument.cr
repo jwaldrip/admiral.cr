@@ -1,6 +1,8 @@
 abstract class Admiral::Command
+  abstract def arguments
+
   private macro inherited
-    private struct Arguments
+    struct Arguments
       include Enumerable(String)
       include Iterable(String)
 
@@ -43,7 +45,7 @@ abstract class Admiral::Command
     {% Arguments::NAMES << var.stringify unless Arguments::NAMES.includes? var.stringify %}
     {% Arguments::REQUIRED_NAMES << var.stringify if required == true && !Arguments::REQUIRED_NAMES.includes?(var.stringify) %}
 
-    private struct Arguments
+    struct Arguments
       getter {{ var }} : {{ type }}{% unless required %} | Nil{% end %}
 
       def initialize(command : ::Admiral::Command)
@@ -72,7 +74,7 @@ abstract class Admiral::Command
     begin
       new([] of String).arguments.{{ var }}
     rescue
-      ::Admiral::Command::Error
+      ::Admiral::Error
     end
 
     # Add the attr to the description constant

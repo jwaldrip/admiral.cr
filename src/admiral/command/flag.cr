@@ -1,8 +1,10 @@
 require "colorize"
 
 abstract class Admiral::Command
+  abstract def flags
+
   private macro inherited
-    private struct Flags
+    struct Flags
       NAMES = [] of String
       DESCRIPTIONS = {} of String => String
 
@@ -16,9 +18,9 @@ abstract class Admiral::Command
           command.@argv[0..pos_index].select(&.starts_with? "--").map(&.split("=")[0]) +
           command.@argv[0..pos_index].select(&.=~ /^-[a-zA-Z0-9]/).map(&.[0..1])
         if undefined_flags.size == 1
-          raise Admiral::Command::Error.new "The following flag is not defined: #{undefined_flags.first}"
+          raise Admiral::Error.new "The following flag is not defined: #{undefined_flags.first}"
         elsif undefined_flags.size > 1
-          raise Admiral::Command::Error.new "The following flags are not defined: #{undefined_flags.join(", ")}"
+          raise Admiral::Error.new "The following flags are not defined: #{undefined_flags.join(", ")}"
         end
       end
 
@@ -80,7 +82,7 @@ abstract class Admiral::Command
     {% end %}
 
     # Extend the flags class to include the flag
-    private struct Flags
+    struct Flags
       getter {{ var }} : {{ type }}{% unless required %}| Nil{% end %}{% if default != nil %} = {{ default }}{% end %}
 
       def initialize(command : ::Admiral::Command)
@@ -90,7 +92,7 @@ abstract class Admiral::Command
       end
 
       private def parse_{{var}}(command : ::Admiral::Command) : {{ type }} {% unless required %}| Nil{% end %}
-        values = ::Admiral::ARGV.new
+        values = ::Admiral::ArgumentList.new
         index = 0
         while arg = command.@argv[index]?
           flag = arg.split("=")[0]
@@ -112,7 +114,7 @@ abstract class Admiral::Command
                 value = command.@argv.delete_at index
                 values << value
               else
-                raise ::Admiral::Command::Error.new("Flag: {{ long.id }} is missing a value")
+                raise ::Admiral::Error.new("Flag: {{ long.id }} is missing a value")
             {% end %}
             end
           {% if is_bool && default == true %}
@@ -131,7 +133,7 @@ abstract class Admiral::Command
         {% if is_enum %} # Enum Type Flag
           values.empty? ? {{ default }} : {{ type }}.new(values)
         {% else %} # Boolean and value type flags
-          values[-1]? != nil ? {{ type }}.new(values[-1]) : {% if required == true && default == nil %}raise ::Admiral::Command::Error.new("Flag: {{ long.id }} is required"){% else %}{{ default }}{% end %}
+          values[-1]? != nil ? {{ type }}.new(values[-1]) : {% if required == true && default == nil %}raise ::Admiral::Error.new("Flag: {{ long.id }} is required"){% else %}{{ default }}{% end %}
         {% end %}
       end
     end
@@ -143,7 +145,7 @@ abstract class Admiral::Command
     begin
       new([] of String).flags.{{var}}
     rescue
-      ::Admiral::Command::Error
+      ::Admiral::Error
     end
   end
 end

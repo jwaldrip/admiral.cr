@@ -1,30 +1,39 @@
 abstract class Admiral::Command
+  abstract def sub(command, *args, **params)
+
   private macro inherited
     private struct SubCommands
       NAMES = [] of String
       DESCRIPTIONS = {} of String => String
 
-      def self.locate(name : ::Admiral::StringValue)
+      def self.locate(name)
         new(name).locate
       end
 
-      def self.invoke(name : ::Admiral::StringValue, command : ::Admiral::Command)
-        new(name).invoke(command)
+      def self.invoke(name, *args, **params)
+        new(name).invoke(*args, **params)
       end
 
-      def initialize(@name : ::Admiral::StringValue)
+      def initialize(name : ::Admiral::StringValue)
+        initialize name.value
       end
 
-      def invoke(command : ::Admiral::Command)
+      def initialize(@name : String)
+      end
+
+      def invoke(*args, **params)
         if sub_command_class = locate
-          command.@argv.shift
-          sub_command_class.new(command).run!
+          sub_command_class.new(*args, **params, program_name: @name).run!
         else
-          raise ::Admiral::Command::Error.new("Invalid subcommand: #{@name}")
+          raise ::Admiral::Error.new("Invalid subcommand: #{@name}")
         end
       end
 
       def locate : Nil; end
+    end
+
+    def sub(command, *args, **params)
+      SubCommands.invoke(command, *args, **params, parent: self)
     end
   end
 

@@ -6,11 +6,12 @@ abstract class Admiral::Command
 
     protected def run! : Nil
       if @argv[0]? && SubCommands.locate(@argv[0])
-        SubCommands.invoke(@argv[0], self)
+        command = @argv.shift
+        sub(command, @argv)
       else
         run
       end
-    rescue e : ::Admiral::Command::Error
+    rescue e : ::Admiral::Error
       error e.message.colorize(:red)
       exit 1
     end
