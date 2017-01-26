@@ -10,6 +10,8 @@ abstract class Admiral::Command
     struct Flags
       NAMES = [] of String
       DESCRIPTIONS = {} of String => String
+      SHORT_NAMES = [] of String
+      LONG_NAMES = [] of String
 
       def initialize(command : ::Admiral::Command)
         raise_on_undefined_flags!(command)
@@ -17,9 +19,17 @@ abstract class Admiral::Command
 
       def raise_on_undefined_flags!(command)
         pos_index = (command.@argv.index(&.== "--") || 0) - 1
-        undefined_flags =
-          command.@argv[0..pos_index].select(&.starts_with? "--").map(&.split("=")[0]) +
-          command.@argv[0..pos_index].select(&.=~ /^-[a-zA-Z0-9]/).map(&.[0..1])
+        undefined_flags = [] of String
+        command.@argv[0..pos_index].each do |arg|
+          if SubCommands.locate(arg)
+            break
+          elsif arg.starts_with? "--"
+            undefined_flags << arg.split("=")[0]
+          elsif arg =~ /^-[a-zA-Z0-9]/
+            undefined_flags << arg[0..1]
+          end
+        end
+
         if undefined_flags.size == 1
           raise Admiral::Error.new "The following flag is not defined: #{undefined_flags.first}"
         elsif undefined_flags.size > 1
@@ -168,7 +178,9 @@ abstract class Admiral::Command
   macro define_flag(flag, description = "", default = nil, short = nil, long = nil, required = false)
     {% var = flag.is_a?(TypeDeclaration) ? flag.var : flag.id %}
     {% type = flag.is_a?(TypeDeclaration) ? flag.type : String %}
-    {% Flags::NAMES << var.stringify unless Flags::NAMES.includes? var.stringify %}
+
+    {% raise "A flag with the name `#{var}` has already been defined!" if Flags::NAMES.includes? var.stringify }
+    {% Flags::NAMES << var.stringify %}
 
     # Setup Helper Vars
     {% is_bool  = type.is_a?(Path) && type.resolve == Bool %}
@@ -195,6 +207,10 @@ abstract class Admiral::Command
     {% falsey = "--no-" + long.stringify %}
     {% long = "--" + long.stringify %}
     {% short = "-" + short.id.stringify.gsub(/^-/, "") if short != nil %}
+    {% raise "The long flag: `#{long.id}` has already been defined!" if Flags::LONG_NAMES.includes? long.stringify }
+    {% raise "The short flag: `#{short.id}` has already been defined!" if Flags::SHORT_NAMES.includes? short.stringify }
+    {% Flags::LONG_NAMES << long.stringify %}
+    {% Flags::SHORT_NAMES << short.stringify if short != nil %}
 
     # Validate types and set type var
     {% if is_union %}
@@ -266,13 +282,12 @@ abstract class Admiral::Command
     end
 
     # Add the flag to the description constant
-    Flags::DESCRIPTIONS[{{ long + (short ? ", #{short.id}" : "") }}{% if default != nil %} + " (default: #{{{default}}})".colorize.mode(:dim).to_s{% end %}] = {{ description }}
+    Flags::DESCRIPTIONS[{{ long + (short ? ", #{short.id}" : "") }}{% if default != nil %} + " (default: #{{{default}}})"{% elsif required == true%}+ " (required)"{% end %}] = {{ description }}
 
     # Test the usage of the flag
     begin
       new([] of String).flags.{{var}}
-    rescue
-      ::Admiral::Error
+    rescue e : ::Admiral::Error
     end
   end
 end

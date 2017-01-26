@@ -141,7 +141,8 @@ abstract class Admiral::Command
     {% var = attr.is_a?(TypeDeclaration) ? attr.var : attr.id %}
     {% type = attr.is_a?(TypeDeclaration) ? attr.type : String %}
     {% raise "Cannot define required argument `#{var}` after optional arguments" if required && Arguments::NAMES != Arguments::REQUIRED_NAMES %}
-    {% Arguments::NAMES << var.stringify unless Arguments::NAMES.includes? var.stringify %}
+    {% raise "A argument with the name `#{var}` has already been defined" if Arguments::NAMES.includes? var.stringify %}
+    {% Arguments::NAMES << var.stringify %}
     {% Arguments::REQUIRED_NAMES << var.stringify if required == true && !Arguments::REQUIRED_NAMES.includes?(var.stringify) %}
 
     struct Arguments

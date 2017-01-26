@@ -1,7 +1,10 @@
 abstract class Admiral::Command
   macro define_help(custom, flag = help, short = nil)
     {% if flag %}
-      define_flag __help__ : Bool, long: {{flag}}, short: {{short}}
+      define_flag __help__ : Bool,
+                  description: "Displays help for the current command.",
+                  long: {{flag}},
+                  short: {{short}}
       protected def run! : Nil
         if flags.__help__
           puts help
@@ -62,7 +65,10 @@ abstract class Admiral::Command
   # ```
   macro define_help(description = nil, flag = help, short = nil)
     {% if flag %}
-      define_flag __help__ : Bool, long: {{flag}}, short: {{short}}
+      define_flag __help__ : Bool,
+                  description: "Displays help for the current command.",
+                  long: {{flag}},
+                  short: {{short}}
       protected def run! : Nil
         if flags.__help__
           puts help
@@ -81,7 +87,7 @@ abstract class Admiral::Command
         commands = [] of String
         commands << begin
           String.build do |cmd|
-            Arguments::DESCRIPTIONS.keys.each do |attr|
+            Arguments::NAMES.each do |attr|
               cmd << " <#{attr}>"
             end
             cmd << " [arg...]"
@@ -103,7 +109,9 @@ abstract class Admiral::Command
         # Add Flags
         unless Flags::NAMES.empty?
           str << "\nFlags:\n"
-          Flags::DESCRIPTIONS.each do |string, desc|
+          Flags::DESCRIPTIONS.keys.sort.each do |key|
+            string = key
+            desc = Flags::DESCRIPTIONS[key]
             str << "  #{string}"
             if desc.size > 1
               str << " " * (left_col_len - string.size)

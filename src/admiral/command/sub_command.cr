@@ -73,17 +73,16 @@ abstract class Admiral::Command
   # $ ./hello city
   # Hello Denver
   # ```
-  macro register_sub_command(command, description = "")
-    {% raise "Subcommand: `#{command.var}` must have a type declared" unless command.is_a? TypeDeclaration %}
-    {% raise "Subcommand: `#{command.var}` type must inherit from Admiral::Command" unless command.type.resolve < ::Admiral::Command %}
-    {% SubCommands::NAMES << command.var.stringify unless SubCommands::NAMES.includes? command.var.stringify %}
+  macro register_sub_command(command, type, description = "")
+    {% raise "Subcommand: `#{type}` type must inherit from Admiral::Command" unless type.resolve < ::Admiral::Command %}
+    {% SubCommands::NAMES << command.id.stringify unless SubCommands::NAMES.includes? command.id.stringify %}
 
     # Add the subcommand to the description constant
-    SubCommands::DESCRIPTIONS[{{ command.var.stringify }}] = {{ description }}
+    SubCommands::DESCRIPTIONS[{{ command.id.stringify }}] = {{ description }}
 
     private struct SubCommands
       def locate
-        previous_def || @name == {{ command.var.stringify }} ? {{ command.type }} : nil
+        previous_def || @name == {{ command.id.stringify }} ? {{ type }} : nil
       end
     end
   end

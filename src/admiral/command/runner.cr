@@ -9,6 +9,7 @@ abstract class Admiral::Command
         command = @argv.shift
         sub(command, @argv)
       else
+        puts "running: #{program_name}"
         run
       end
     rescue e : ::Admiral::Error

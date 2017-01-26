@@ -21,11 +21,15 @@ abstract class Admiral::Command
   end
 
   # Initializes a command with an `Admiral::ArgumentList`.
-  def initialize(@argv : ArgumentList, @program_name : String, input : IO? = nil, output : IO? = nil, error : IO? = nil, parent : ::Admiral::Command? = nil)
+  def initialize(@argv : ArgumentList, program_name : String, input : IO? = nil, output : IO? = nil, error : IO? = nil, parent : ::Admiral::Command? = nil)
+    @program_name = parent ? "#{parent.program_name} #{program_name}" : program_name
     @parent = parent
     @input_io = input ? input : parent ? parent.@input_io : STDIN
     @output_io = output ? output : parent ? parent.@output_io : STDOUT
     @error_io = error ? error : parent ? parent.@error_io : STDERR
+  rescue e : ::Admiral::Error
+    @error_io.puts e.message.colorize(:red)
+    exit 1
   end
 
   # The run command.
