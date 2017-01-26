@@ -1,6 +1,9 @@
 require "colorize"
 
 abstract class Admiral::Command
+  # Returns the commands `Flags` object.
+  #
+  # You can access names flags by name.
   abstract def flags
 
   private macro inherited
@@ -38,6 +41,130 @@ abstract class Admiral::Command
     end
   end
 
+  # Defines a command line flag.
+  #
+  # **Note:** When defining flags, the underscore method name will translate to a hyphen
+  # on the command line. This can be overridden with the `long: my_name` option when
+  # defining the flag.
+  #
+  # ### Simple Flags
+  # Simple flags are denoted only by a name and will compile to returning a `String | Nil`.
+  #
+  # ```crystal
+  # # hello_world.cr
+  # class HelloWorld < Admiral::Command
+  #   define_flag planet
+  #
+  #   def run
+  #     puts "Hello #{flags.planet || "World"}"
+  #   end
+  # end
+  #
+  # HelloWorld.run
+  # ```
+  #
+  # ```sh
+  # $ crystal build ./hello_world.cr
+  # $ ./hello_world
+  # Hello World
+  # $ ./hello_world --planet Alderaan
+  # Hello Alderaan
+  # ```
+  #
+  # ### Typed Flags
+  # Flags can also be assigned a type. This will result in a properly typed value when
+  # calling `flags.flag_name`. By default flags are not required and will return a
+  # `Union` including the type and `Nil`.
+  #
+  # ```crystal
+  # # hello_world.cr
+  # class HelloWorld < Admiral::Command
+  #   define_flag number_of_greetings : UInt32, default: 1_u32, long: times
+  #
+  #   def run
+  #     flags.times.times do
+  #       puts "Hello World"
+  #     end
+  #   end
+  # end
+  #
+  # HelloWorld.run
+  # ```
+  #
+  # ```sh
+  # $ crystal build ./hello_world.cr
+  # $ ./hello_world  --times 3
+  # Hello World
+  # Hello World
+  # Hello World
+  # ```
+  #
+  # #### Built in flag types
+  # The following classes are assignable as flags by default:
+  # * `String`
+  # * `Bool`
+  # * `Float32`
+  # * `Float64`
+  # * `Int8`
+  # * `Int16`
+  # * `Int32`
+  # * `Int64`
+  # * `UInt8`
+  # * `UInt16`
+  # * `UInt32`
+  # * `UInt64`
+  #
+  # **Pro Tip:**
+  # To make any `Class` or `Struct` assignable as a flag, define a `.new(value : ::Admiral::StringValue)` or
+  # `#initialize(value : ::Admiral::StringValue)`.
+  #
+  # ### Enumerable Flags
+  # Enumerable flags allow for multiple values to be passed on the command line. For
+  # example with a defined flag with `Array(String)` would return an array of `String`
+  # values when calling the flag.
+  #
+  # ```crystal
+  # # hello_world.cr
+  # class HelloWorld < Admiral::Command
+  #   define_flag citizens : Array(String), long: citizen
+  #
+  #   def run
+  #     flags.citizen.each do |citizen|
+  #       puts "Hello #{citizen}, citizen of Earth!"
+  #     end
+  #   end
+  # end
+  #
+  # HelloWorld.run
+  # ```
+  #
+  # ```sh
+  # $ crystal build ./hello_world.cr
+  # $ ./hello_world  --citizen Jim --citizen Harry
+  # Hello Jim, citizen of Earth!
+  # Hello Harry, citizen of Earth!
+  # ```
+  #
+  # ### Additional Flag Options
+  # ```crystal
+  # # hello_world.cr
+  # class HelloWorld < Admiral::Command
+  #   define_flag number_of_greetings : UInt32,
+  #               description: "The number of times to greet the world", # The description of the flag to be used in auto generated help.
+  #               default: 1_u32,                                        # The default value of the flag.
+  #               long: times,                                           # The long version of the flag ex: `long: times` for `--times`.
+  #               short: t,                                              # The short version of the flag ex: `short: t` for `-t`.
+  #               required: true                                         # Denotes if a flag is required. Required flags without a default value will raise an error when not specified at command invocation.
+  #
+  #   def run
+  #     flags.number_of_greetings.times do
+  #       puts "Hello World"
+  #     end
+  #   end
+  # end
+  #
+  # HelloWorld.run
+  # ```
   macro define_flag(flag, description = "", default = nil, short = nil, long = nil, required = false)
     {% var = flag.is_a?(TypeDeclaration) ? flag.var : flag.id %}
     {% type = flag.is_a?(TypeDeclaration) ? flag.type : String %}

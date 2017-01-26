@@ -1,4 +1,5 @@
 abstract class Admiral::Command
+  # Invokes a sub command by name, passing `self` as the parent.
   abstract def sub(command, *args, **params)
 
   private macro inherited
@@ -37,6 +38,41 @@ abstract class Admiral::Command
     end
   end
 
+  # Registers a subcommand.
+  #
+  # ```crystal
+  # # hello.cr
+  # class Hello < Admiral::Command
+  #   class Planetary < Admiral::Command
+  #     def run
+  #       puts "Hello World"
+  #     end
+  #   end
+  #
+  #   class Municipality < Admiral::Command
+  #     def run
+  #       puts "Hello Denver"
+  #     end
+  #   end
+  #
+  #   register_subcommand planet : Planetary
+  #   register_subcommand city : Municipality
+  #
+  #   def run
+  #     puts help
+  #   end
+  # end
+  #
+  # HelloWorld.run
+  # ```
+  #
+  # ```sh
+  # $ crystal build ./hello.cr
+  # $ ./hello planet
+  # Hello World
+  # $ ./hello city
+  # Hello Denver
+  # ```
   macro register_sub_command(command, description = "")
     {% raise "Subcommand: `#{command.var}` must have a type declared" unless command.is_a? TypeDeclaration %}
     {% raise "Subcommand: `#{command.var}` type must inherit from Admiral::Command" unless command.type.resolve < ::Admiral::Command %}

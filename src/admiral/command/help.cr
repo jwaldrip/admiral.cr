@@ -17,6 +17,49 @@ abstract class Admiral::Command
     end
   end
 
+  # ## Auto-generated Help
+
+  # Adds a help to the command.
+  #
+  # ```crystal
+  # # hello.cr
+  # class Hello < Admiral::Command
+  #   define_help description: "A command that says hello"
+  #   define_argument planet, default: "World"
+  #
+  #   def run
+  #     puts "Hello #{arguments.planet}"
+  #   end
+  # end
+  # ```
+  #
+  # ```sh
+  # $ crystal build ./hello.cr
+  # $ ./hello --help
+  # Usage:
+  #   ./hello [flags...] <planet> [arg...]
+  #
+  # A command that says hello
+  #
+  # Flags:
+  #   --help (default: false)
+  #
+  # Arguments:
+  #   planet (default: World)
+  # ```
+  #
+  # ### Custom Help
+  # You can also generate your own custom help text.
+  #
+  # ```crystal
+  # # hello.cr
+  # class Hello < Admiral::Command
+  #   define_help custom: "This is the help for my command"
+  #
+  #   def run
+  #   end
+  # end
+  # ```
   macro define_help(description = nil, flag = help, short = nil)
     {% if flag %}
       define_flag __help__ : Bool, long: {{flag}}, short: {{short}}

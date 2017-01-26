@@ -60,11 +60,11 @@ Hello World
 ## Flags
 Flags can be added to the command. To define a flag use the `define_flag` macro.
 
-> NOTE: When defining flags, the underscore method name will translate to a hyphen
+> **Note:** When defining flags, the underscore method name will translate to a hyphen
   on the command line. This can be overridden with the `long: my_name` option when
   defining the flag.
 
-### Simple
+### Simple Flags
 Simple flags are denoted only by a name and will compile to returning a `String | Nil`.
 
 ```crystal
@@ -187,14 +187,14 @@ Option           | Description
               ---|---
 `description`    | The description of the flag to be used in auto generated help.
 `default`        | The default value of the flag.
-`long`           | The long version of the flag ex: `long: times` for `--times`
-`short`          | The short version of the flag ex: `short: t` for `-t`
+`long`           | The long version of the flag ex: `long: times` for `--times`.
+`short`          | The short version of the flag ex: `short: t` for `-t`.
 `required`       | Denotes if a flag is required. Required flags without a default value will raise an error when not specified at command invocation.
 
 ## Arguments
 Arguments can be added to the command. To define a argument use the `define_argument` macro.
 
-### Simple
+### Simple Arguments
 Simple arguments are denoted only by a name and will compile to returning a `String | Nil`.
 
 ```crystal
@@ -418,7 +418,7 @@ Here are some tools using Admiral.cr in the wild. Have your own you would like t
 - [x] Named Arguments
 - [x] Positional Arguments
 - [x] Sub Commands
-- [ ] Documentation
+- [x] Documentation
 - [ ] Fully Tested
 - [ ] Bash Completion
 - [ ] Zsh Completion

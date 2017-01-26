@@ -2,23 +2,25 @@ require "./argument_list"
 require "./command/*"
 
 abstract class Admiral::Command
-  @argv : ::Admiral::ArgumentList = ::Admiral::ArgumentList.new(::ARGV)
+  @argv : ArgumentList = ArgumentList.new(::ARGV)
   @input_io : IO = STDIN
   @output_io : IO = STDOUT
   @error_io : IO = STDERR
 
+  # Returns the commands program name.
   getter program_name : String = PROGRAM_NAME
 
-  abstract def run
-
+  # Initializes a command with a `String`, which will be split into arguments.
   def initialize(string : String = ::ARGV.clone, program_name = PROGRAM_NAME, input = STDIN, output = STDOUT, error = STDERR, parent : ::Admiral::Command? = nil)
     initialize(string.split(" "), program_name, input, output, error, parent)
   end
 
+  # Initializes a command with an `Array(String)` of arguments.
   def initialize(argv : Array(String) = ::ARGV.clone, program_name = PROGRAM_NAME, input = STDIN, output = STDOUT, error = STDERR, parent : ::Admiral::Command? = nil)
     initialize(::Admiral::ArgumentList.new(argv), program_name, input, output, error, parent)
   end
 
+  # Initializes a command with an `Admiral::ArgumentList`.
   def initialize(@argv : ::Admiral::ArgumentList, @program_name : String, input : IO? = nil, output : IO? = nil, error : IO? = nil, parent : ::Admiral::Command? = nil)
     @parent = parent
     @input_io = input ? input : parent ? parent.@input_io : STDIN
@@ -26,10 +28,10 @@ abstract class Admiral::Command
     @error_io = error ? error : parent ? parent.@error_io : STDERR
   end
 
-  def exit(*args)
-    (parent = @parent) ? parent.exit(*args) : Process.exit(*args)
-  end
+  # The run command.
+  abstract def run
 
+  # Returns the parent command if one is specified, or returns an error.
   def parent
     if (parent = @parent)
       parent
@@ -38,14 +40,17 @@ abstract class Admiral::Command
     end
   end
 
+  # Puts to the command's output `IO`.
   def puts(*args)
     @output_io.puts(*args)
   end
 
+  # Puts to the command's error `IO`.
   def error(*args)
     @error_io.puts(*args)
   end
 
+  # Gets from the command's input `IO`.
   def gets(*args)
     @input_io.gets(*args)
   end
