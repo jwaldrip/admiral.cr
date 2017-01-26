@@ -17,11 +17,11 @@ abstract class Admiral::Command
 
   # Initializes a command with an `Array(String)` of arguments.
   def initialize(argv : Array(String) = ::ARGV.clone, program_name = PROGRAM_NAME, input = STDIN, output = STDOUT, error = STDERR, parent : ::Admiral::Command? = nil)
-    initialize(::Admiral::ArgumentList.new(argv), program_name, input, output, error, parent)
+    initialize(ArgumentList.new(argv), program_name, input, output, error, parent)
   end
 
   # Initializes a command with an `Admiral::ArgumentList`.
-  def initialize(@argv : ::Admiral::ArgumentList, @program_name : String, input : IO? = nil, output : IO? = nil, error : IO? = nil, parent : ::Admiral::Command? = nil)
+  def initialize(@argv : ArgumentList, @program_name : String, input : IO? = nil, output : IO? = nil, error : IO? = nil, parent : ::Admiral::Command? = nil)
     @parent = parent
     @input_io = input ? input : parent ? parent.@input_io : STDIN
     @output_io = output ? output : parent ? parent.@output_io : STDOUT

@@ -3,5 +3,5 @@ version: 1.0.0-rc1
 authors:
   - Jason Waldrip <jason@waldrip.net>
 description: |
-  A command line builder for Crystal
+  A robust command line DSL for command line interfaces written in Crystal.
 license: MIT
