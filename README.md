@@ -313,8 +313,8 @@ class Hello < Admiral::Command
     end
   end
 
-  register_subcommand planet : Planetary
-  register_subcommand city : Municipality
+  register_subcommand planet, Planetary
+  register_subcommand city, Municipality
 
   def run
     puts help
