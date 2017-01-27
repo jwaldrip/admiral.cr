@@ -156,7 +156,7 @@ abstract class Admiral::Command
 
       def parse_{{ var }}(command : ::Admiral::Command) : {{ type }}{% unless required %} | Nil{% end %}
         pos_only = false
-        index = {{ Arguments::NAMES.size - 1 }}
+        index = 0
         while command.@argv[index]?.to_s.starts_with?("-") && !pos_only
           index += 1
           pos_only = command.@argv[index]? == "--"
@@ -164,7 +164,7 @@ abstract class Admiral::Command
         value = if command.@argv[index]?
                   command.@argv.delete_at index
                 else
-                  {% if required %}raise "Missing required attribute: <{{var}}>"{% else %}return nil{% end %}
+                  {% if required %}raise Admiral::Error.new "Missing required attribute: <{{var}}>"{% else %}return nil{% end %}
                 end
         {{ type }}.new(value)
       end

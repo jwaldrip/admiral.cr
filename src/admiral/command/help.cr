@@ -1,4 +1,89 @@
 abstract class Admiral::Command
+  private macro inherited
+    private def left_col_len
+      [
+        Flags::DESCRIPTIONS,
+        Arguments::DESCRIPTIONS,
+        SubCommands::DESCRIPTIONS
+      ].flat_map(&.keys).map(&.size).sort[-1]? || 0
+    end
+
+    private def help_usage
+      String.build do |str|
+        # Add Usage
+        str << "Usage:"
+        commands = [] of String
+        commands << begin
+          String.build do |cmd|
+            Arguments::NAMES.each do |attr|
+              cmd << " <#{attr}>"
+            end
+            cmd << " [arg...]"
+          end
+        end
+        commands << " {command}" unless SubCommands::NAMES.empty?
+        commands.each do |cmd|
+          str << "\n  #{@program_name}"
+          str << " [flags...]" unless Flags::NAMES.empty?
+          str << cmd unless cmd.empty?
+        end
+        str << "\n"
+      end
+    end
+
+    private def help_flags
+      String.build do |str|
+        unless Flags::NAMES.empty?
+          str << "Flags:\n"
+          Flags::DESCRIPTIONS.keys.sort.each do |key|
+            string = key
+            desc = Flags::DESCRIPTIONS[key]
+            str << "  #{string}"
+            if desc.size > 1
+              str << " " * (left_col_len - string.size)
+              str << "  # #{desc}"
+            end
+            str << "\n"
+          end
+        end
+      end
+    end
+
+    private def help_arguments
+      String.build do |str|
+        unless Arguments::NAMES.empty?
+          str << "Arguments:\n"
+          Arguments::DESCRIPTIONS.each do |string, desc|
+            str << "  #{string}"
+            if desc.size > 1
+              str << " " * (left_col_len - string.size)
+              str << "  # #{desc}"
+            end
+            str << "\n"
+          end
+        end
+      end
+    end
+
+    private def help_sub_commands
+      String.build do |str|
+        unless SubCommands::NAMES.empty?
+          str << "Subcommands:\n"
+          SubCommands::DESCRIPTIONS.keys.sort.each do |key|
+            string = key
+            desc = SubCommands::DESCRIPTIONS[key]
+            str << "  #{string}"
+            if desc.size > 1
+              str << " " * (left_col_len - string.size)
+              str << "  # #{desc}"
+            end
+            str << "\n"
+          end
+        end
+      end
+    end
+  end
+
   macro define_help(custom, flag = help, short = nil)
     {% if flag %}
       define_flag __help__ : Bool,
@@ -80,73 +165,7 @@ abstract class Admiral::Command
     {% end %}
 
     def help
-      left_col_len = [Flags::DESCRIPTIONS, Arguments::DESCRIPTIONS, SubCommands::DESCRIPTIONS].flat_map(&.keys).map(&.size).sort[-1]? || 0
-      String.build do |str|
-        # Add Usage
-        str << "Usage:"
-        commands = [] of String
-        commands << begin
-          String.build do |cmd|
-            Arguments::NAMES.each do |attr|
-              cmd << " <#{attr}>"
-            end
-            cmd << " [arg...]"
-          end
-        end
-        commands << " {command}" unless SubCommands::NAMES.empty?
-        commands.each do |cmd|
-          str << "\n  #{@program_name}"
-          str << " [flags...]" unless Flags::NAMES.empty?
-          str << cmd unless cmd.empty?
-        end
-        str << "\n" # add newline
-
-        {% if description %}
-          # Add Description
-          str << "\n{{description.id}}\n"
-        {% end %}
-
-        # Add Flags
-        unless Flags::NAMES.empty?
-          str << "\nFlags:\n"
-          Flags::DESCRIPTIONS.keys.sort.each do |key|
-            string = key
-            desc = Flags::DESCRIPTIONS[key]
-            str << "  #{string}"
-            if desc.size > 1
-              str << " " * (left_col_len - string.size)
-              str << "  # #{desc}"
-            end
-            str << "\n"
-          end
-        end
-
-        # Add Args
-        unless Arguments::NAMES.empty?
-          str << "\nArguments:\n"
-          Arguments::DESCRIPTIONS.each do |string, desc|
-            str << "  #{string}"
-            if desc.size > 1
-              str << " " * (left_col_len - string.size)
-              str << "  # #{desc}"
-            end
-            str << "\n"
-          end
-        end
-
-        # Add Commands
-        unless SubCommands::NAMES.empty?
-          str << "\nSubcommands:\n"
-          SubCommands::DESCRIPTIONS.each do |string, desc|
-            str << "  #{string}"
-            if desc.size > 1
-              str << " " * (left_col_len - string.size)
-              str << "  # #{desc}"
-            end
-            str << "\n"
-          end
-        end
-      end
+      [help_usage, ({{ description }} || "") + "\n", help_flags, help_arguments, help_sub_commands].reject(&.strip.empty?).join("\n")
     end
   end
 end

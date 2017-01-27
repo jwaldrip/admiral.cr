@@ -5,11 +5,12 @@ abstract class Admiral::Command
     end
 
     protected def run! : Nil
+      flags
+      arguments
       if @argv[0]? && SubCommands.locate(@argv[0])
         command = @argv.shift
         sub(command, @argv)
       else
-        puts "running: #{program_name}"
         run
       end
     rescue e : ::Admiral::Error

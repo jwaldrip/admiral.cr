@@ -82,7 +82,9 @@ abstract class Admiral::Command
 
     private struct SubCommands
       def locate
-        previous_def || @name == {{ command.id.stringify }} ? {{ type }} : nil
+        previous_def || begin
+          @name == {{ command.id.stringify }} ? {{ type }} : nil
+        end
       end
     end
   end
