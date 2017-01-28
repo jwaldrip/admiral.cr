@@ -25,10 +25,14 @@ abstract class Admiral::Command
 
   # Initializes a command with an `Admiral::ArgumentList`.
   def initialize(argv, program_name, input = nil, output = nil, error = nil, parent = nil)
-    short_flags = argv.select(&.=~ /^-\w/).each_with_object(ArgumentList.new) do |shorts, flags|
-      shorts[1..-1].chars.each do |flag|
-        flags << StringValue.new("-" + flag)
+    short_flags = argv.select(&.=~ /^-\w/).each_with_object(ArgumentList.new) do |shorts, args|
+      flags_with_value = shorts.split("=", 2)
+      flags = flags_with_value[0][1..-1]
+      value = flags_with_value[1]?
+      flags.chars.each do |flag|
+        args << StringValue.new("-" + flag)
       end
+      args[-1] = StringValue.new(args[-1] + "=" + value) if value
     end
     @argv = argv.reject(&.=~ /^-\w/) + short_flags
     @program_name = parent ? "#{parent.program_name} #{program_name}" : program_name

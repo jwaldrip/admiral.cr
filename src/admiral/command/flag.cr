@@ -238,17 +238,13 @@ abstract class Admiral::Command
         values = ::Admiral::ArgumentList.new
         index = 0
         while arg = command.@argv[index]?
-          flag = arg.split("=")[0]
+          flag = arg.split("=", 2)[0]
           if arg == "--" || SubCommands::NAMES.any? { |name| arg == name }
             break
           elsif flag == {{ long }}{% if short %} || flag.starts_with?({{short}}){% end %}
             del = command.@argv.delete_at index
-            if value = arg.split("=")[1]?
+            if value = arg.split("=", 2)[1]?
               values << ::Admiral::StringValue.new(value)
-            {% if short %}
-              elsif flag.starts_with?({{short}}) && flag.size > 2
-                values << ::Admiral::StringValue.new(flag[2..-1])
-            {% end %}
             {% if is_bool %}
               else
                 values << ::Admiral::StringValue.new("true")
