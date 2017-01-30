@@ -78,6 +78,11 @@ abstract class Admiral::Command
     end
   end
 
+  def panic(*args)
+    error *args
+    exit 1
+  end
+
   # Prints to the command's error `IO`.
   def print_error(*args)
     case (io = @error_io)
