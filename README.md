@@ -3,7 +3,7 @@
 [![GitHub release](https://img.shields.io/github/tag/jwaldrip/admiral.cr.svg)](https://github.com/jwaldrip/admiral.cr/tags)
 [![Crystal Docs](https://img.shields.io/badge/Crystal-Docs-8A2BE2.svg)](https://jwaldrip.github.com/admiral.cr)
 
-A robust command line DSL for command line interfaces written in [Crystal](https://crystal-lang.org).
+A robust DSL for writing command line interfaces written in [Crystal](https://crystal-lang.org).
 
 ---
 
