@@ -1,6 +1,5 @@
 # Admiral.cr
 [![Build Status](https://travis-ci.org/jwaldrip/admiral.cr.svg?branch=master)](https://travis-ci.org/jwaldrip/admiral.cr)
-[![GitHub release](https://img.shields.io/github/tag/jwaldrip/admiral.cr.svg)](https://github.com/jwaldrip/admiral.cr/tags)
 [![Crystal Docs](https://img.shields.io/badge/Crystal-Docs-8A2BE2.svg)](https://jwaldrip.github.com/admiral.cr)
 
 A robust DSL for writing command line interfaces written in [Crystal](https://crystal-lang.org).
