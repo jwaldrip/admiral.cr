@@ -23,10 +23,8 @@ abstract class Admiral::Command
         command.@argv[0..pos_index].each do |arg|
           if SubCommands.locate(arg)
             break
-          elsif arg.starts_with? "--"
+          elsif arg.starts_with? "-"
             undefined_flags << arg.split("=")[0]
-          elsif arg =~ /^-[a-zA-Z0-9]/
-            undefined_flags << arg[0..1]
           end
         end
 
@@ -258,6 +256,7 @@ abstract class Admiral::Command
             end
           {% if is_bool && default == true %}
             elsif flag == {{falsey}}
+              del = command.@argv.delete_at index
               if value = arg.split("=")[1]?
                 values << ::Admiral::StringValue.new((!Bool.new(::Admiral::StringValue.new(value))).to_s)
               else
