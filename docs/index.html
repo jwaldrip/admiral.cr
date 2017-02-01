@@ -68,10 +68,9 @@
 <h1>Admiral.cr</h1>
 
 <p><a href="https://travis-ci.org/jwaldrip/admiral.cr" target="_blank"><img src="https://travis-ci.org/jwaldrip/admiral.cr.svg?branch=master" alt="Build Status"/></a>
-<a href="https://github.com/jwaldrip/promise.cr/releases" target="_blank"><img src="https://img.shields.io/github/tag/jwaldrip/admiral.cr.svg" alt="GitHub release"/></a>
 <a href="https://jwaldrip.github.com/admiral.cr" target="_blank"><img src="https://img.shields.io/badge/Crystal-Docs-8A2BE2.svg" alt="Crystal Docs"/></a></p>
 
-<p>A robust command line DSL for command line interfaces written in <a href="https://crystal-lang.org" target="_blank">Crystal</a>.</p>
+<p>A robust DSL for writing command line interfaces written in <a href="https://crystal-lang.org" target="_blank">Crystal</a>.</p>
 
 <hr/><blockquote>[Installation](#installation) |
   [Usage](#usage) |
@@ -344,8 +343,8 @@ the auto-generated help.</p>
     <span class="k">end</span>
   <span class="k">end</span>
 
-  register_subcommand planet : <span class="t">Planetary</span>
-  register_subcommand city : <span class="t">Municipality</span>
+  register_subcommand planet, <span class="t">Planetary</span>
+  register_subcommand city, <span class="t">Municipality</span>
 
   <span class="k">def</span> <span class="m">run</span>
     puts help
