@@ -13,6 +13,25 @@ abstract class Admiral::Command
   # Returns the commands program name.
   getter program_name : String = PROGRAM_NAME
 
+  def self.expand_short_flags(argv : Admiral::ArgumentList)
+    Admiral::ArgumentList.new.tap do |args|
+      argv.each do |arg|
+        if arg =~ /^-\w+/
+          flags_with_value = arg.split("=", 2)
+          flags = flags_with_value[0][1..-1].chars.map(&.to_s)
+          if value = flags_with_value[1]?
+            flags[-1] = flags[-1] + "=" + value
+          end
+          flags.each do |flag|
+            args << StringValue.new("-" + flag)
+          end
+        else
+          args << arg
+        end
+      end
+    end
+  end
+
   # Initializes a command with a `String`, which will be split into arguments.
   def initialize(string : String, program_name = PROGRAM_NAME, input = STDIN, output = STDOUT, error = STDERR, parent : ::Admiral::Command? = nil)
     initialize(string.split(" "), program_name, input, output, error, parent)
@@ -25,16 +44,7 @@ abstract class Admiral::Command
 
   # Initializes a command with an `Admiral::ArgumentList`.
   def initialize(argv, program_name, input = nil, output = nil, error = nil, parent = nil)
-    short_flags = argv.select(&.=~ /^-\w/).each_with_object(ArgumentList.new) do |shorts, args|
-      flags_with_value = shorts.split("=", 2)
-      flags = flags_with_value[0][1..-1]
-      value = flags_with_value[1]?
-      flags.chars.each do |flag|
-        args << StringValue.new("-" + flag)
-      end
-      args[-1] = StringValue.new(args[-1] + "=" + value) if value
-    end
-    @argv = argv.reject(&.=~ /^-\w/) + short_flags
+    @argv = self.class.expand_short_flags argv
     @program_name = parent ? "#{parent.program_name} #{program_name}" : program_name
     @parent = parent
     @input_io = !input.nil? ? input : !parent.nil? ? parent.@input_io : STDIN
