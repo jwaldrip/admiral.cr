@@ -1,5 +1,5 @@
+require "spec"
 require "tempfile"
-require "spec/dsl"
 require "../fixtures/*"
 
 describe "flags" do
