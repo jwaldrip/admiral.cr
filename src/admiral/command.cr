@@ -2,7 +2,6 @@ require "./argument_list"
 require "./command/*"
 
 abstract class Admiral::Command
-  @argv : ArgumentList
   @program_name : String
   @argv : ArgumentList = Admiral.new_arglist(::ARGV)
   @input_io : IO::FileDescriptor | Bool = STDIN
