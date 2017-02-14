@@ -46,6 +46,8 @@ abstract class Admiral::Command
 
     def flags
       @flags ||= Flags.new(self)
+    rescue e : Admiral::Error
+      panic e.message.colorize(:red)
     end
   end
 

@@ -13,9 +13,8 @@ abstract class Admiral::Command
         arguments
         run
       end
-    rescue e : ::Admiral::Error
-      error e.message.colorize(:red)
-      exit 1
+    rescue e : Admiral::Error
+      panic e.message.colorize(:red)
     end
   end
 end
