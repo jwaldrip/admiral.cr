@@ -14,10 +14,9 @@ abstract class Admiral::Command
       LONG_NAMES = [] of String
 
       def initialize(command : ::Admiral::Command)
-        raise_on_undefined_flags!(command)
       end
 
-      def raise_on_undefined_flags!(command)
+      def validate!(command)
         pos_index = (command.@argv.index(&.== "--") || 0) - 1
         undefined_flags = [] of String
         command.@argv[0..pos_index].each do |arg|
@@ -33,6 +32,7 @@ abstract class Admiral::Command
         elsif undefined_flags.size > 1
           raise Admiral::Error.new "The following flags are not defined: #{undefined_flags.join(", ")}"
         end
+        self
       end
 
       def inspect(io)
@@ -46,8 +46,10 @@ abstract class Admiral::Command
 
     def flags
       @flags ||= Flags.new(self)
-    rescue e : Admiral::Error
-      panic e.message.colorize(:red)
+    end
+
+    private def parse_flags!
+      flags.validate!(self)
     end
   end
 
@@ -231,7 +233,6 @@ abstract class Admiral::Command
       def initialize(command : ::Admiral::Command)
         {% for f in Flags::NAMES %}
         @{{ f.id }} = parse_{{ f.id }}(command){% end %}
-        raise_on_undefined_flags!(command)
       end
 
       private def parse_{{var}}(command : ::Admiral::Command) : {{ type }} {% unless required %}| Nil{% end %}

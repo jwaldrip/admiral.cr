@@ -39,8 +39,6 @@ abstract class Admiral::Command
 
     def arguments
       @arguments ||= Arguments.new(self)
-    rescue e : Admiral::Error
-      panic e.message.colorize(:red)
     end
   end
 

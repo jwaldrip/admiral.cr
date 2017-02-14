@@ -5,7 +5,7 @@ abstract class Admiral::Command
     end
 
     protected def run! : Nil
-      flags
+      parse_flags!
       if @argv[0]? && SubCommands.locate(@argv[0])
         command = @argv.shift
         sub(command, @argv)
