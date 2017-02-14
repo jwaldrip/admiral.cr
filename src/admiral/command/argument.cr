@@ -170,13 +170,6 @@ abstract class Admiral::Command
       end
     end
 
-    # Test the usage of the flag
-    begin
-      new([] of String).arguments.{{ var }}
-    rescue
-      ::Admiral::Error
-    end
-
     # Add the attr to the description constant
     Arguments::DESCRIPTIONS[{{ var.stringify }}{% if required %} + " (required)"{% end %}] = {{ description }}
   end
