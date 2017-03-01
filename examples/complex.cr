@@ -36,4 +36,4 @@ class Complex < Admiral::Command
 end
 
 Complex.run "--required foo 1 bar 2"
-Complex.run "--required ok sub 1"
+Complex.run "--required foo 1 bar 2 sub 1"
