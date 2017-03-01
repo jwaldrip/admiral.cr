@@ -1,4 +1,4 @@
-# Admiral.cr
+# Admiral.cr 
 [![Build Status](https://travis-ci.org/jwaldrip/admiral.cr.svg?branch=master)](https://travis-ci.org/jwaldrip/admiral.cr)
 [![Crystal Docs](https://img.shields.io/badge/Crystal-Docs-8A2BE2.svg)](https://jwaldrip.github.com/admiral.cr)
 
