@@ -8,7 +8,6 @@ abstract class Admiral::Command
       parse_flags!
       command = arguments.get(:_COMMAND_)
       if command
-        puts arguments.@__rest__
         sub(command.to_s, arguments.@__rest__)
       else
         run
