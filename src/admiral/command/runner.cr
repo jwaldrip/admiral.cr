@@ -6,13 +6,14 @@ abstract class Admiral::Command
 
     protected def run! : Nil
       parse_flags!
-      if @argv[0]? && SubCommands.locate(@argv[0])
-        command = @argv.shift
-        sub(command, @argv)
+      command = arguments.get(:_COMMAND_)
+      if command
+        sub(command.to_s, arguments.@__rest__)
       else
-        arguments
         run
       end
+    rescue MissingArgument
+      run
     rescue e : Admiral::Error
       panic e.message.colorize(:red)
     end

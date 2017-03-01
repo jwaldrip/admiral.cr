@@ -1,4 +1,6 @@
 abstract class Admiral::Command
+  class MissingArgument < Exception; end
+
   # Returns the commands `Arguments` object.
   #
   # You can access names arguments by name.
@@ -24,6 +26,14 @@ abstract class Admiral::Command
 
       private def parse_rest(command : ::Admiral::Command)
         command.@argv.select(&.!= "--").map(&.value)
+      end
+
+      def get(name : Symbol) : Nil
+        raise MissingArgument.new
+      end
+
+      def defined?(name : Symbol)
+        false
       end
 
       def inspect(io)
@@ -154,6 +164,16 @@ abstract class Admiral::Command
         @__rest__ = parse_rest(command)
       end
 
+      def defined?(name : Symbol)
+        previous_def || name == :{{ var.stringify }}
+      end
+
+      def get(name : Symbol)
+        previous_def
+      rescue MissingArgument
+        name == :{{ var.stringify }} ? @{{ var }} : raise MissingArgument.new
+      end
+
       def parse_{{ var }}(command : ::Admiral::Command) : {{ type }}{% unless required %} | Nil{% end %}
         pos_only = false
         index = 0
@@ -171,6 +191,6 @@ abstract class Admiral::Command
     end
 
     # Add the attr to the description constant
-    Arguments::DESCRIPTIONS[{{ var.stringify }}{% if required %} + " (required)"{% end %}] = {{ description }}
+    Arguments::DESCRIPTIONS[{{ var.stringify.gsub(/_([A-Z_]+)_/, "\\1") }}{% if required %} + " (required)"{% end %}] = {{ description }}
   end
 end
