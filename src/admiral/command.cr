@@ -68,6 +68,7 @@ abstract class Admiral::Command
     case (io = @output_io)
     when IO
       io.print(*args)
+      io.flush
     end
   end
 
@@ -97,6 +98,7 @@ abstract class Admiral::Command
     case (io = @error_io)
     when IO
       io.print(*args)
+      io.flush
     end
   end
 
