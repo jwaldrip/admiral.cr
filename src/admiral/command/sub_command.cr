@@ -30,7 +30,7 @@ abstract class Admiral::Command
 
       def invoke(*args, **params)
         if sub_command_class = locate
-          sub_command_class.new(*args, **params, program_name: @name).run!
+          sub_command_class.new(*args, **params, program_name: @name).__run__
         else
           raise ::Admiral::Error.new("Invalid subcommand: #{@name}.")
         end
