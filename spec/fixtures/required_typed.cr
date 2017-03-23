@@ -1,6 +1,7 @@
 require "../../src/admiral"
 
 class RequiredTypedFlaggedCommand < Admiral::Command
+  define_help description: "HELP TEXT"
   define_flag aa : UInt16, required: true
 
   def run

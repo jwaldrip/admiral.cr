@@ -97,7 +97,7 @@ abstract class Admiral::Command
                   description: "Displays help for the current command.",
                   long: {{flag}},
                   short: {{short}}
-      protected def run! : Nil
+      protected def __run__ : Nil
         if flags.__help__
           puts help
           exit

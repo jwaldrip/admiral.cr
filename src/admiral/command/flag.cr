@@ -48,8 +48,10 @@ abstract class Admiral::Command
       @flags ||= Flags.new(self)
     end
 
-    private def parse_flags!
-      flags.validate!(self)
+    private def parse_flags!(validate = false)
+      flags.tap do |f|
+        # f.validate!(self) if validate
+      end
     end
   end
 
@@ -228,14 +230,20 @@ abstract class Admiral::Command
 
     # Extend the flags class to include the flag
     struct Flags
-      getter {{ var }} : {{ type }}{% unless required %}| Nil{% end %}{% if default != nil %} = {{ default }}{% end %}
+      @{{var}} : {{ type }} | Nil{% if default != nil %} = {{ default }}{% end %}
 
       def initialize(command : ::Admiral::Command)
         {% for f in Flags::NAMES %}
         @{{ f.id }} = parse_{{ f.id }}(command){% end %}
       end
 
-      private def parse_{{var}}(command : ::Admiral::Command) : {{ type }} {% unless required %}| Nil{% end %}
+      def {{var}} : {{ type }}{% unless required %}| Nil{% end %}
+        val = @{{var}}
+        {% if required %}raise ::Admiral::Error.new("Flag: {{ long.id }} is required") if val.nil?{% end %}
+        val
+      end
+
+      private def parse_{{var}}(command : ::Admiral::Command) : {{ type }} | Nil
         values = ::Admiral::ArgumentList.new
         index = 0
         while arg = command.@argv[index]?
@@ -274,7 +282,7 @@ abstract class Admiral::Command
         {% if is_enum %} # Enum Type Flag
           values.empty? ? {{ default }} : {{ type }}.new(values)
         {% else %} # Boolean and value type flags
-          values[-1]? != nil ? {{ type }}.new(values[-1]) : {% if required == true && default == nil %}raise ::Admiral::Error.new("Flag: {{ long.id }} is required"){% else %}{{ default }}{% end %}
+          values[-1]? != nil ? {{ type }}.new(values[-1]) : {% unless default.nil? %}{{ default }}{% else %}nil{% end %}
         {% end %}
       end
     end

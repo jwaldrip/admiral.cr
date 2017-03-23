@@ -2,6 +2,12 @@ require "spec"
 require "tempfile"
 require "../fixtures/*"
 
+class Admiral::Command
+  def panic
+    raise "PANIC"
+  end
+end
+
 describe "flags" do
   context "basic flags" do
     context "with a positional value" do
@@ -92,10 +98,22 @@ describe "flags" do
       end
 
       context "when required" do
-        Tempfile.open("test") do |io|
-          RequiredTypedFlaggedCommand.run([] of String, error: io)
-          io.rewind
-          io.gets_to_end.should eq "Flag: --aa is required".colorize(:red).to_s + "\n"
+        it "should raise an error" do
+          Tempfile.open("test") do |io|
+            RequiredTypedFlaggedCommand.run([] of String, error: io)
+            io.rewind
+            io.gets_to_end.should eq "Flag: --aa is required".colorize(:red).to_s + "\n"
+          end
+        end
+
+        context "when help is passed" do
+          it "should not raise an error" do
+            Tempfile.open("test") do |io|
+              RequiredTypedFlaggedCommand.run(["--help"], output: io)
+              io.rewind
+              io.gets_to_end.includes?("HELP TEXT").should be_true
+            end
+          end
         end
       end
     end
