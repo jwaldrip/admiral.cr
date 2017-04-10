@@ -32,6 +32,11 @@ abstract class Admiral::Command
         raise MissingArgument.new
       end
 
+      def get?(name : Symbol) : Nil
+        return unless defined?(name)
+        get name
+      end
+
       def defined?(name : Symbol)
         false
       end
