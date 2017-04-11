@@ -294,7 +294,7 @@ Option           | Description
 
 ## Sub Commands
 Sub commands can be added to the command. To define a sub command use the
-`register_subcommand` macro. You also have the option to add a description for
+`register_sub_command` macro. You also have the option to add a description for
 the auto-generated help.
 
 ```crystal
@@ -312,8 +312,8 @@ class Hello < Admiral::Command
     end
   end
 
-  register_subcommand planet, Planetary
-  register_subcommand city, Municipality
+  register_sub_command planet, Planetary
+  register_sub_command city, Municipality
 
   def run
     puts help
