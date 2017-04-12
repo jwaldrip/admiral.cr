@@ -4,13 +4,8 @@ abstract class Admiral::Command
       new(*args, **params).__run__
     end
 
-    rescue_from Admiral::Error do |e|
+    rescue_from ::Admiral::Error do |e|
       panic e.message.colorize(:red)
-    end
-
-    rescue_from MissingArgument do |e|
-      STDERR.puts "missing arg"
-      run
     end
 
     protected def __run__ : Nil

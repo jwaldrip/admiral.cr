@@ -50,7 +50,7 @@ abstract class Admiral::Command
 
     private def parse_flags!(validate = false)
       flags.tap do |f|
-        # f.validate!(self) if validate
+        f.validate!(self) if validate
       end
     end
   end
