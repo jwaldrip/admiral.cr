@@ -32,12 +32,11 @@ abstract class Admiral::Command
         raise MissingArgument.new
       end
 
-      def get?(name : Symbol) : Nil
-        return unless defined?(name)
-        get name
+      def get?(name : Symbol)
+        exists?(name) ? get(name) : false
       end
 
-      def defined?(name : Symbol)
+      def exists?(name : Symbol)
         false
       end
 
@@ -169,7 +168,7 @@ abstract class Admiral::Command
         @__rest__ = parse_rest(command)
       end
 
-      def defined?(name : Symbol)
+      def exists?(name : Symbol)
         previous_def || name == :{{ var.stringify }}
       end
 
