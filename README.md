@@ -182,13 +182,13 @@ end
 HelloWorld.run
 ```
 
-Option           | Description
-              ---|---
-`description`    | The description of the flag to be used in auto generated help.
-`default`        | The default value of the flag.
-`long`           | The long version of the flag ex: `long: times` for `--times`.
-`short`          | The short version of the flag ex: `short: t` for `-t`.
-`required`       | Denotes if a flag is required. Required flags without a default value will raise an error when not specified at command invocation.
+| Option           | Description
+|             ---: | :---
+| `description`    | The description of the flag to be used in auto generated help.
+| `default`        | The default value of the flag.
+| `long`           | The long version of the flag ex: `long: times` for `--times`.
+| `short`          | The short version of the flag ex: `short: t` for `-t`.
+| `required`       | Denotes if a flag is required. Required flags without a default value will raise an error when not specified at command invocation.
 
 ## Arguments
 Arguments can be added to the command. To define a argument use the `define_argument` macro.
