@@ -79,12 +79,12 @@ abstract class Admiral::Command
   # $ ./hello city
   # Hello Denver
   # ```
-  macro register_sub_command(command, type, description = nil)
+  macro register_sub_command(command, type, description = nil, short = nil)
     {% raise "Subcommand: `#{type}` type must inherit from Admiral::Command" unless type.resolve < ::Admiral::Command %}
     {% SubCommands::NAMES << command.id.stringify unless SubCommands::NAMES.includes? command.id.stringify %}
 
     # Add the subcommand to the description constant
-    SubCommands::DESCRIPTIONS[{{ command.id.stringify }}] = {{ description }} || {{ type }}::HELP["description"]
+    SubCommands::DESCRIPTIONS[{{ command.id.stringify }}{% if short %} + ", {{ short.id }}" {% end %}] = {{ description }} || {{ type }}::HELP["description"]
 
     {% unless Arguments::NAMES.includes? "_COMMAND_" %}
     define_argument "_COMMAND_", "The sub command to run."
@@ -93,7 +93,9 @@ abstract class Admiral::Command
     private struct SubCommands
       def locate
         previous_def || begin
-          @name == {{ command.id.stringify }} ? {{ type }} : nil
+          if @name == {{ command.id.stringify }} {% if short %}|| @name == {{ short.id.stringify }} {% end %}
+            {{ type }}
+          end
         end
       end
     end
