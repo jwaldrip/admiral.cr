@@ -283,11 +283,11 @@ end
 HelloWorld.run
 ```
 
-Option           | Description
-              ---|---
-`description`    | The description of the argument to be used in auto generated help.
-`default`        | The default value of the argument.
-`required`       | Denotes if a argument is required. Required arguments without a default value will raise an error when not specified at command invocation.
+| Option           | Description |
+|             ---: | :--- |
+| `description`    | The description of the argument to be used in auto generated help. |
+| `default`        | The default value of the argument. |
+| `required`       | Denotes if a argument is required. Required arguments without a default value will raise an error when not specified at command invocation. |
 
 > **Note:**  
   Required arguments cannot be defined after optional arguments.
