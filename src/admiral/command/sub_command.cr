@@ -80,7 +80,6 @@ abstract class Admiral::Command
   # Hello Denver
   # ```
   macro register_sub_command(command, type, description = nil, short = nil)
-    {% raise "Subcommand: `#{type}` type must inherit from Admiral::Command" unless type.resolve < ::Admiral::Command %}
     {% SubCommands::NAMES << command.id.stringify unless SubCommands::NAMES.includes? command.id.stringify %}
 
     # Add the subcommand to the description constant
