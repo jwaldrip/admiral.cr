@@ -74,7 +74,8 @@ abstract class Admiral::Command
 
   # Puts to the command's output `IO`.
   def puts(*args)
-    case (io = @output_io)
+    io = @output_io
+    case io
     when IO
       io.puts(*args)
     end
@@ -82,7 +83,8 @@ abstract class Admiral::Command
 
   # Puts to the command's error `IO`.
   def error(*args)
-    case (io = @error_io)
+    io = @error_io
+    case io
     when IO
       io.puts(*args)
     end
