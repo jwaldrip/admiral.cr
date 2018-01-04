@@ -4,9 +4,9 @@ require "./command/*"
 abstract class Admiral::Command
   @program_name : String
   @argv : ArgumentList = Admiral.new_arglist(::ARGV)
-  @input_io : IO::FileDescriptor | Bool = STDIN
-  @output_io : IO::FileDescriptor | Bool = STDOUT
-  @error_io : IO::FileDescriptor | Bool = STDERR
+  @input_io : Process::Stdio = Process::Redirect::Pipe
+  @output_io : Process::Stdio = Process::Redirect::Pipe
+  @error_io : Process::Stdio = Process::Redirect::Pipe
   @parent : ::Admiral::Command?
 
   # Returns the commands program name.
