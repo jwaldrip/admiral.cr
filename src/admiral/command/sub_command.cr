@@ -86,7 +86,7 @@ abstract class Admiral::Command
     SubCommands::DESCRIPTIONS[{{ command.id.stringify }}{% if short %} + ", {{ short.id }}" {% end %}] = {{ description }} || {{ type }}::HELP["description"]
 
     {% unless Arguments::NAMES.includes? "_COMMAND_" %}
-    define_argument "_COMMAND_", "The sub command to run."
+      define_argument "_COMMAND_", "The sub command to run."
     {% end %}
 
     private struct SubCommands

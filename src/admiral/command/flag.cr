@@ -164,11 +164,11 @@ abstract class Admiral::Command
   # # hello_world.cr
   # class HelloWorld < Admiral::Command
   #   define_flag number_of_greetings : UInt32,
-  #               description: "The number of times to greet the world", # The description of the flag to be used in auto generated help.
-  #               default: 1_u32,                                        # The default value of the flag.
-  #               long: times,                                           # The long version of the flag ex: `long: times` for `--times`.
-  #               short: t,                                              # The short version of the flag ex: `short: t` for `-t`.
-  #               required: true                                         # Denotes if a flag is required. Required flags without a default value will raise an error when not specified at command invocation.
+  #     description: "The number of times to greet the world", # The description of the flag to be used in auto generated help.
+  #     default: 1_u32,                                        # The default value of the flag.
+  #     long: times,                                           # The long version of the flag ex: `long: times` for `--times`.
+  #     short: t,                                              # The short version of the flag ex: `short: t` for `-t`.
+  #     required: true                                         # Denotes if a flag is required. Required flags without a default value will raise an error when not specified at command invocation.
   #
   #   def run
   #     flags.number_of_greetings.times do
@@ -183,14 +183,14 @@ abstract class Admiral::Command
     {% var = flag.is_a?(TypeDeclaration) ? flag.var : flag.id %}
     {% type = flag.is_a?(TypeDeclaration) ? flag.type : String %}
 
-    {% raise "A flag with the name `#{var}` has already been defined!" if Flags::NAMES.includes? var.stringify }
+    {% raise "A flag with the name `#{var}` has already been defined!" if Flags::NAMES.includes? var.stringify %}
     {% Flags::NAMES << var.stringify %}
 
     # Setup Helper Vars
-    {% is_bool  = type.is_a?(Path) && type.resolve == Bool %}
-    {% is_enum  = type.is_a?(Generic) && type.name.resolve < Enumerable %}
+    {% is_bool = type.is_a?(Path) && type.resolve == Bool %}
+    {% is_enum = type.is_a?(Generic) && type.name.resolve < Enumerable %}
     {% is_union = type.is_a?(Union) %}
-    {% is_nil   = type.is_a?(Path) && type == Nil %}
+    {% is_nil = type.is_a?(Path) && type == Nil %}
 
     # Cast defaults
     {% required = true if default != nil || is_bool %}
@@ -211,8 +211,8 @@ abstract class Admiral::Command
     {% falsey = "--no-" + long.stringify %}
     {% long = "--" + long.stringify %}
     {% short = "-" + short.id.stringify.gsub(/^-/, "") if short != nil %}
-    {% raise "The long flag: `#{long.id}` has already been defined!" if Flags::LONG_NAMES.includes? long.stringify }
-    {% raise "The short flag: `#{short.id}` has already been defined!" if Flags::SHORT_NAMES.includes? short.stringify }
+    {% raise "The long flag: `#{long.id}` has already been defined!" if Flags::LONG_NAMES.includes? long.stringify %}
+    {% raise "The short flag: `#{short.id}` has already been defined!" if Flags::SHORT_NAMES.includes? short.stringify %}
     {% Flags::LONG_NAMES << long.stringify %}
     {% Flags::SHORT_NAMES << short.stringify if short != nil %}
 
@@ -220,7 +220,7 @@ abstract class Admiral::Command
     {% if is_union %}
       {% union_types = flag.type.types.reject { |t| t.is_a?(Path) && t.resolve == Nil } %}
       {% if union_types.size == 1 %}
-        {% type = union_types.first }
+        {% type = union_types.first %}
       {% else %}
         {% raise "The flag #{@type}(#{long}) specified a union type, this is not supported." %}
       {% end %}
@@ -288,6 +288,6 @@ abstract class Admiral::Command
     end
 
     # Add the flag to the description constant
-    Flags::DESCRIPTIONS[{{ long + (short ? ", #{short.id}" : "") }}{% if default != nil %} + " (default: #{{{default}}})"{% elsif required == true%}+ " (required)"{% end %}] = {{ description }}
+    Flags::DESCRIPTIONS[{{ long + (short ? ", #{short.id}" : "") }}{% if default != nil %} + " (default: #{{{default}}})"{% elsif required == true %}+ " (required)"{% end %}] = {{ description }}
   end
 end

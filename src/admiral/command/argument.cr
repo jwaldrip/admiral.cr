@@ -138,7 +138,6 @@ abstract class Admiral::Command
   #     default: 1_u32,                                        # The default value of the argument.
   #     required: true                                         # Denotes if a argument is required. Required arguments without a default value will raise an error when not specified at command invocation.
   #
-  #
   #   def run
   #     arguments.number_of_greetings.times do
   #       puts "Hello World"

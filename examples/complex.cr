@@ -3,8 +3,8 @@ require "../src/admiral"
 class Complex < Admiral::Command
   class Sub < Admiral::Command
     def run
-      case (parent_flags = parent.flags)
-      when Complex::Flags
+      parent_flags = parent.flags
+      if parent_flags.is_a? Complex::Flags
         puts parent_flags.required_default
       end
     end
