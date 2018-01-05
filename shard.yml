@@ -1,5 +1,5 @@
 name: admiral
-version: 1.3.3
+version: 1.4.0
 crystal: 0.24.1
 authors:
   - Jason Waldrip <jason@waldrip.net>

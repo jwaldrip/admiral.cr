@@ -28,7 +28,7 @@ class Complex < Admiral::Command
   define_argument simple
   define_argument typed : Int32
 
-  register_sub_command sub, Sub, description: "a sub command"
+  register_sub_command sub : Sub, description: "a sub command"
 
   def run
     puts flags.required_default

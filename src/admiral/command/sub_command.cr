@@ -79,11 +79,11 @@ abstract class Admiral::Command
   # $ ./hello city
   # Hello Denver
   # ```
-  macro register_sub_command(command, type, description = nil, short = nil)
-    {% SubCommands::NAMES << command.id.stringify unless SubCommands::NAMES.includes? command.id.stringify %}
+  macro register_sub_command(command, *, description = nil, short = nil)
+    {% SubCommands::NAMES << command.var.stringify unless SubCommands::NAMES.includes? command.var.stringify %}
 
     # Add the subcommand to the description constant
-    SubCommands::DESCRIPTIONS[{{ command.id.stringify }}{% if short %} + ", {{ short.id }}" {% end %}] = {{ description }} || {{ type }}::HELP["description"]
+    SubCommands::DESCRIPTIONS[{{ command.var.stringify }}{% if short %} + ", {{ short.id }}" {% end %}] = {{ description }} || {{ command.type }}::HELP["description"]
 
     {% unless Arguments::NAMES.includes? "_COMMAND_" %}
       define_argument "_COMMAND_", "The sub command to run."
@@ -92,8 +92,8 @@ abstract class Admiral::Command
     private struct SubCommands
       def locate
         previous_def || begin
-          if @name == {{ command.id.stringify }} {% if short %}|| @name == {{ short.id.stringify }} {% end %}
-            {{ type }}
+          if @name == {{ command.var.stringify }} {% if short %}|| @name == {{ short.var.stringify }} {% end %}
+            {{command.type}}
           end
         end
       end
