@@ -179,7 +179,7 @@ abstract class Admiral::Command
   #
   # HelloWorld.run
   # ```
-  macro define_flag(flag, description = "", default = nil, short = nil, long = nil, required = false)
+  macro define_flag(flag, description = "", default = nil, short = nil, long = nil, required = false, default_in_desc = true)
     {% var = flag.is_a?(TypeDeclaration) ? flag.var : flag.id %}
     {% type = flag.is_a?(TypeDeclaration) ? flag.type : String %}
 
@@ -288,6 +288,6 @@ abstract class Admiral::Command
     end
 
     # Add the flag to the description constant
-    Flags::DESCRIPTIONS[{{ long + (short ? ", #{short.id}" : "") }}{% if default != nil %} + " (default: #{{{default}}})"{% elsif required == true %}+ " (required)"{% end %}] = {{ description }}
+    Flags::DESCRIPTIONS[{{ long + (short ? ", #{short.id}" : "") }}{% if (default != nil) %} + ({{default_in_desc}} ? " (default: #{{{default}}})" : "") {% elsif required == true %}+ " (required)"{% end %}] = {{ description }}
   end
 end

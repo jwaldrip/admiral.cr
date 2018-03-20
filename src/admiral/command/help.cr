@@ -96,7 +96,8 @@ abstract class Admiral::Command
       define_flag __help__ : Bool,
                   description: "Displays help for the current command.",
                   long: {{flag}},
-                  short: {{short}}
+                  short: {{short}},
+                  default_in_desc: false
       protected def __run__ : Nil
         if flags.__help__
           puts help
