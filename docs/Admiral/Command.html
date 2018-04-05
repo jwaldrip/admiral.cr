@@ -19,47 +19,47 @@
   </ul>
 
   <ul>
-  
+
   <li class="parent open current" data-id="github.com/jwaldrip/admiral.cr/Admiral" data-name="admiral">
       <a href="../Admiral.html">Admiral</a>
-      
+
         <ul>
-  
+
   <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/ArgumentList" data-name="admiral::argumentlist">
       <a href="../Admiral/ArgumentList.html">ArgumentList</a>
-      
+
     </li>
-  
+
   <li class=" current" data-id="github.com/jwaldrip/admiral.cr/Admiral/Command" data-name="admiral::command">
       <a href="../Admiral/Command.html">Command</a>
-      
+
     </li>
-  
+
   <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Error" data-name="admiral::error">
       <a href="../Admiral/Error.html">Error</a>
-      
+
     </li>
-  
+
   <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/StringValue" data-name="admiral::stringvalue">
       <a href="../Admiral/StringValue.html">StringValue</a>
-      
+
     </li>
-  
+
 </ul>
 
-      
+
     </li>
-  
+
   <li class=" " data-id="github.com/jwaldrip/admiral.cr/Array" data-name="array(t)">
       <a href="../Array.html">Array</a>
-      
+
     </li>
-  
+
   <li class=" " data-id="github.com/jwaldrip/admiral.cr/Set" data-name="set(t)">
       <a href="../Set.html">Set</a>
-      
+
     </li>
-  
+
 </ul>
 
 </div>
@@ -91,42 +91,42 @@
 
 
   <h2>Defined in:</h2>
-  
-    
+
+
       <a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command/argument.cr#L1" target="_blank">admiral/command/argument.cr</a>
-    
+
     <br/>
-  
-    
+
+
       <a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command/flag.cr#L3" target="_blank">admiral/command/flag.cr</a>
-    
+
     <br/>
-  
-    
+
+
       <a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command/help.cr#L1" target="_blank">admiral/command/help.cr</a>
-    
+
     <br/>
-  
-    
+
+
       <a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command/runner.cr#L1" target="_blank">admiral/command/runner.cr</a>
-    
+
     <br/>
-  
-    
+
+
       <a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command/sub_command.cr#L1" target="_blank">admiral/command/sub_command.cr</a>
-    
+
     <br/>
-  
-    
+
+
       <a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command/version.cr#L1" target="_blank">admiral/command/version.cr</a>
-    
+
     <br/>
-  
-    
+
+
       <a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command.cr#L4" target="_blank">admiral/command.cr</a>
-    
+
     <br/>
-  
+
 
 
 
@@ -134,496 +134,496 @@
 
   <h2>Class Method Summary</h2>
   <ul class="list-summary">
-    
+
       <li class="entry-summary">
         <a href="#expand_short_flags%28argv%3AAdmiral%3A%3AArgumentList%29-class-method" class="signature"><strong>.expand_short_flags</strong>(argv : Admiral::ArgumentList)</a>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#new%28string%3AString%2Cprogram_name%3DPROGRAM_NAME%2Cinput%3DSTDIN%2Coutput%3DSTDOUT%2Cerror%3DSTDERR%2Cparent%3AAdmiral%3A%3ACommand%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(string : String, program_name = <span class="t">PROGRAM_NAME</span>, input = <span class="t">STDIN</span>, output = <span class="t">STDOUT</span>, error = <span class="t">STDERR</span>, parent : Admiral::Command? = <span class="n">nil</span>)</a>
-        
+
           <div class="summary"><p>Initializes a command with a <code>String</code>, which will be split into arguments.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#new%28argv%3AArray%28String%29%3D%3A%3AARGV.clone%2Cprogram_name%3DPROGRAM_NAME%2Cinput%3DSTDIN%2Coutput%3DSTDOUT%2Cerror%3DSTDERR%2Cparent%3AAdmiral%3A%3ACommand%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(argv : Array(String) = <span class="t">::</span><span class="t">ARGV</span>.clone, program_name = <span class="t">PROGRAM_NAME</span>, input = <span class="t">STDIN</span>, output = <span class="t">STDOUT</span>, error = <span class="t">STDERR</span>, parent : Admiral::Command? = <span class="n">nil</span>)</a>
-        
+
           <div class="summary"><p>Initializes a command with an <code><a href="../Array.html">Array</a>(String)</code> of arguments.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#new%28argv%2Cprogram_name%2Cinput%3Dnil%2Coutput%3Dnil%2Cerror%3Dnil%2Cparent%3Dnil%29-class-method" class="signature"><strong>.new</strong>(argv, program_name, input = <span class="n">nil</span>, output = <span class="n">nil</span>, error = <span class="n">nil</span>, parent = <span class="n">nil</span>)</a>
-        
+
           <div class="summary"><p>Initializes a command with an <code><a href="../Admiral/ArgumentList.html">Admiral::ArgumentList</a></code>.</p></div>
-        
+
       </li>
-    
+
   </ul>
 
 
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
-    
+
       <li class="entry-summary">
         <a href="#arguments-instance-method" class="signature"><strong>#arguments</strong></a>
-        
+
           <div class="summary"><p>Returns the commands <code>Arguments</code> object.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#error%28%2Aargs%29-instance-method" class="signature"><strong>#error</strong>(*args)</a>
-        
+
           <div class="summary"><p>Puts to the command's error <code>IO</code>.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#flags-instance-method" class="signature"><strong>#flags</strong></a>
-        
+
           <div class="summary"><p>Returns the commands <code>Flags</code> object.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#gets%28%2Aargs%29-instance-method" class="signature"><strong>#gets</strong>(*args)</a>
-        
+
           <div class="summary"><p>Gets from the command's input <code>IO</code>.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#panic%28%2Aargs%29-instance-method" class="signature"><strong>#panic</strong>(*args)</a>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#parent-instance-method" class="signature"><strong>#parent</strong></a>
-        
+
           <div class="summary"><p>Returns the parent command if one is specified, or returns an error.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#print%28%2Aargs%29-instance-method" class="signature"><strong>#print</strong>(*args)</a>
-        
+
           <div class="summary"><p>Prints to the command's output <code>IO</code>.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#print_error%28%2Aargs%29-instance-method" class="signature"><strong>#print_error</strong>(*args)</a>
-        
+
           <div class="summary"><p>Prints to the command's error <code>IO</code>.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#program_name%3AString-instance-method" class="signature"><strong>#program_name</strong> : String</a>
-        
+
           <div class="summary"><p>Returns the commands program name.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#puts%28%2Aargs%29-instance-method" class="signature"><strong>#puts</strong>(*args)</a>
-        
+
           <div class="summary"><p>Puts to the command's output <code>IO</code>.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#run-instance-method" class="signature"><strong>#run</strong></a>
-        
+
           <div class="summary"><p>The run command.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#sub%28command%2C%2Aargs%2C%2A%2Aparams%29-instance-method" class="signature"><strong>#sub</strong>(command, *args, **params)</a>
-        
+
           <div class="summary"><p>Invokes a sub command by name, passing <code>self</code> as the parent.</p></div>
-        
+
       </li>
-    
+
   </ul>
 
 
 
   <h2>Macro Summary</h2>
   <ul class="list-summary">
-    
+
       <li class="entry-summary">
         <a href="#define_argument%28attr%2Cdescription%3D%22%22%2Cdefault%3Dnil%2Crequired%3Dfalse%29-macro" class="signature"><strong>define_argument</strong>(attr, description = "", default = nil, required = false)</a>
-        
+
           <div class="summary"><p>Defines a named command line argument.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#define_flag%28flag%2Cdescription%3D%22%22%2Cdefault%3Dnil%2Cshort%3Dnil%2Clong%3Dnil%2Crequired%3Dfalse%29-macro" class="signature"><strong>define_flag</strong>(flag, description = "", default = nil, short = nil, long = nil, required = false)</a>
-        
+
           <div class="summary"><p>Defines a command line flag.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#define_help%28description%3Dnil%2Cflag%3Dhelp%2Cshort%3Dnil%29-macro" class="signature"><strong>define_help</strong>(description = nil, flag = help, short = nil)</a>
-        
+
           <div class="summary"><p>Adds a help to the command.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#define_version%28string%2Cflag%3Dversion%2Cshort%3Dnil%29-macro" class="signature"><strong>define_version</strong>(string, flag = version, short = nil)</a>
-        
+
           <div class="summary"><p>Defines a version for the command.</p></div>
-        
+
       </li>
-    
+
       <li class="entry-summary">
         <a href="#register_sub_command%28command%2Ctype%2Cdescription%3D%22%22%29-macro" class="signature"><strong>register_sub_command</strong>(command, type, description = "")</a>
-        
+
           <div class="summary"><p>Registers a subcommand.</p></div>
-        
+
       </li>
-    
+
   </ul>
 
 
 
 <div class="methods-inherited">
-  
-    
 
 
-    
 
 
-  
-    
 
 
-    
 
 
-  
+
+
+
+
+
+
+
 </div>
 
 
   <h2>Class Method Detail</h2>
-  
+
     <div class="entry-detail" id="expand_short_flags&#40;argv:Admiral::ArgumentList&#41;-class-method">
       <div class="signature">
-        
+
         def self.<strong>expand_short_flags</strong>(argv : <a href="../Admiral/ArgumentList.html">Admiral::ArgumentList</a>)
 
         <a class="method-permalink" href="#expand_short_flags%28argv%3AAdmiral%3A%3AArgumentList%29-class-method">#</a>
       </div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command.cr#L16" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="new&#40;string:String,program_name&#61;PROGRAM_NAME,input&#61;STDIN,output&#61;STDOUT,error&#61;STDERR,parent:Admiral::Command?&#61;nil&#41;-class-method">
       <div class="signature">
-        
+
         def self.<strong>new</strong>(string : String, program_name = <span class="t">PROGRAM_NAME</span>, input = <span class="t">STDIN</span>, output = <span class="t">STDOUT</span>, error = <span class="t">STDERR</span>, parent : <a href="../Admiral/Command.html">Admiral::Command</a>? = <span class="n">nil</span>)
 
         <a class="method-permalink" href="#new%28string%3AString%2Cprogram_name%3DPROGRAM_NAME%2Cinput%3DSTDIN%2Coutput%3DSTDOUT%2Cerror%3DSTDERR%2Cparent%3AAdmiral%3A%3ACommand%3F%3Dnil%29-class-method">#</a>
       </div>
-      
+
         <div class="doc"><p>Initializes a command with a <code>String</code>, which will be split into arguments.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command.cr#L36" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="new&#40;argv:Array&#40;String&#41;&#61;::ARGV.clone,program_name&#61;PROGRAM_NAME,input&#61;STDIN,output&#61;STDOUT,error&#61;STDERR,parent:Admiral::Command?&#61;nil&#41;-class-method">
       <div class="signature">
-        
+
         def self.<strong>new</strong>(argv : <a href="../Array.html">Array</a>(String) = <span class="t">::</span><span class="t">ARGV</span>.clone, program_name = <span class="t">PROGRAM_NAME</span>, input = <span class="t">STDIN</span>, output = <span class="t">STDOUT</span>, error = <span class="t">STDERR</span>, parent : <a href="../Admiral/Command.html">Admiral::Command</a>? = <span class="n">nil</span>)
 
         <a class="method-permalink" href="#new%28argv%3AArray%28String%29%3D%3A%3AARGV.clone%2Cprogram_name%3DPROGRAM_NAME%2Cinput%3DSTDIN%2Coutput%3DSTDOUT%2Cerror%3DSTDERR%2Cparent%3AAdmiral%3A%3ACommand%3F%3Dnil%29-class-method">#</a>
       </div>
-      
+
         <div class="doc"><p>Initializes a command with an <code><a href="../Array.html">Array</a>(String)</code> of arguments.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command.cr#L41" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="new&#40;argv,program_name,input&#61;nil,output&#61;nil,error&#61;nil,parent&#61;nil&#41;-class-method">
       <div class="signature">
-        
+
         def self.<strong>new</strong>(argv, program_name, input = <span class="n">nil</span>, output = <span class="n">nil</span>, error = <span class="n">nil</span>, parent = <span class="n">nil</span>)
 
         <a class="method-permalink" href="#new%28argv%2Cprogram_name%2Cinput%3Dnil%2Coutput%3Dnil%2Cerror%3Dnil%2Cparent%3Dnil%29-class-method">#</a>
       </div>
-      
+
         <div class="doc"><p>Initializes a command with an <code><a href="../Admiral/ArgumentList.html">Admiral::ArgumentList</a></code>.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command.cr#L46" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
 
 
 
   <h2>Instance Method Detail</h2>
-  
+
     <div class="entry-detail" id="arguments-instance-method">
       <div class="signature">
-        abstract 
+        abstract
         def <strong>arguments</strong>
 
         <a class="method-permalink" href="#arguments-instance-method">#</a>
       </div>
-      
+
         <div class="doc"><p>Returns the commands <code>Arguments</code> object.</p>
 
 <p>You can access names arguments by name.
 You can also access the remaning arguments using <code>.arguments[index]</code>.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command/argument.cr#L6" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="error&#40;*args&#41;-instance-method">
       <div class="signature">
-        
+
         def <strong>error</strong>(*args)
 
         <a class="method-permalink" href="#error%28%2Aargs%29-instance-method">#</a>
       </div>
-      
+
         <div class="doc"><p>Puts to the command's error <code>IO</code>.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command.cr#L84" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="flags-instance-method">
       <div class="signature">
-        abstract 
+        abstract
         def <strong>flags</strong>
 
         <a class="method-permalink" href="#flags-instance-method">#</a>
       </div>
-      
+
         <div class="doc"><p>Returns the commands <code>Flags</code> object.</p>
 
 <p>You can access names flags by name.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command/flag.cr#L7" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="gets&#40;*args&#41;-instance-method">
       <div class="signature">
-        
+
         def <strong>gets</strong>(*args)
 
         <a class="method-permalink" href="#gets%28%2Aargs%29-instance-method">#</a>
       </div>
-      
+
         <div class="doc"><p>Gets from the command's input <code>IO</code>.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command.cr#L105" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="panic&#40;*args&#41;-instance-method">
       <div class="signature">
-        
+
         def <strong>panic</strong>(*args)
 
         <a class="method-permalink" href="#panic%28%2Aargs%29-instance-method">#</a>
       </div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command.cr#L91" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="parent-instance-method">
       <div class="signature">
-        
+
         def <strong>parent</strong>
 
         <a class="method-permalink" href="#parent-instance-method">#</a>
       </div>
-      
+
         <div class="doc"><p>Returns the parent command if one is specified, or returns an error.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command.cr#L59" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="print&#40;*args&#41;-instance-method">
       <div class="signature">
-        
+
         def <strong>print</strong>(*args)
 
         <a class="method-permalink" href="#print%28%2Aargs%29-instance-method">#</a>
       </div>
-      
+
         <div class="doc"><p>Prints to the command's output <code>IO</code>.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command.cr#L68" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="print_error&#40;*args&#41;-instance-method">
       <div class="signature">
-        
+
         def <strong>print_error</strong>(*args)
 
         <a class="method-permalink" href="#print_error%28%2Aargs%29-instance-method">#</a>
       </div>
-      
+
         <div class="doc"><p>Prints to the command's error <code>IO</code>.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command.cr#L97" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="program_name:String-instance-method">
       <div class="signature">
-        
+
         def <strong>program_name</strong> : String
 
         <a class="method-permalink" href="#program_name%3AString-instance-method">#</a>
       </div>
-      
+
         <div class="doc"><p>Returns the commands program name.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command.cr#L14" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="puts&#40;*args&#41;-instance-method">
       <div class="signature">
-        
+
         def <strong>puts</strong>(*args)
 
         <a class="method-permalink" href="#puts%28%2Aargs%29-instance-method">#</a>
       </div>
-      
+
         <div class="doc"><p>Puts to the command's output <code>IO</code>.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command.cr#L76" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="run-instance-method">
       <div class="signature">
-        abstract 
+        abstract
         def <strong>run</strong>
 
         <a class="method-permalink" href="#run-instance-method">#</a>
       </div>
-      
+
         <div class="doc"><p>The run command.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command.cr#L56" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="sub&#40;command,*args,**params&#41;-instance-method">
       <div class="signature">
-        abstract 
+        abstract
         def <strong>sub</strong>(command, *args, **params)
 
         <a class="method-permalink" href="#sub%28command%2C%2Aargs%2C%2A%2Aparams%29-instance-method">#</a>
       </div>
-      
+
         <div class="doc"><p>Invokes a sub command by name, passing <code>self</code> as the parent.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command/sub_command.cr#L3" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
 
 
 
   <h2>Macro Detail</h2>
-  
+
     <div class="entry-detail" id="define_argument&#40;attr,description&#61;&quot;&quot;,default&#61;nil,required&#61;false&#41;-macro">
       <div class="signature">
-        
+
         macro <strong>define_argument</strong>(attr, description = "", default = nil, required = false)
 
         <a class="method-permalink" href="#define_argument%28attr%2Cdescription%3D%22%22%2Cdefault%3Dnil%2Crequired%3Dfalse%29-macro">#</a>
       </div>
-      
+
         <div class="doc"><p>Defines a named command line argument.</p>
 
 <h3>Simple Arguments</h3>
@@ -703,23 +703,23 @@ To make any <code>Class</code> or <code>Struct</code> assignable as a argument, 
 
 <p><strong>Note:</strong>
 Required arguments cannot be defined after optional arguments.</p></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command/argument.cr#L140" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="define_flag&#40;flag,description&#61;&quot;&quot;,default&#61;nil,short&#61;nil,long&#61;nil,required&#61;false&#41;-macro">
       <div class="signature">
-        
+
         macro <strong>define_flag</strong>(flag, description = "", default = nil, short = nil, long = nil, required = false)
 
         <a class="method-permalink" href="#define_flag%28flag%2Cdescription%3D%22%22%2Cdefault%3Dnil%2Cshort%3Dnil%2Clong%3Dnil%2Crequired%3Dfalse%29-macro">#</a>
       </div>
-      
+
         <div class="doc"><p>Defines a command line flag.</p>
 
 <p><strong>Note:</strong> When defining flags, the underscore method name will translate to a hyphen
@@ -825,23 +825,23 @@ Hello Harry, citizen of Earth!</code></pre>
 <span class="k">end</span>
 
 <span class="t">HelloWorld</span>.run</code></pre></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command/flag.cr#L176" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="define_help&#40;description&#61;nil,flag&#61;help,short&#61;nil&#41;-macro">
       <div class="signature">
-        
+
         macro <strong>define_help</strong>(description = nil, flag = help, short = nil)
 
         <a class="method-permalink" href="#define_help%28description%3Dnil%2Cflag%3Dhelp%2Cshort%3Dnil%29-macro">#</a>
       </div>
-      
+
         <div class="doc"><p>Adds a help to the command.</p>
 
 <pre><code class='language-crystal'><span class="c"># hello.cr</span>
@@ -862,7 +862,7 @@ Usage:
 A command that says hello
 
 Flags:
-  --help (default: false)
+  --help
 
 Arguments:
   planet (default: World)</code></pre>
@@ -878,23 +878,23 @@ Arguments:
   <span class="k">def</span> <span class="m">run</span>
   <span class="k">end</span>
 <span class="k">end</span></code></pre></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command/help.cr#L151" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="define_version&#40;string,flag&#61;version,short&#61;nil&#41;-macro">
       <div class="signature">
-        
+
         macro <strong>define_version</strong>(string, flag = version, short = nil)
 
         <a class="method-permalink" href="#define_version%28string%2Cflag%3Dversion%2Cshort%3Dnil%29-macro">#</a>
       </div>
-      
+
         <div class="doc"><p>Defines a version for the command.</p>
 
 <pre><code class='language-crystal'><span class="c"># hello.cr</span>
@@ -908,23 +908,23 @@ Arguments:
 <pre><code class='language-sh'>$ crystal build ./hello.cr
 $ hello --version
 1.0.0</code></pre></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command/version.cr#L19" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
     <div class="entry-detail" id="register_sub_command&#40;command,type,description&#61;&quot;&quot;&#41;-macro">
       <div class="signature">
-        
+
         macro <strong>register_sub_command</strong>(command, type, description = "")
 
         <a class="method-permalink" href="#register_sub_command%28command%2Ctype%2Cdescription%3D%22%22%29-macro">#</a>
       </div>
-      
+
         <div class="doc"><p>Registers a subcommand.</p>
 
 <pre><code class='language-crystal'><span class="c"># hello.cr</span>
@@ -956,15 +956,15 @@ $ ./hello planet
 Hello World
 $ ./hello city
 Hello Denver</code></pre></div>
-      
+
       <br/>
       <div>
-        
+
           [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/command/sub_command.cr#L76" target="_blank">View source</a>]
-        
+
       </div>
     </div>
-  
+
 
 
 </div>

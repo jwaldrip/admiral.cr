@@ -288,6 +288,6 @@ abstract class Admiral::Command
     end
 
     # Add the flag to the description constant
-    Flags::DESCRIPTIONS[{{ long + (short ? ", #{short.id}" : "") }}{% if default != nil %} + " (default: #{{{default}}})"{% elsif required == true %}+ " (required)"{% end %}] = {{ description }}
+    Flags::DESCRIPTIONS[{{ long + (short ? ", #{short.id}" : "") }}{% if default != nil && !is_bool %} + " (default: #{{{default}}})"{% elsif default == nil && required == true %}+ " (required)"{% end %}] = {{ description }}
   end
 end

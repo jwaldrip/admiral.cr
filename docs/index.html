@@ -19,47 +19,47 @@
   </ul>
 
   <ul>
-  
+
   <li class="parent " data-id="github.com/jwaldrip/admiral.cr/Admiral" data-name="admiral">
       <a href="Admiral.html">Admiral</a>
-      
+
         <ul>
-  
+
   <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/ArgumentList" data-name="admiral::argumentlist">
       <a href="Admiral/ArgumentList.html">ArgumentList</a>
-      
+
     </li>
-  
+
   <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command" data-name="admiral::command">
       <a href="Admiral/Command.html">Command</a>
-      
+
     </li>
-  
+
   <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Error" data-name="admiral::error">
       <a href="Admiral/Error.html">Error</a>
-      
+
     </li>
-  
+
   <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/StringValue" data-name="admiral::stringvalue">
       <a href="Admiral/StringValue.html">StringValue</a>
-      
+
     </li>
-  
+
 </ul>
 
-      
+
     </li>
-  
+
   <li class=" " data-id="github.com/jwaldrip/admiral.cr/Array" data-name="array(t)">
       <a href="Array.html">Array</a>
-      
+
     </li>
-  
+
   <li class=" " data-id="github.com/jwaldrip/admiral.cr/Set" data-name="set(t)">
       <a href="Set.html">Set</a>
-      
+
     </li>
-  
+
 </ul>
 
 </div>
@@ -176,8 +176,8 @@ Hello World</code></pre>
 
 <ul><li><code>String</code></li><li><code>Bool</code></li><li><code>Float32</code></li><li><code>Float64</code></li><li><code>Int8</code></li><li><code>Int16</code></li><li><code>Int32</code></li><li><code>Int64</code></li><li><code>UInt8</code></li><li><code>UInt16</code></li><li><code>UInt32</code></li><li><code>UInt64</code></li></ul>
 
-<blockquote>**Pro Tip**  
-  To make any `Class` or `Struct` assignable as a flag, define a `.new(value : ::Admiral::StringValue)` or  
+<blockquote>**Pro Tip**
+  To make any `Class` or `Struct` assignable as a flag, define a `.new(value : ::Admiral::StringValue)` or
   `#initialize(value : ::Admiral::StringValue)`.</blockquote>
 
 <h3>Enumerable Flags</h3>
@@ -290,8 +290,8 @@ Hello World</code></pre>
 
 <ul><li><code>String</code></li><li><code>Bool</code></li><li><code>Float32</code></li><li><code>Float64</code></li><li><code>Int8</code></li><li><code>Int16</code></li><li><code>Int32</code></li><li><code>Int64</code></li><li><code>UInt8</code></li><li><code>UInt16</code></li><li><code>UInt32</code></li><li><code>UInt64</code></li></ul>
 
-<blockquote>**Pro Tip**  
-  To make any `Class` or `Struct` assignable as a argument, define a `.new(value : ::Admiral::StringValue)` or  
+<blockquote>**Pro Tip**
+  To make any `Class` or `Struct` assignable as a argument, define a `.new(value : ::Admiral::StringValue)` or
   `#initialize(value : ::Admiral::StringValue)`.</blockquote>
 
 <h3>Additional Argument Options</h3>
@@ -320,7 +320,7 @@ Hello World</code></pre>
 <code>default</code>        | The default value of the argument.
 <code>required</code>       | Denotes if a argument is required. Required arguments without a default value will raise an error when not specified at command invocation.</p>
 
-<blockquote>**Note:**  
+<blockquote>**Note:**
   Required arguments cannot be defined after optional arguments.</blockquote>
 
 <h2>Sub Commands</h2>
@@ -385,7 +385,7 @@ Usage:
 A command that says hello
 
 Flags:
-  --help (default: false)
+  --help
 
 Arguments:
   planet (default: World)</code></pre>

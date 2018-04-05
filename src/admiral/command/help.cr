@@ -97,12 +97,15 @@ abstract class Admiral::Command
                   description: "Displays help for the current command.",
                   long: {{flag}},
                   short: {{short}}
-      protected def __run__ : Nil
-        if flags.__help__
-          puts help
-          exit
-        else
-          previous_def
+
+      macro finished
+        protected def parse_and_run : Nil
+          if flags.__help__
+            puts help
+            exit
+          else
+            previous_def
+          end
         end
       end
     {% end %}
@@ -137,7 +140,7 @@ abstract class Admiral::Command
   # A command that says hello
   #
   # Flags:
-  #   --help (default: false)
+  #   --help
   #
   # Arguments:
   #   planet (default: World)

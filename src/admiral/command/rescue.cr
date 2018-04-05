@@ -1,6 +1,6 @@
 abstract class Admiral::Command
   macro rescue_from(klass, method)
-    private def run_with_rescue(&block)
+    private def with_rescue(&block)
       previous_def do
         begin
           yield
@@ -21,7 +21,7 @@ abstract class Admiral::Command
   end
 
   macro inherited
-    private def run_with_rescue(&block)
+    private def with_rescue(&block)
       yield
     end
   end

@@ -360,7 +360,7 @@ Usage:
 A command that says hello
 
 Flags:
-  --help (default: false)
+  --help
 
 Arguments:
   planet (default: World)

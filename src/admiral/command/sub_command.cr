@@ -30,7 +30,7 @@ abstract class Admiral::Command
 
       def invoke(*args, **params)
         if sub_command_class = locate
-          sub_command_class.new(*args, **params, program_name: @name).__run__
+          sub_command_class.new(*args, **params, program_name: @name).run
         else
           raise ::Admiral::Error.new("Invalid subcommand: #{@name}.")
         end
@@ -79,11 +79,18 @@ abstract class Admiral::Command
   # $ ./hello city
   # Hello Denver
   # ```
-  macro register_sub_command(command, *, description = nil, short = nil)
-    {% SubCommands::NAMES << command.var.stringify unless SubCommands::NAMES.includes? command.var.stringify %}
+  macro register_sub_command(command, type = nil, *, description = nil, short = nil)
+    {% if command.is_a? TypeDeclaration %}
+      {% name = command.var.stringify %}
+      {% type = command.type %}
+    {% else %}
+      {% name = command.id.stringify %}
+    {% end %}
+
+    {% SubCommands::NAMES << name unless SubCommands::NAMES.includes? name %}
 
     # Add the subcommand to the description constant
-    SubCommands::DESCRIPTIONS[{{ command.var.stringify }}{% if short %} + ", {{ short.id }}" {% end %}] = {{ description }} || {{ command.type }}::HELP["description"]
+    SubCommands::DESCRIPTIONS[{{ name }}{% if short %} + ", {{ short.id }}" {% end %}] = {{ description }} || {{ type }}::HELP["description"]
 
     {% unless Arguments::NAMES.includes? "_COMMAND_" %}
       define_argument "_COMMAND_", "The sub command to run."
@@ -92,8 +99,8 @@ abstract class Admiral::Command
     private struct SubCommands
       def locate
         previous_def || begin
-          if @name == {{ command.var.stringify }} {% if short %}|| @name == {{ short.var.stringify }} {% end %}
-            {{command.type}}
+          if @name == {{ name }} {% if short %}|| @name == {{ short.id.stringify }} {% end %}
+            {{ type }}
           end
         end
       end
