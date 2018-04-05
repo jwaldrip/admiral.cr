@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta id="repository-name" content="github.com/jwaldrip/admiral.cr">
@@ -19,47 +19,57 @@
   </ul>
 
   <ul>
-
+  
   <li class="parent " data-id="github.com/jwaldrip/admiral.cr/Admiral" data-name="admiral">
       <a href="Admiral.html">Admiral</a>
-
+      
         <ul>
-
+  
   <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/ArgumentList" data-name="admiral::argumentlist">
       <a href="Admiral/ArgumentList.html">ArgumentList</a>
-
+      
     </li>
-
-  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command" data-name="admiral::command">
+  
+  <li class="parent " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command" data-name="admiral::command">
       <a href="Admiral/Command.html">Command</a>
-
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command/MissingArgument" data-name="admiral::command::missingargument">
+      <a href="Admiral/Command/MissingArgument.html">MissingArgument</a>
+      
     </li>
-
-  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Error" data-name="admiral::error">
-      <a href="Admiral/Error.html">Error</a>
-
-    </li>
-
-  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/StringValue" data-name="admiral::stringvalue">
-      <a href="Admiral/StringValue.html">StringValue</a>
-
-    </li>
-
+  
 </ul>
 
-
+      
     </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Error" data-name="admiral::error">
+      <a href="Admiral/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/StringValue" data-name="admiral::stringvalue">
+      <a href="Admiral/StringValue.html">StringValue</a>
+      
+    </li>
+  
+</ul>
 
+      
+    </li>
+  
   <li class=" " data-id="github.com/jwaldrip/admiral.cr/Array" data-name="array(t)">
       <a href="Array.html">Array</a>
-
+      
     </li>
-
+  
   <li class=" " data-id="github.com/jwaldrip/admiral.cr/Set" data-name="set(t)">
       <a href="Set.html">Set</a>
-
+      
     </li>
-
+  
 </ul>
 
 </div>
@@ -72,10 +82,10 @@
 
 <p>A robust DSL for writing command line interfaces written in <a href="https://crystal-lang.org" target="_blank">Crystal</a>.</p>
 
-<hr/><blockquote>[Installation](#installation) |
-  [Usage](#usage) |
-  [Examples](https://github.com/jwaldrip/admiral.cr/tree/master/examples) | [Contributing](https://github.com/jwaldrip/admiral.cr/blob/master/CONTRIBUTING.md) |
-  [In the Wild](#in-the-wild)</blockquote>
+<hr/><blockquote><a href="#installation" target="_blank">Installation</a> |
+  <a href="#usage" target="_blank">Usage</a> |
+  <a href="https://github.com/jwaldrip/admiral.cr/tree/master/examples" target="_blank">Examples</a> | <a href="https://github.com/jwaldrip/admiral.cr/blob/master/CONTRIBUTING.md" target="_blank">Contributing</a> |
+  <a href="#in-the-wild" target="_blank">In the Wild</a></blockquote>
 
 <h2>Installation</h2>
 
@@ -87,12 +97,12 @@
 
 <h2>Usage</h2>
 
-<blockquote>[Creating a new CLI](#creating-a-new-cli) |
-  [Flags](#flags) |
-  [Arguments](#arguments) |
-  [Sub Commands](#sub-commands) |
-  [Command Help](#command-help) |
-  [Command Version](#command-version)</blockquote>
+<blockquote><a href="#creating-a-new-cli" target="_blank">Creating a new CLI</a> |
+  <a href="#flags" target="_blank">Flags</a> |
+  <a href="#arguments" target="_blank">Arguments</a> |
+  <a href="#sub-commands" target="_blank">Sub Commands</a> |
+  <a href="#command-help" target="_blank">Command Help</a> |
+  <a href="#command-version" target="_blank">Command Version</a></blockquote>
 
 <h2>Creating a new CLI</h2>
 
@@ -120,8 +130,8 @@ Hello World</code></pre>
 
 <p>Flags can be added to the command. To define a flag use the <code>define_flag</code> macro.</p>
 
-<blockquote>**Note:** When defining flags, the underscore method name will translate to a hyphen
-  on the command line. This can be overridden with the `long: my_name` option when
+<blockquote><strong>Note:</strong> When defining flags, the underscore method name will translate to a hyphen
+  on the command line. This can be overridden with the <code>long: my_name</code> option when
   defining the flag.</blockquote>
 
 <h3>Simple Flags</h3>
@@ -176,9 +186,9 @@ Hello World</code></pre>
 
 <ul><li><code>String</code></li><li><code>Bool</code></li><li><code>Float32</code></li><li><code>Float64</code></li><li><code>Int8</code></li><li><code>Int16</code></li><li><code>Int32</code></li><li><code>Int64</code></li><li><code>UInt8</code></li><li><code>UInt16</code></li><li><code>UInt32</code></li><li><code>UInt64</code></li></ul>
 
-<blockquote>**Pro Tip**
-  To make any `Class` or `Struct` assignable as a flag, define a `.new(value : ::Admiral::StringValue)` or
-  `#initialize(value : ::Admiral::StringValue)`.</blockquote>
+<blockquote><strong>Pro Tip</strong>  
+  To make any <code>Class</code> or <code>Struct</code> assignable as a flag, define a <code>.new(value : ::Admiral::StringValue)</code> or  
+  <code>#initialize(value : ::Admiral::StringValue)</code>.</blockquote>
 
 <h3>Enumerable Flags</h3>
 
@@ -192,7 +202,7 @@ values when calling the flag.</p>
 
   <span class="k">def</span> <span class="m">run</span>
     flags.citizen.each <span class="k">do</span> <span class="o">|</span>citizen<span class="o">|</span>
-      puts <span class="s">&quot;Hello </span><span class="i">#{</span></span>citizen<span class="s"><span class="i">}</span>, citizen of Earth&#33;&quot;</span>
+      puts <span class="s">&quot;Hello </span><span class="i">#{</span></span>citizen<span class="s"><span class="i">}</span>, citizen of Earth!&quot;</span>
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
@@ -224,15 +234,13 @@ Hello Harry, citizen of Earth!</code></pre>
 
 <span class="t">HelloWorld</span>.run</code></pre>
 
-<p>Option           | Description</p>
-
-<pre><code>          </code></pre>
-
-<p><code>description</code>    | The description of the flag to be used in auto generated help.
-<code>default</code>        | The default value of the flag.
-<code>long</code>           | The long version of the flag ex: <code>long: times</code> for <code>--times</code>.
-<code>short</code>          | The short version of the flag ex: <code>short: t</code> for <code>-t</code>.
-<code>required</code>       | Denotes if a flag is required. Required flags without a default value will raise an error when not specified at command invocation.</p>
+<p>| Option           | Description
+|             ---: | :---
+| <code>description</code>    | The description of the flag to be used in auto generated help.
+| <code>default</code>        | The default value of the flag.
+| <code>long</code>           | The long version of the flag ex: <code>long: times</code> for <code>--times</code>.
+| <code>short</code>          | The short version of the flag ex: <code>short: t</code> for <code>-t</code>.
+| <code>required</code>       | Denotes if a flag is required. Required flags without a default value will raise an error when not specified at command invocation.</p>
 
 <h2>Arguments</h2>
 
@@ -290,9 +298,9 @@ Hello World</code></pre>
 
 <ul><li><code>String</code></li><li><code>Bool</code></li><li><code>Float32</code></li><li><code>Float64</code></li><li><code>Int8</code></li><li><code>Int16</code></li><li><code>Int32</code></li><li><code>Int64</code></li><li><code>UInt8</code></li><li><code>UInt16</code></li><li><code>UInt32</code></li><li><code>UInt64</code></li></ul>
 
-<blockquote>**Pro Tip**
-  To make any `Class` or `Struct` assignable as a argument, define a `.new(value : ::Admiral::StringValue)` or
-  `#initialize(value : ::Admiral::StringValue)`.</blockquote>
+<blockquote><strong>Pro Tip</strong>  
+  To make any <code>Class</code> or <code>Struct</code> assignable as a argument, define a <code>.new(value : ::Admiral::StringValue)</code> or  
+  <code>#initialize(value : ::Admiral::StringValue)</code>.</blockquote>
 
 <h3>Additional Argument Options</h3>
 
@@ -312,21 +320,19 @@ Hello World</code></pre>
 
 <span class="t">HelloWorld</span>.run</code></pre>
 
-<p>Option           | Description</p>
+<p>| Option           | Description |
+|             ---: | :--- |
+| <code>description</code>    | The description of the argument to be used in auto generated help. |
+| <code>default</code>        | The default value of the argument. |
+| <code>required</code>       | Denotes if a argument is required. Required arguments without a default value will raise an error when not specified at command invocation. |</p>
 
-<pre><code>          </code></pre>
-
-<p><code>description</code>    | The description of the argument to be used in auto generated help.
-<code>default</code>        | The default value of the argument.
-<code>required</code>       | Denotes if a argument is required. Required arguments without a default value will raise an error when not specified at command invocation.</p>
-
-<blockquote>**Note:**
+<blockquote><strong>Note:</strong>  
   Required arguments cannot be defined after optional arguments.</blockquote>
 
 <h2>Sub Commands</h2>
 
 <p>Sub commands can be added to the command. To define a sub command use the
-<code>register_subcommand</code> macro. You also have the option to add a description for
+<code>register_sub_command</code> macro. You also have the option to add a description for
 the auto-generated help.</p>
 
 <pre><code class='language-crystal'><span class="c"># hello.cr</span>
@@ -343,8 +349,8 @@ the auto-generated help.</p>
     <span class="k">end</span>
   <span class="k">end</span>
 
-  register_subcommand planet, <span class="t">Planetary</span>
-  register_subcommand city, <span class="t">Municipality</span>
+  register_sub_command planet : <span class="t">Planetary</span>
+  register_sub_command city : <span class="t">Municipality</span>
 
   <span class="k">def</span> <span class="m">run</span>
     puts help

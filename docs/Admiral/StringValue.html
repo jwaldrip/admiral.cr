@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta id="repository-name" content="github.com/jwaldrip/admiral.cr">
@@ -30,8 +30,18 @@
       
     </li>
   
-  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command" data-name="admiral::command">
+  <li class="parent " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command" data-name="admiral::command">
       <a href="../Admiral/Command.html">Command</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command/MissingArgument" data-name="admiral::command::missingargument">
+      <a href="../Admiral/Command/MissingArgument.html">MissingArgument</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -98,7 +108,7 @@ All methods are delegated to <code>String</code>.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/string_value.cr#L3" target="_blank">admiral/string_value.cr</a>
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/string_value.cr#L3" target="_blank">admiral/string_value.cr</a>
     
     <br/>
   
@@ -107,7 +117,7 @@ All methods are delegated to <code>String</code>.</p>
 
 
 
-  <h2>Class Method Summary</h2>
+  <h2>Constructors</h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
@@ -119,13 +129,10 @@ All methods are delegated to <code>String</code>.</p>
 
 
 
+
+
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#%25%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#%</strong>(*args, **options, &block)</a>
-        
-      </li>
     
       <li class="entry-summary">
         <a href="#%25%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#%</strong>(*args, **options)</a>
@@ -133,12 +140,17 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#%2A%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#*</strong>(*args, **options, &block)</a>
+        <a href="#%25%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#%</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#%2A%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#*</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2A%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#*</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -153,12 +165,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#<=></strong>(*args, **options)</a>
+        <a href="#%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#<=></strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#<=></strong>(*args, **options, &block)</a>
+        <a href="#%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#<=></strong>(*args, **options)</a>
         
       </li>
     
@@ -203,17 +215,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#ascii_only%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#ascii_only?</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#ascii_only%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#ascii_only?</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#at%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#at</strong>(*args, **options, &block)</a>
+        <a href="#ascii_only%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#ascii_only?</strong>(*args, **options)</a>
         
       </li>
     
@@ -223,12 +230,17 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#blank%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#blank?</strong>(*args, **options, &block)</a>
+        <a href="#at%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#at</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#blank%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#blank?</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#blank%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#blank?</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -243,12 +255,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#byte_at%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#byte_at?</strong>(*args, **options, &block)</a>
+        <a href="#byte_at%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#byte_at?</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#byte_at%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#byte_at?</strong>(*args, **options)</a>
+        <a href="#byte_at%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#byte_at?</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -273,12 +285,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#byte_slice%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#byte_slice</strong>(*args, **options)</a>
+        <a href="#byte_slice%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#byte_slice</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#byte_slice%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#byte_slice</strong>(*args, **options, &block)</a>
+        <a href="#byte_slice%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#byte_slice</strong>(*args, **options)</a>
         
       </li>
     
@@ -313,12 +325,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#calc_excess_right%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#calc_excess_right</strong>(*args, **options, &block)</a>
+        <a href="#calc_excess_right%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#calc_excess_right</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#calc_excess_right%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#calc_excess_right</strong>(*args, **options)</a>
+        <a href="#calc_excess_right%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#calc_excess_right</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -333,12 +345,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#capitalize%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#capitalize</strong>(*args, **options, &block)</a>
+        <a href="#capitalize%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#capitalize</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#capitalize%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#capitalize</strong>(*args, **options)</a>
+        <a href="#capitalize%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#capitalize</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -363,12 +375,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#char_index_to_byte_index%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#char_index_to_byte_index</strong>(*args, **options, &block)</a>
+        <a href="#char_index_to_byte_index%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#char_index_to_byte_index</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#char_index_to_byte_index%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#char_index_to_byte_index</strong>(*args, **options)</a>
+        <a href="#char_index_to_byte_index%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#char_index_to_byte_index</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -383,17 +395,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#check_no_null_byte%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#check_no_null_byte</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#check_no_null_byte%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#check_no_null_byte</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#chomp%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#chomp</strong>(*args, **options)</a>
+        <a href="#check_no_null_byte%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#check_no_null_byte</strong>(*args, **options)</a>
         
       </li>
     
@@ -403,12 +410,7 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#chop%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#chop</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#chop%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#chop</strong>(*args, **options, &block)</a>
+        <a href="#chomp%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#chomp</strong>(*args, **options)</a>
         
       </li>
     
@@ -433,12 +435,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#codepoints%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#codepoints</strong>(*args, **options)</a>
+        <a href="#codepoints%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#codepoints</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#codepoints%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#codepoints</strong>(*args, **options, &block)</a>
+        <a href="#codepoints%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#codepoints</strong>(*args, **options)</a>
         
       </li>
     
@@ -453,12 +455,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#count%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#count</strong>(*args, **options)</a>
+        <a href="#count%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#count</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#count%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#count</strong>(*args, **options, &block)</a>
+        <a href="#count%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#count</strong>(*args, **options)</a>
         
       </li>
     
@@ -493,12 +495,27 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#dump_char%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#dump_char</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#dump_char%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#dump_char</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#dump_char%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#dump_char</strong>(*args, **options, &block)</a>
+        <a href="#dump_hex%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#dump_hex</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#dump_hex%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#dump_hex</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#dump_or_inspect%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#dump_or_inspect</strong>(*args, **options)</a>
         
       </li>
     
@@ -508,7 +525,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#dump_or_inspect%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#dump_or_inspect</strong>(*args, **options)</a>
+        <a href="#dump_or_inspect_char%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#dump_or_inspect_char</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#dump_or_inspect_char%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#dump_or_inspect_char</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -523,7 +545,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#dump_unquoted%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#dump_unquoted</strong>(*args, **options)</a>
+        <a href="#dump_unicode%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#dump_unicode</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#dump_unicode%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#dump_unicode</strong>(*args, **options)</a>
         
       </li>
     
@@ -533,7 +560,7 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#dup%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#dup</strong>(*args, **options, &block)</a>
+        <a href="#dump_unquoted%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#dump_unquoted</strong>(*args, **options)</a>
         
       </li>
     
@@ -543,7 +570,7 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#each_byte%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#each_byte</strong>(*args, **options)</a>
+        <a href="#dup%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#dup</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -553,12 +580,17 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#each_byte_index_and_char_index%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#each_byte_index_and_char_index</strong>(*args, **options)</a>
+        <a href="#each_byte%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#each_byte</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#each_byte_index_and_char_index%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#each_byte_index_and_char_index</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each_byte_index_and_char_index%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#each_byte_index_and_char_index</strong>(*args, **options)</a>
         
       </li>
     
@@ -603,17 +635,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#empty%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#empty?</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#empty%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#empty?</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#encode%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#encode</strong>(*args, **options, &block)</a>
+        <a href="#empty%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#empty?</strong>(*args, **options)</a>
         
       </li>
     
@@ -623,12 +650,17 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#ends_with%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#ends_with?</strong>(*args, **options, &block)</a>
+        <a href="#encode%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#encode</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#ends_with%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#ends_with?</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ends_with%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#ends_with?</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -653,12 +685,22 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#has_back_references%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#has_back_references?</strong>(*args, **options)</a>
+        <a href="#gsub_ascii_char%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#gsub_ascii_char</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#gsub_ascii_char%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#gsub_ascii_char</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#has_back_references%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#has_back_references?</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#has_back_references%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#has_back_references?</strong>(*args, **options)</a>
         
       </li>
     
@@ -673,12 +715,32 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#includes%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#includes?</strong>(*args, **options)</a>
+        <a href="#hexbytes%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#hexbytes</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hexbytes%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#hexbytes</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hexbytes%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#hexbytes?</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hexbytes%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#hexbytes?</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#includes%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#includes?</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#includes%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#includes?</strong>(*args, **options)</a>
         
       </li>
     
@@ -693,12 +755,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#insert%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#insert</strong>(*args, **options)</a>
+        <a href="#insert%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#insert</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#insert%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#insert</strong>(*args, **options, &block)</a>
+        <a href="#insert%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#insert</strong>(*args, **options)</a>
         
       </li>
     
@@ -713,22 +775,22 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#inspect%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#inspect</strong>(*args, **options, &block)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#inspect%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#inspect</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#inspect_char%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#inspect_char</strong>(*args, **options)</a>
+        <a href="#inspect%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#inspect</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#inspect_char%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#inspect_char</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inspect_char%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#inspect_char</strong>(*args, **options)</a>
         
       </li>
     
@@ -743,22 +805,22 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#just%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#just</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#just%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#just</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#lchomp%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#lchomp</strong>(*args, **options, &block)</a>
+        <a href="#just%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#just</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#lchomp%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#lchomp</strong>(*args, **options)</a>
+        <a href="#lchop%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#lchop</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#lchop%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#lchop</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -773,12 +835,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#ljust%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#ljust</strong>(*args, **options)</a>
+        <a href="#ljust%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#ljust</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#ljust%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#ljust</strong>(*args, **options, &block)</a>
+        <a href="#ljust%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#ljust</strong>(*args, **options)</a>
         
       </li>
     
@@ -793,12 +855,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#match%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#match</strong>(*args, **options, &block)</a>
+        <a href="#match%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#match</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#match%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#match</strong>(*args, **options)</a>
+        <a href="#match%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#match</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -823,17 +885,42 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#range_to_index_and_size%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#range_to_index_and_size</strong>(*args, **options)</a>
+        <a href="#rchop%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#rchop</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#range_to_index_and_size%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#range_to_index_and_size</strong>(*args, **options, &block)</a>
+        <a href="#rchop%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#rchop</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#reverse%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#reverse</strong>(*args, **options)</a>
+        <a href="#remove_excess%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#remove_excess</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#remove_excess%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#remove_excess</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#remove_excess_left%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#remove_excess_left</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#remove_excess_left%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#remove_excess_left</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#remove_excess_right%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#remove_excess_right</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#remove_excess_right%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#remove_excess_right</strong>(*args, **options)</a>
         
       </li>
     
@@ -843,12 +930,17 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#rindex%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#rindex</strong>(*args, **options)</a>
+        <a href="#reverse%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#reverse</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#rindex%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#rindex</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rindex%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#rindex</strong>(*args, **options)</a>
         
       </li>
     
@@ -863,17 +955,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#rpartition%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#rpartition</strong>(*args, **options, &block)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#rpartition%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#rpartition</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#rstrip%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#rstrip</strong>(*args, **options, &block)</a>
+        <a href="#rpartition%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#rpartition</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -883,12 +970,17 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#scan%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#scan</strong>(*args, **options, &block)</a>
+        <a href="#rstrip%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#rstrip</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#scan%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#scan</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scan%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#scan</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -903,12 +995,22 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#size%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#size</strong>(*args, **options)</a>
+        <a href="#scrub%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#scrub</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scrub%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#scrub</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#size%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#size</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#size%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#size</strong>(*args, **options)</a>
         
       </li>
     
@@ -953,22 +1055,22 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#starts_with%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#starts_with?</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#starts_with%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#starts_with?</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#strip%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#strip</strong>(*args, **options, &block)</a>
+        <a href="#starts_with%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#starts_with?</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#strip%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#strip</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#strip%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#strip</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -983,22 +1085,22 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#sub_append%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#sub_append</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#sub_append%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#sub_append</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sub_index%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#sub_index</strong>(*args, **options, &block)</a>
+        <a href="#sub_append%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#sub_append</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#sub_index%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#sub_index</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sub_index%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#sub_index</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -1013,12 +1115,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#succ%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#succ</strong>(*args, **options)</a>
+        <a href="#succ%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#succ</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#succ%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#succ</strong>(*args, **options, &block)</a>
+        <a href="#succ%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#succ</strong>(*args, **options)</a>
         
       </li>
     
@@ -1033,17 +1135,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_f32%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_f32</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#to_f32%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_f32</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_f32%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_f32?</strong>(*args, **options, &block)</a>
+        <a href="#to_f32%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_f32</strong>(*args, **options)</a>
         
       </li>
     
@@ -1053,12 +1150,17 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_f64%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_f64</strong>(*args, **options, &block)</a>
+        <a href="#to_f32%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_f32?</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#to_f64%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_f64</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_f64%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_f64</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -1083,22 +1185,22 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_f_impl%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_f_impl</strong>(*args, **options, &block)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#to_f_impl%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_f_impl</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_i%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_i</strong>(*args, **options)</a>
+        <a href="#to_f_impl%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_f_impl</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#to_i%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_i</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_i%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_i</strong>(*args, **options)</a>
         
       </li>
     
@@ -1113,12 +1215,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_i16%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_i16?</strong>(*args, **options)</a>
+        <a href="#to_i16%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_i16?</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_i16%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_i16?</strong>(*args, **options, &block)</a>
+        <a href="#to_i16%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_i16?</strong>(*args, **options)</a>
         
       </li>
     
@@ -1143,12 +1245,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_i64%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_i64</strong>(*args, **options, &block)</a>
+        <a href="#to_i64%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_i64</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_i64%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_i64</strong>(*args, **options)</a>
+        <a href="#to_i64%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_i64</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -1193,17 +1295,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_s%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_s</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#to_s%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_s</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_slice%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_slice</strong>(*args, **options)</a>
+        <a href="#to_s%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_s</strong>(*args, **options)</a>
         
       </li>
     
@@ -1213,7 +1310,7 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_u16%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_u16</strong>(*args, **options)</a>
+        <a href="#to_slice%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_slice</strong>(*args, **options)</a>
         
       </li>
     
@@ -1223,12 +1320,17 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_u16%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_u16?</strong>(*args, **options)</a>
+        <a href="#to_u16%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_u16</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#to_u16%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_u16?</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_u16%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_u16?</strong>(*args, **options)</a>
         
       </li>
     
@@ -1243,12 +1345,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_u32%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_u32?</strong>(*args, **options, &block)</a>
+        <a href="#to_u32%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_u32?</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_u32%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_u32?</strong>(*args, **options)</a>
+        <a href="#to_u32%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_u32?</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -1283,22 +1385,22 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_u8%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_u8</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#to_u8%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_u8</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_u8%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_u8?</strong>(*args, **options)</a>
+        <a href="#to_u8%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_u8</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#to_u8%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#to_u8?</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_u8%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#to_u8?</strong>(*args, **options)</a>
         
       </li>
     
@@ -1323,12 +1425,12 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#underscore%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#underscore</strong>(*args, **options)</a>
+        <a href="#underscore%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#underscore</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#underscore%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#underscore</strong>(*args, **options, &block)</a>
+        <a href="#underscore%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#underscore</strong>(*args, **options)</a>
         
       </li>
     
@@ -1363,12 +1465,22 @@ All methods are delegated to <code>String</code>.</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#upcase%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#upcase</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#upcase%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#upcase</strong>(*args, **options, &block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#upcase%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#upcase</strong>(*args, **options)</a>
+        <a href="#valid_encoding%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#valid_encoding?</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#valid_encoding%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#valid_encoding?</strong>(*args, **options)</a>
         
       </li>
     
@@ -1391,6 +1503,9 @@ All methods are delegated to <code>String</code>.</p>
     
 
 
+    
+
+
   
     
 
@@ -1398,7 +1513,13 @@ All methods are delegated to <code>String</code>.</p>
     
 
 
+    
+
+
   
+    
+
+
     
 
 
@@ -1409,9 +1530,9 @@ All methods are delegated to <code>String</code>.</p>
 </div>
 
 
-  <h2>Class Method Detail</h2>
+  <h2>Constructor Detail</h2>
   
-    <div class="entry-detail" id="new&#40;value:String&#41;-class-method">
+    <div class="entry-detail" id="new(value:String)-class-method">
       <div class="signature">
         
         def self.<strong>new</strong>(value : String)
@@ -1422,31 +1543,19 @@ All methods are delegated to <code>String</code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/string_value.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/string_value.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
   
+
+
 
 
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="&#37;&#40;*args,**options,&amp;block&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>%</strong>(*args, **options, &block)
-
-        <a class="method-permalink" href="#%25%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="&#37;&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="%(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>%</strong>(*args, **options)
@@ -1460,12 +1569,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="*&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="%(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>*</strong>(*args, **options, &block)
+        def <strong>%</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#%2A%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#%25%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1474,7 +1583,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="*&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="*(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>*</strong>(*args, **options)
@@ -1488,7 +1597,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="&#43;&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="*(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>*</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#%2A%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="+(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>+</strong>(*args, **options, &block)
@@ -1502,7 +1625,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="&#43;&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="+(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>+</strong>(*args, **options)
@@ -1516,21 +1639,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong><=></strong>(*args, **options)
-
-        <a class="method-permalink" href="#%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong><=></strong>(*args, **options, &block)
@@ -1544,7 +1653,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="&#61;&#61;&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong><=></strong>(*args, **options)
+
+        <a class="method-permalink" href="#%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="==(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>==</strong>(*args, **options)
@@ -1558,7 +1681,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="&#61;&#61;&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="==(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>==</strong>(*args, **options, &block)
@@ -1572,7 +1695,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="&#61;~&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="=~(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>=~</strong>(*args, **options, &block)
@@ -1586,7 +1709,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="&#61;~&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="=~(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>=~</strong>(*args, **options)
@@ -1600,7 +1723,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="&#91;&#93;&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="[](*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>[]</strong>(*args, **options, &block)
@@ -1614,7 +1737,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="&#91;&#93;&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="[](*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>[]</strong>(*args, **options)
@@ -1628,7 +1751,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="&#91;&#93;?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="[]?(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>[]?</strong>(*args, **options)
@@ -1642,7 +1765,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="&#91;&#93;?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="[]?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>[]?</strong>(*args, **options, &block)
@@ -1656,21 +1779,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="ascii_only?&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>ascii_only?</strong>(*args, **options)
-
-        <a class="method-permalink" href="#ascii_only%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="ascii_only?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="ascii_only?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>ascii_only?</strong>(*args, **options, &block)
@@ -1684,12 +1793,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="at&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="ascii_only?(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>at</strong>(*args, **options, &block)
+        def <strong>ascii_only?</strong>(*args, **options)
 
-        <a class="method-permalink" href="#at%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#ascii_only%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1698,7 +1807,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="at&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="at(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>at</strong>(*args, **options)
@@ -1712,12 +1821,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="blank?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="at(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>blank?</strong>(*args, **options, &block)
+        def <strong>at</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#blank%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#at%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -1726,7 +1835,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="blank?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="blank?(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>blank?</strong>(*args, **options)
@@ -1740,7 +1849,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="byte_at&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="blank?(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>blank?</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#blank%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="byte_at(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>byte_at</strong>(*args, **options, &block)
@@ -1754,7 +1877,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="byte_at&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="byte_at(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>byte_at</strong>(*args, **options)
@@ -1768,21 +1891,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="byte_at?&#40;*args,**options,&amp;block&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>byte_at?</strong>(*args, **options, &block)
-
-        <a class="method-permalink" href="#byte_at%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="byte_at?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="byte_at?(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>byte_at?</strong>(*args, **options)
@@ -1796,7 +1905,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="byte_index&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="byte_at?(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>byte_at?</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#byte_at%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="byte_index(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>byte_index</strong>(*args, **options, &block)
@@ -1810,7 +1933,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="byte_index&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="byte_index(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>byte_index</strong>(*args, **options)
@@ -1824,7 +1947,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="byte_index_to_char_index&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="byte_index_to_char_index(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>byte_index_to_char_index</strong>(*args, **options)
@@ -1838,7 +1961,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="byte_index_to_char_index&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="byte_index_to_char_index(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>byte_index_to_char_index</strong>(*args, **options, &block)
@@ -1852,21 +1975,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="byte_slice&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>byte_slice</strong>(*args, **options)
-
-        <a class="method-permalink" href="#byte_slice%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="byte_slice&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="byte_slice(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>byte_slice</strong>(*args, **options, &block)
@@ -1880,7 +1989,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="bytes&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="byte_slice(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>byte_slice</strong>(*args, **options)
+
+        <a class="method-permalink" href="#byte_slice%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="bytes(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>bytes</strong>(*args, **options)
@@ -1894,7 +2017,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="bytes&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="bytes(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>bytes</strong>(*args, **options, &block)
@@ -1908,7 +2031,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="bytesize&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="bytesize(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>bytesize</strong>(*args, **options, &block)
@@ -1922,7 +2045,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="bytesize&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="bytesize(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>bytesize</strong>(*args, **options)
@@ -1936,7 +2059,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="calc_excess_left&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="calc_excess_left(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>calc_excess_left</strong>(*args, **options, &block)
@@ -1950,7 +2073,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="calc_excess_left&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="calc_excess_left(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>calc_excess_left</strong>(*args, **options)
@@ -1964,21 +2087,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="calc_excess_right&#40;*args,**options,&amp;block&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>calc_excess_right</strong>(*args, **options, &block)
-
-        <a class="method-permalink" href="#calc_excess_right%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="calc_excess_right&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="calc_excess_right(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>calc_excess_right</strong>(*args, **options)
@@ -1992,7 +2101,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="camelcase&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="calc_excess_right(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>calc_excess_right</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#calc_excess_right%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="camelcase(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>camelcase</strong>(*args, **options, &block)
@@ -2006,7 +2129,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="camelcase&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="camelcase(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>camelcase</strong>(*args, **options)
@@ -2020,21 +2143,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="capitalize&#40;*args,**options,&amp;block&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>capitalize</strong>(*args, **options, &block)
-
-        <a class="method-permalink" href="#capitalize%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="capitalize&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="capitalize(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>capitalize</strong>(*args, **options)
@@ -2048,7 +2157,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="char_at&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="capitalize(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>capitalize</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#capitalize%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="char_at(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>char_at</strong>(*args, **options, &block)
@@ -2062,7 +2185,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="char_at&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="char_at(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>char_at</strong>(*args, **options)
@@ -2076,7 +2199,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="char_bytesize_at&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="char_bytesize_at(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>char_bytesize_at</strong>(*args, **options, &block)
@@ -2090,7 +2213,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="char_bytesize_at&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="char_bytesize_at(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>char_bytesize_at</strong>(*args, **options)
@@ -2104,21 +2227,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="char_index_to_byte_index&#40;*args,**options,&amp;block&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>char_index_to_byte_index</strong>(*args, **options, &block)
-
-        <a class="method-permalink" href="#char_index_to_byte_index%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="char_index_to_byte_index&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="char_index_to_byte_index(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>char_index_to_byte_index</strong>(*args, **options)
@@ -2132,7 +2241,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="chars&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="char_index_to_byte_index(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>char_index_to_byte_index</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#char_index_to_byte_index%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chars(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>chars</strong>(*args, **options)
@@ -2146,7 +2269,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="chars&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="chars(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>chars</strong>(*args, **options, &block)
@@ -2160,21 +2283,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="check_no_null_byte&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>check_no_null_byte</strong>(*args, **options)
-
-        <a class="method-permalink" href="#check_no_null_byte%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="check_no_null_byte&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="check_no_null_byte(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>check_no_null_byte</strong>(*args, **options, &block)
@@ -2188,12 +2297,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="chomp&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="check_no_null_byte(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>chomp</strong>(*args, **options)
+        def <strong>check_no_null_byte</strong>(*args, **options)
 
-        <a class="method-permalink" href="#chomp%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#check_no_null_byte%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -2202,7 +2311,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="chomp&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="chomp(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>chomp</strong>(*args, **options, &block)
@@ -2216,12 +2325,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="chop&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="chomp(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>chop</strong>(*args, **options)
+        def <strong>chomp</strong>(*args, **options)
 
-        <a class="method-permalink" href="#chop%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#chomp%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -2230,21 +2339,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="chop&#40;*args,**options,&amp;block&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>chop</strong>(*args, **options, &block)
-
-        <a class="method-permalink" href="#chop%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="clone&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="clone(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>clone</strong>(*args, **options)
@@ -2258,7 +2353,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="clone&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="clone(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>clone</strong>(*args, **options, &block)
@@ -2272,7 +2367,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="codepoint_at&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="codepoint_at(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>codepoint_at</strong>(*args, **options)
@@ -2286,7 +2381,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="codepoint_at&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="codepoint_at(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>codepoint_at</strong>(*args, **options, &block)
@@ -2300,21 +2395,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="codepoints&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>codepoints</strong>(*args, **options)
-
-        <a class="method-permalink" href="#codepoints%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="codepoints&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="codepoints(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>codepoints</strong>(*args, **options, &block)
@@ -2328,7 +2409,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="compare&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="codepoints(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>codepoints</strong>(*args, **options)
+
+        <a class="method-permalink" href="#codepoints%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="compare(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>compare</strong>(*args, **options)
@@ -2342,7 +2437,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="compare&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="compare(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>compare</strong>(*args, **options, &block)
@@ -2356,21 +2451,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="count&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>count</strong>(*args, **options)
-
-        <a class="method-permalink" href="#count%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="count&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="count(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>count</strong>(*args, **options, &block)
@@ -2384,7 +2465,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="delete&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="count(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>count</strong>(*args, **options)
+
+        <a class="method-permalink" href="#count%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>delete</strong>(*args, **options, &block)
@@ -2398,7 +2493,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="delete&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="delete(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>delete</strong>(*args, **options)
@@ -2412,7 +2507,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="downcase&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="downcase(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>downcase</strong>(*args, **options)
@@ -2426,7 +2521,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="downcase&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="downcase(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>downcase</strong>(*args, **options, &block)
@@ -2440,7 +2535,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="dump&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="dump(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>dump</strong>(*args, **options)
@@ -2454,7 +2549,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="dump&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="dump(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>dump</strong>(*args, **options, &block)
@@ -2468,21 +2563,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="dump_char&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>dump_char</strong>(*args, **options)
-
-        <a class="method-permalink" href="#dump_char%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="dump_char&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="dump_char(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>dump_char</strong>(*args, **options, &block)
@@ -2496,12 +2577,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="dump_or_inspect&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="dump_char(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>dump_or_inspect</strong>(*args, **options, &block)
+        def <strong>dump_char</strong>(*args, **options)
 
-        <a class="method-permalink" href="#dump_or_inspect%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#dump_char%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -2510,7 +2591,35 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="dump_or_inspect&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="dump_hex(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>dump_hex</strong>(*args, **options)
+
+        <a class="method-permalink" href="#dump_hex%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dump_hex(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>dump_hex</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#dump_hex%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dump_or_inspect(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>dump_or_inspect</strong>(*args, **options)
@@ -2524,7 +2633,49 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="dump_or_inspect_unquoted&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="dump_or_inspect(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>dump_or_inspect</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#dump_or_inspect%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dump_or_inspect_char(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>dump_or_inspect_char</strong>(*args, **options)
+
+        <a class="method-permalink" href="#dump_or_inspect_char%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dump_or_inspect_char(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>dump_or_inspect_char</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#dump_or_inspect_char%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dump_or_inspect_unquoted(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>dump_or_inspect_unquoted</strong>(*args, **options, &block)
@@ -2538,7 +2689,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="dump_or_inspect_unquoted&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="dump_or_inspect_unquoted(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>dump_or_inspect_unquoted</strong>(*args, **options)
@@ -2552,12 +2703,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="dump_unquoted&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="dump_unicode(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>dump_unquoted</strong>(*args, **options)
+        def <strong>dump_unicode</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#dump_unquoted%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#dump_unicode%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -2566,7 +2717,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="dump_unquoted&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="dump_unicode(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>dump_unicode</strong>(*args, **options)
+
+        <a class="method-permalink" href="#dump_unicode%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dump_unquoted(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>dump_unquoted</strong>(*args, **options, &block)
@@ -2580,12 +2745,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="dup&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="dump_unquoted(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>dup</strong>(*args, **options, &block)
+        def <strong>dump_unquoted</strong>(*args, **options)
 
-        <a class="method-permalink" href="#dup%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#dump_unquoted%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -2594,7 +2759,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="dup&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="dup(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>dup</strong>(*args, **options)
@@ -2608,12 +2773,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="each_byte&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="dup(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>each_byte</strong>(*args, **options)
+        def <strong>dup</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#each_byte%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#dup%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -2622,7 +2787,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="each_byte&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="each_byte(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>each_byte</strong>(*args, **options, &block)
@@ -2636,12 +2801,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="each_byte_index_and_char_index&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="each_byte(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>each_byte_index_and_char_index</strong>(*args, **options)
+        def <strong>each_byte</strong>(*args, **options)
 
-        <a class="method-permalink" href="#each_byte_index_and_char_index%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#each_byte%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -2650,7 +2815,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="each_byte_index_and_char_index&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="each_byte_index_and_char_index(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>each_byte_index_and_char_index</strong>(*args, **options, &block)
@@ -2664,7 +2829,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="each_char&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="each_byte_index_and_char_index(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>each_byte_index_and_char_index</strong>(*args, **options)
+
+        <a class="method-permalink" href="#each_byte_index_and_char_index%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each_char(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>each_char</strong>(*args, **options)
@@ -2678,7 +2857,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="each_char&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="each_char(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>each_char</strong>(*args, **options, &block)
@@ -2692,7 +2871,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="each_char_with_index&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="each_char_with_index(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>each_char_with_index</strong>(*args, **options)
@@ -2706,7 +2885,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="each_char_with_index&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="each_char_with_index(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>each_char_with_index</strong>(*args, **options, &block)
@@ -2720,7 +2899,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="each_codepoint&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="each_codepoint(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>each_codepoint</strong>(*args, **options, &block)
@@ -2734,7 +2913,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="each_codepoint&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="each_codepoint(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>each_codepoint</strong>(*args, **options)
@@ -2748,7 +2927,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="each_line&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="each_line(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>each_line</strong>(*args, **options)
@@ -2762,7 +2941,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="each_line&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="each_line(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>each_line</strong>(*args, **options, &block)
@@ -2776,21 +2955,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="empty?&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>empty?</strong>(*args, **options)
-
-        <a class="method-permalink" href="#empty%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="empty?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="empty?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>empty?</strong>(*args, **options, &block)
@@ -2804,12 +2969,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="encode&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="empty?(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>encode</strong>(*args, **options, &block)
+        def <strong>empty?</strong>(*args, **options)
 
-        <a class="method-permalink" href="#encode%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#empty%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -2818,7 +2983,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="encode&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="encode(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>encode</strong>(*args, **options)
@@ -2832,12 +2997,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="ends_with?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="encode(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>ends_with?</strong>(*args, **options, &block)
+        def <strong>encode</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#ends_with%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#encode%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -2846,7 +3011,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="ends_with?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="ends_with?(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>ends_with?</strong>(*args, **options)
@@ -2860,7 +3025,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="gsub&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="ends_with?(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>ends_with?</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#ends_with%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="gsub(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>gsub</strong>(*args, **options, &block)
@@ -2874,7 +3053,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="gsub&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="gsub(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>gsub</strong>(*args, **options)
@@ -2888,7 +3067,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="gsub_append&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="gsub_append(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>gsub_append</strong>(*args, **options, &block)
@@ -2902,7 +3081,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="gsub_append&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="gsub_append(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>gsub_append</strong>(*args, **options)
@@ -2916,12 +3095,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="has_back_references?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="gsub_ascii_char(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>has_back_references?</strong>(*args, **options)
+        def <strong>gsub_ascii_char</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#has_back_references%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#gsub_ascii_char%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -2930,7 +3109,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="has_back_references?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="gsub_ascii_char(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>gsub_ascii_char</strong>(*args, **options)
+
+        <a class="method-permalink" href="#gsub_ascii_char%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="has_back_references?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>has_back_references?</strong>(*args, **options, &block)
@@ -2944,7 +3137,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="hash&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="has_back_references?(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>has_back_references?</strong>(*args, **options)
+
+        <a class="method-permalink" href="#has_back_references%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hash(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>hash</strong>(*args, **options, &block)
@@ -2958,7 +3165,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="hash&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="hash(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>hash</strong>(*args, **options)
@@ -2972,12 +3179,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="includes?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="hexbytes(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>includes?</strong>(*args, **options)
+        def <strong>hexbytes</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#includes%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#hexbytes%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -2986,7 +3193,49 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="includes?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="hexbytes(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>hexbytes</strong>(*args, **options)
+
+        <a class="method-permalink" href="#hexbytes%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hexbytes?(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>hexbytes?</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#hexbytes%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hexbytes?(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>hexbytes?</strong>(*args, **options)
+
+        <a class="method-permalink" href="#hexbytes%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="includes?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>includes?</strong>(*args, **options, &block)
@@ -3000,7 +3249,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="index&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="includes?(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>includes?</strong>(*args, **options)
+
+        <a class="method-permalink" href="#includes%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="index(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>index</strong>(*args, **options)
@@ -3014,7 +3277,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="index&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="index(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>index</strong>(*args, **options, &block)
@@ -3028,21 +3291,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="insert&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>insert</strong>(*args, **options)
-
-        <a class="method-permalink" href="#insert%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="insert&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="insert(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>insert</strong>(*args, **options, &block)
@@ -3056,7 +3305,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="insert_impl&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="insert(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>insert</strong>(*args, **options)
+
+        <a class="method-permalink" href="#insert%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="insert_impl(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>insert_impl</strong>(*args, **options, &block)
@@ -3070,7 +3333,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="insert_impl&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="insert_impl(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>insert_impl</strong>(*args, **options)
@@ -3084,21 +3347,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="inspect&#40;*args,**options,&amp;block&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>inspect</strong>(*args, **options, &block)
-
-        <a class="method-permalink" href="#inspect%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="inspect&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="inspect(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>inspect</strong>(*args, **options)
@@ -3112,12 +3361,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="inspect_char&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="inspect(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>inspect_char</strong>(*args, **options)
+        def <strong>inspect</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#inspect_char%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#inspect%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -3126,7 +3375,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="inspect_char&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="inspect_char(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>inspect_char</strong>(*args, **options, &block)
@@ -3140,7 +3389,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="inspect_unquoted&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="inspect_char(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>inspect_char</strong>(*args, **options)
+
+        <a class="method-permalink" href="#inspect_char%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inspect_unquoted(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>inspect_unquoted</strong>(*args, **options)
@@ -3154,7 +3417,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="inspect_unquoted&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="inspect_unquoted(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>inspect_unquoted</strong>(*args, **options, &block)
@@ -3168,21 +3431,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="just&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>just</strong>(*args, **options)
-
-        <a class="method-permalink" href="#just%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="just&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="just(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>just</strong>(*args, **options, &block)
@@ -3196,12 +3445,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="lchomp&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="just(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>lchomp</strong>(*args, **options, &block)
+        def <strong>just</strong>(*args, **options)
 
-        <a class="method-permalink" href="#lchomp%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#just%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -3210,12 +3459,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="lchomp&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="lchop(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>lchomp</strong>(*args, **options)
+        def <strong>lchop</strong>(*args, **options)
 
-        <a class="method-permalink" href="#lchomp%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#lchop%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -3224,7 +3473,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="lines&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="lchop(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>lchop</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#lchop%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="lines(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>lines</strong>(*args, **options)
@@ -3238,7 +3501,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="lines&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="lines(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>lines</strong>(*args, **options, &block)
@@ -3252,21 +3515,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="ljust&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>ljust</strong>(*args, **options)
-
-        <a class="method-permalink" href="#ljust%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="ljust&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="ljust(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>ljust</strong>(*args, **options, &block)
@@ -3280,7 +3529,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="lstrip&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="ljust(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>ljust</strong>(*args, **options)
+
+        <a class="method-permalink" href="#ljust%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="lstrip(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>lstrip</strong>(*args, **options)
@@ -3294,7 +3557,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="lstrip&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="lstrip(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>lstrip</strong>(*args, **options, &block)
@@ -3308,21 +3571,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="match&#40;*args,**options,&amp;block&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>match</strong>(*args, **options, &block)
-
-        <a class="method-permalink" href="#match%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="match&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="match(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>match</strong>(*args, **options)
@@ -3336,7 +3585,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="partition&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="match(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>match</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#match%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="partition(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>partition</strong>(*args, **options)
@@ -3350,7 +3613,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="partition&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="partition(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>partition</strong>(*args, **options, &block)
@@ -3364,7 +3627,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="pretty_print&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="pretty_print(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>pretty_print</strong>(*args, **options, &block)
@@ -3378,7 +3641,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="pretty_print&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="pretty_print(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>pretty_print</strong>(*args, **options)
@@ -3392,12 +3655,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="range_to_index_and_size&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="rchop(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>range_to_index_and_size</strong>(*args, **options)
+        def <strong>rchop</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#range_to_index_and_size%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#rchop%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -3406,12 +3669,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="range_to_index_and_size&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="rchop(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>range_to_index_and_size</strong>(*args, **options, &block)
+        def <strong>rchop</strong>(*args, **options)
 
-        <a class="method-permalink" href="#range_to_index_and_size%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#rchop%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -3420,12 +3683,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="reverse&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="remove_excess(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>reverse</strong>(*args, **options)
+        def <strong>remove_excess</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#reverse%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#remove_excess%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -3434,7 +3697,77 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="reverse&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="remove_excess(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>remove_excess</strong>(*args, **options)
+
+        <a class="method-permalink" href="#remove_excess%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="remove_excess_left(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>remove_excess_left</strong>(*args, **options)
+
+        <a class="method-permalink" href="#remove_excess_left%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="remove_excess_left(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>remove_excess_left</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#remove_excess_left%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="remove_excess_right(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>remove_excess_right</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#remove_excess_right%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="remove_excess_right(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>remove_excess_right</strong>(*args, **options)
+
+        <a class="method-permalink" href="#remove_excess_right%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reverse(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>reverse</strong>(*args, **options, &block)
@@ -3448,12 +3781,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="rindex&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="reverse(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>rindex</strong>(*args, **options)
+        def <strong>reverse</strong>(*args, **options)
 
-        <a class="method-permalink" href="#rindex%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#reverse%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -3462,7 +3795,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="rindex&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="rindex(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>rindex</strong>(*args, **options, &block)
@@ -3476,7 +3809,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="rjust&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="rindex(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>rindex</strong>(*args, **options)
+
+        <a class="method-permalink" href="#rindex%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rjust(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>rjust</strong>(*args, **options)
@@ -3490,7 +3837,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="rjust&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="rjust(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>rjust</strong>(*args, **options, &block)
@@ -3504,21 +3851,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="rpartition&#40;*args,**options,&amp;block&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>rpartition</strong>(*args, **options, &block)
-
-        <a class="method-permalink" href="#rpartition%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="rpartition&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="rpartition(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>rpartition</strong>(*args, **options)
@@ -3532,12 +3865,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="rstrip&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="rpartition(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>rstrip</strong>(*args, **options, &block)
+        def <strong>rpartition</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#rstrip%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#rpartition%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -3546,7 +3879,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="rstrip&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="rstrip(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>rstrip</strong>(*args, **options)
@@ -3560,12 +3893,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="scan&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="rstrip(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>scan</strong>(*args, **options, &block)
+        def <strong>rstrip</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#scan%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#rstrip%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -3574,7 +3907,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="scan&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="scan(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>scan</strong>(*args, **options)
@@ -3588,7 +3921,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="scan_backreferences&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="scan(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>scan</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#scan%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scan_backreferences(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>scan_backreferences</strong>(*args, **options)
@@ -3602,7 +3949,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="scan_backreferences&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="scan_backreferences(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>scan_backreferences</strong>(*args, **options, &block)
@@ -3616,12 +3963,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="size&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="scrub(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>size</strong>(*args, **options)
+        def <strong>scrub</strong>(*args, **options)
 
-        <a class="method-permalink" href="#size%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#scrub%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -3630,7 +3977,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="size&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="scrub(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>scrub</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#scrub%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>size</strong>(*args, **options, &block)
@@ -3644,7 +4005,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="size_known?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="size(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>size</strong>(*args, **options)
+
+        <a class="method-permalink" href="#size%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size_known?(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>size_known?</strong>(*args, **options)
@@ -3658,7 +4033,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="size_known?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="size_known?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>size_known?</strong>(*args, **options, &block)
@@ -3672,7 +4047,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="split&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="split(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>split</strong>(*args, **options)
@@ -3686,7 +4061,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="split&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="split(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>split</strong>(*args, **options, &block)
@@ -3700,7 +4075,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="split_by_empty_separator&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="split_by_empty_separator(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>split_by_empty_separator</strong>(*args, **options)
@@ -3714,7 +4089,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="split_by_empty_separator&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="split_by_empty_separator(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>split_by_empty_separator</strong>(*args, **options, &block)
@@ -3728,7 +4103,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="squeeze&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="squeeze(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>squeeze</strong>(*args, **options, &block)
@@ -3742,7 +4117,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="squeeze&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="squeeze(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>squeeze</strong>(*args, **options)
@@ -3756,21 +4131,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="starts_with?&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>starts_with?</strong>(*args, **options)
-
-        <a class="method-permalink" href="#starts_with%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="starts_with?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="starts_with?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>starts_with?</strong>(*args, **options, &block)
@@ -3784,12 +4145,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="strip&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="starts_with?(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>strip</strong>(*args, **options, &block)
+        def <strong>starts_with?</strong>(*args, **options)
 
-        <a class="method-permalink" href="#strip%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#starts_with%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -3798,7 +4159,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="strip&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="strip(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>strip</strong>(*args, **options)
@@ -3812,7 +4173,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="sub&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="strip(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>strip</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#strip%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sub(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>sub</strong>(*args, **options)
@@ -3826,7 +4201,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="sub&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="sub(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>sub</strong>(*args, **options, &block)
@@ -3840,21 +4215,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="sub_append&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>sub_append</strong>(*args, **options)
-
-        <a class="method-permalink" href="#sub_append%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="sub_append&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="sub_append(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>sub_append</strong>(*args, **options, &block)
@@ -3868,12 +4229,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="sub_index&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="sub_append(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>sub_index</strong>(*args, **options, &block)
+        def <strong>sub_append</strong>(*args, **options)
 
-        <a class="method-permalink" href="#sub_index%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#sub_append%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -3882,7 +4243,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="sub_index&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="sub_index(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>sub_index</strong>(*args, **options)
@@ -3896,7 +4257,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="sub_range&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="sub_index(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>sub_index</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#sub_index%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sub_range(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>sub_range</strong>(*args, **options)
@@ -3910,7 +4285,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="sub_range&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="sub_range(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>sub_range</strong>(*args, **options, &block)
@@ -3924,21 +4299,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="succ&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>succ</strong>(*args, **options)
-
-        <a class="method-permalink" href="#succ%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="succ&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="succ(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>succ</strong>(*args, **options, &block)
@@ -3952,7 +4313,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_f&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="succ(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>succ</strong>(*args, **options)
+
+        <a class="method-permalink" href="#succ%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_f(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_f</strong>(*args, **options)
@@ -3966,7 +4341,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_f&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_f(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_f</strong>(*args, **options, &block)
@@ -3980,21 +4355,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_f32&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>to_f32</strong>(*args, **options)
-
-        <a class="method-permalink" href="#to_f32%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="to_f32&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_f32(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_f32</strong>(*args, **options, &block)
@@ -4008,12 +4369,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_f32?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_f32(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>to_f32?</strong>(*args, **options, &block)
+        def <strong>to_f32</strong>(*args, **options)
 
-        <a class="method-permalink" href="#to_f32%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#to_f32%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -4022,7 +4383,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_f32?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_f32?(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_f32?</strong>(*args, **options)
@@ -4036,12 +4397,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_f64&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_f32?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>to_f64</strong>(*args, **options, &block)
+        def <strong>to_f32?</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#to_f64%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#to_f32%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -4050,7 +4411,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_f64&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_f64(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_f64</strong>(*args, **options)
@@ -4064,7 +4425,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_f64?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_f64(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_f64</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#to_f64%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_f64?(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_f64?</strong>(*args, **options)
@@ -4078,7 +4453,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_f64?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_f64?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_f64?</strong>(*args, **options, &block)
@@ -4092,7 +4467,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_f?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_f?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_f?</strong>(*args, **options, &block)
@@ -4106,7 +4481,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_f?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_f?(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_f?</strong>(*args, **options)
@@ -4120,21 +4495,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_f_impl&#40;*args,**options,&amp;block&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>to_f_impl</strong>(*args, **options, &block)
-
-        <a class="method-permalink" href="#to_f_impl%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="to_f_impl&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_f_impl(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_f_impl</strong>(*args, **options)
@@ -4148,12 +4509,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_f_impl(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>to_i</strong>(*args, **options)
+        def <strong>to_f_impl</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#to_i%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#to_f_impl%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -4162,7 +4523,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_i(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_i</strong>(*args, **options, &block)
@@ -4176,7 +4537,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i16&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_i(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_i</strong>(*args, **options)
+
+        <a class="method-permalink" href="#to_i%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_i16(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_i16</strong>(*args, **options)
@@ -4190,7 +4565,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i16&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_i16(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_i16</strong>(*args, **options, &block)
@@ -4204,21 +4579,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i16?&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>to_i16?</strong>(*args, **options)
-
-        <a class="method-permalink" href="#to_i16%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="to_i16?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_i16?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_i16?</strong>(*args, **options, &block)
@@ -4232,7 +4593,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i32&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_i16?(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_i16?</strong>(*args, **options)
+
+        <a class="method-permalink" href="#to_i16%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_i32(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_i32</strong>(*args, **options)
@@ -4246,7 +4621,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i32&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_i32(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_i32</strong>(*args, **options, &block)
@@ -4260,7 +4635,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i32?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_i32?(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_i32?</strong>(*args, **options)
@@ -4274,7 +4649,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i32?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_i32?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_i32?</strong>(*args, **options, &block)
@@ -4288,21 +4663,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i64&#40;*args,**options,&amp;block&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>to_i64</strong>(*args, **options, &block)
-
-        <a class="method-permalink" href="#to_i64%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="to_i64&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_i64(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_i64</strong>(*args, **options)
@@ -4316,7 +4677,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i64?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_i64(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_i64</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#to_i64%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_i64?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_i64?</strong>(*args, **options, &block)
@@ -4330,7 +4705,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i64?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_i64?(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_i64?</strong>(*args, **options)
@@ -4344,7 +4719,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i8&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_i8(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_i8</strong>(*args, **options, &block)
@@ -4358,7 +4733,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i8&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_i8(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_i8</strong>(*args, **options)
@@ -4372,7 +4747,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i8?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_i8?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_i8?</strong>(*args, **options, &block)
@@ -4386,7 +4761,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i8?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_i8?(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_i8?</strong>(*args, **options)
@@ -4400,7 +4775,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_i?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_i?</strong>(*args, **options, &block)
@@ -4414,7 +4789,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_i?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_i?(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_i?</strong>(*args, **options)
@@ -4428,21 +4803,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_s&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>to_s</strong>(*args, **options)
-
-        <a class="method-permalink" href="#to_s%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="to_s&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_s(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_s</strong>(*args, **options, &block)
@@ -4456,12 +4817,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_slice&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_s(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>to_slice</strong>(*args, **options)
+        def <strong>to_s</strong>(*args, **options)
 
-        <a class="method-permalink" href="#to_slice%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#to_s%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -4470,7 +4831,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_slice&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_slice(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_slice</strong>(*args, **options, &block)
@@ -4484,12 +4845,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u16&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_slice(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>to_u16</strong>(*args, **options)
+        def <strong>to_slice</strong>(*args, **options)
 
-        <a class="method-permalink" href="#to_u16%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#to_slice%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -4498,7 +4859,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u16&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_u16(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_u16</strong>(*args, **options, &block)
@@ -4512,12 +4873,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u16?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_u16(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>to_u16?</strong>(*args, **options)
+        def <strong>to_u16</strong>(*args, **options)
 
-        <a class="method-permalink" href="#to_u16%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#to_u16%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -4526,7 +4887,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u16?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_u16?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_u16?</strong>(*args, **options, &block)
@@ -4540,7 +4901,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u32&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_u16?(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_u16?</strong>(*args, **options)
+
+        <a class="method-permalink" href="#to_u16%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_u32(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_u32</strong>(*args, **options)
@@ -4554,7 +4929,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u32&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_u32(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_u32</strong>(*args, **options, &block)
@@ -4568,21 +4943,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u32?&#40;*args,**options,&amp;block&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>to_u32?</strong>(*args, **options, &block)
-
-        <a class="method-permalink" href="#to_u32%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="to_u32?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_u32?(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_u32?</strong>(*args, **options)
@@ -4596,7 +4957,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u64&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_u32?(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_u32?</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#to_u32%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_u64(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_u64</strong>(*args, **options)
@@ -4610,7 +4985,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u64&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_u64(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_u64</strong>(*args, **options, &block)
@@ -4624,7 +4999,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u64?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_u64?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_u64?</strong>(*args, **options, &block)
@@ -4638,7 +5013,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u64?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_u64?(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_u64?</strong>(*args, **options)
@@ -4652,7 +5027,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u64_info&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_u64_info(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_u64_info</strong>(*args, **options, &block)
@@ -4666,7 +5041,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u64_info&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_u64_info(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_u64_info</strong>(*args, **options)
@@ -4680,21 +5055,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u8&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>to_u8</strong>(*args, **options)
-
-        <a class="method-permalink" href="#to_u8%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="to_u8&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_u8(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_u8</strong>(*args, **options, &block)
@@ -4708,12 +5069,12 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u8?&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_u8(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>to_u8?</strong>(*args, **options)
+        def <strong>to_u8</strong>(*args, **options)
 
-        <a class="method-permalink" href="#to_u8%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#to_u8%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -4722,7 +5083,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_u8?&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_u8?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_u8?</strong>(*args, **options, &block)
@@ -4736,7 +5097,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_unsafe&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="to_u8?(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_u8?</strong>(*args, **options)
+
+        <a class="method-permalink" href="#to_u8%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_unsafe(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>to_unsafe</strong>(*args, **options)
@@ -4750,7 +5125,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_unsafe&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="to_unsafe(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>to_unsafe</strong>(*args, **options, &block)
@@ -4764,7 +5139,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="tr&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="tr(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>tr</strong>(*args, **options)
@@ -4778,7 +5153,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="tr&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="tr(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>tr</strong>(*args, **options, &block)
@@ -4792,21 +5167,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="underscore&#40;*args,**options&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>underscore</strong>(*args, **options)
-
-        <a class="method-permalink" href="#underscore%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="underscore&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="underscore(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>underscore</strong>(*args, **options, &block)
@@ -4820,7 +5181,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="unsafe_byte_at&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="underscore(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>underscore</strong>(*args, **options)
+
+        <a class="method-permalink" href="#underscore%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unsafe_byte_at(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>unsafe_byte_at</strong>(*args, **options)
@@ -4834,7 +5209,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="unsafe_byte_at&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="unsafe_byte_at(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>unsafe_byte_at</strong>(*args, **options, &block)
@@ -4848,7 +5223,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="unsafe_byte_slice&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="unsafe_byte_slice(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>unsafe_byte_slice</strong>(*args, **options)
@@ -4862,7 +5237,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="unsafe_byte_slice&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="unsafe_byte_slice(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>unsafe_byte_slice</strong>(*args, **options, &block)
@@ -4876,7 +5251,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="unsafe_byte_slice_string&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="unsafe_byte_slice_string(*args,**options)-instance-method">
       <div class="signature">
         
         def <strong>unsafe_byte_slice_string</strong>(*args, **options)
@@ -4890,7 +5265,7 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="unsafe_byte_slice_string&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="unsafe_byte_slice_string(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>unsafe_byte_slice_string</strong>(*args, **options, &block)
@@ -4904,7 +5279,21 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="upcase&#40;*args,**options,&amp;block&#41;-instance-method">
+    <div class="entry-detail" id="upcase(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>upcase</strong>(*args, **options)
+
+        <a class="method-permalink" href="#upcase%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="upcase(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
         def <strong>upcase</strong>(*args, **options, &block)
@@ -4918,12 +5307,26 @@ All methods are delegated to <code>String</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="upcase&#40;*args,**options&#41;-instance-method">
+    <div class="entry-detail" id="valid_encoding?(*args,**options,&amp;block)-instance-method">
       <div class="signature">
         
-        def <strong>upcase</strong>(*args, **options)
+        def <strong>valid_encoding?</strong>(*args, **options, &block)
 
-        <a class="method-permalink" href="#upcase%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#valid_encoding%3F%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="valid_encoding?(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>valid_encoding?</strong>(*args, **options)
+
+        <a class="method-permalink" href="#valid_encoding%3F%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -4943,7 +5346,7 @@ All methods are delegated to <code>String</code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/admiral/string_value.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/string_value.cr#L4" target="_blank">View source</a>]
         
       </div>
     </div>

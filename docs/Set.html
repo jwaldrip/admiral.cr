@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta id="repository-name" content="github.com/jwaldrip/admiral.cr">
@@ -30,8 +30,18 @@
       
     </li>
   
-  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command" data-name="admiral::command">
+  <li class="parent " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command" data-name="admiral::command">
       <a href="Admiral/Command.html">Command</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command/MissingArgument" data-name="admiral::command::missingargument">
+      <a href="Admiral/Command/MissingArgument.html">MissingArgument</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -79,11 +89,11 @@
 
   <h2>Overview</h2>
 
-  <p>Set implements a collection of unordered values with no duplicates.</p>
+  <p><code><a href="Set.html">Set</a></code> implements a collection of unordered values with no duplicates.</p>
 
 <p>An <code>Enumerable</code> object can be converted to <code><a href="Set.html">Set</a></code> using the <code>#to_set</code> method.</p>
 
-<p>Set uses <code>Hash</code> as storage, so you must note the following points:</p>
+<p><code><a href="Set.html">Set</a></code> uses <code>Hash</code> as storage, so you must note the following points:</p>
 
 <ul><li>Equality of elements is determined according to <code>Object#==</code> and <code>Object#hash</code>.</li><li><code><a href="Set.html">Set</a></code> assumes that the identity of each element does not change while it is stored. Modifying an element of a set will render the set to an unreliable state.</li></ul>
 
@@ -92,12 +102,12 @@
 <pre><code>s1 <span class="o">=</span> <span class="t">Set</span>{<span class="n">1</span>, <span class="n">2</span>}
 s2 <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>].to_set
 s3 <span class="o">=</span> <span class="t">Set</span>.<span class="k">new</span> [<span class="n">1</span>, <span class="n">2</span>]
-s1 <span class="o">==</span> s2 <span class="c"># &#61;&gt; true</span>
-s1 <span class="o">==</span> s3 <span class="c"># &#61;&gt; true</span>
+s1 <span class="o">==</span> s2 <span class="c"># =&gt; true</span>
+s1 <span class="o">==</span> s3 <span class="c"># =&gt; true</span>
 s1.add(<span class="n">2</span>)
-s1.merge!([<span class="n">6</span>, <span class="n">8</span>])
-s1.subset? s2 <span class="c"># &#61;&gt; false</span>
-s2.subset? s1 <span class="c"># &#61;&gt; true</span></code></pre>
+s1.concat([<span class="n">6</span>, <span class="n">8</span>])
+s1.subset? s2 <span class="c"># =&gt; false</span>
+s2.subset? s1 <span class="c"># =&gt; true</span></code></pre>
 
 
 
@@ -124,7 +134,7 @@ s2.subset? s1 <span class="c"># &#61;&gt; true</span></code></pre>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/core_ext/types.cr#L7" target="_blank">core_ext/types.cr</a>
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/core_ext/types.cr#L7" target="_blank">core_ext/types.cr</a>
     
     <br/>
   
@@ -133,7 +143,7 @@ s2.subset? s1 <span class="c"># &#61;&gt; true</span></code></pre>
 
 
 
-  <h2>Class Method Summary</h2>
+  <h2>Constructors</h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
@@ -149,6 +159,8 @@ s2.subset? s1 <span class="c"># &#61;&gt; true</span></code></pre>
 
 
 
+
+
 <div class="methods-inherited">
   
     
@@ -157,10 +169,6 @@ s2.subset? s1 <span class="c"># &#61;&gt; true</span></code></pre>
     
 
 
-  
-    
-
-
     
 
 
@@ -171,6 +179,9 @@ s2.subset? s1 <span class="c"># &#61;&gt; true</span></code></pre>
     
 
 
+    
+
+
   
     
 
@@ -178,7 +189,23 @@ s2.subset? s1 <span class="c"># &#61;&gt; true</span></code></pre>
     
 
 
+    
+
+
   
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
     
 
 
@@ -189,9 +216,9 @@ s2.subset? s1 <span class="c"># &#61;&gt; true</span></code></pre>
 </div>
 
 
-  <h2>Class Method Detail</h2>
+  <h2>Constructor Detail</h2>
   
-    <div class="entry-detail" id="new&#40;argv:Admiral::ArgumentList&#41;-class-method">
+    <div class="entry-detail" id="new(argv:Admiral::ArgumentList)-class-method">
       <div class="signature">
         
         def self.<strong>new</strong>(argv : <a href="Admiral/ArgumentList.html">Admiral::ArgumentList</a>)
@@ -202,11 +229,13 @@ s2.subset? s1 <span class="c"># &#61;&gt; true</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/core_ext/types.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/core_ext/types.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
   
+
+
 
 
 

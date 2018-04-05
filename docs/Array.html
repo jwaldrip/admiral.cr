@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta id="repository-name" content="github.com/jwaldrip/admiral.cr">
@@ -30,8 +30,18 @@
       
     </li>
   
-  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command" data-name="admiral::command">
+  <li class="parent " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command" data-name="admiral::command">
       <a href="Admiral/Command.html">Command</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/jwaldrip/admiral.cr/Admiral/Command/MissingArgument" data-name="admiral::command::missingargument">
+      <a href="Admiral/Command/MissingArgument.html">MissingArgument</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -85,11 +95,11 @@
 relative to the end of the array: -1 indicates the last element,
 -2 is the next to last element, and so on.</p>
 
-<p>An <code><a href="Array.html">Array</a></code> can be created using the usual <code><a href="Array.html#new%28argv%3AAdmiral%3A%3AArgumentList%29-class-method">.new</a></code> method (several are provided), or with an array literal:</p>
+<p>An <code><a href="Array.html">Array</a></code> can be created using the usual <code>new</code> method (several are provided), or with an array literal:</p>
 
-<pre><code><span class="t">Array</span>(<span class="t">Int32</span>).<span class="k">new</span>  <span class="c"># &#61;&gt; &#91;&#93;</span>
-[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]         <span class="c"># Array&#40;Int32&#41;</span>
-[<span class="n">1</span>, <span class="s">&quot;hello&quot;</span>, <span class="s">'x'</span>] <span class="c"># Array&#40;Int32 | String | Char&#41;</span></code></pre>
+<pre><code><span class="t">Array</span>(<span class="t">Int32</span>).<span class="k">new</span>  <span class="c"># =&gt; []</span>
+[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]         <span class="c"># Array(Int32)</span>
+[<span class="n">1</span>, <span class="s">&quot;hello&quot;</span>, <span class="s">'x'</span>] <span class="c"># Array(Int32 | String | Char)</span></code></pre>
 
 <p>An <code><a href="Array.html">Array</a></code> can have mixed types, meaning T will be a union of types, but these are determined
 when the array is created, either by specifying T or by using an array literal. In the latter
@@ -97,7 +107,7 @@ case, T will be set to the union of the array literal elements' types.</p>
 
 <p>When creating an empty array you must always specify T:</p>
 
-<pre><code><span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span> <span class="c"># same as Array&#40;Int32&#41;</span>
+<pre><code><span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span> <span class="c"># same as Array(Int32)</span>
 <span class="o">[]</span>          <span class="c"># syntax error</span></code></pre>
 
 <p>An <code><a href="Array.html">Array</a></code> is implemented using an internal buffer of some capacity
@@ -105,10 +115,10 @@ and is reallocated when elements are pushed to it when more capacity
 is needed. This is normally known as a <a href="http://en.wikipedia.org/wiki/Dynamic_array" target="_blank">dynamic array</a>.</p>
 
 <p>You can use a special array literal syntax with other types too, as long as they define an argless
-<code><a href="Array.html#new%28argv%3AAdmiral%3A%3AArgumentList%29-class-method">.new</a></code> method and a <code><<</code> method. <code><a href="Set.html">Set</a></code> is one such type:</p>
+<code>new</code> method and a <code><<</code> method. <code><a href="Set.html">Set</a></code> is one such type:</p>
 
-<pre><code>set <span class="o">=</span> <span class="t">Set</span>{<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>} <span class="c"># &#61;&gt; Set&#123;1, 2, 3&#125;</span>
-set.<span class="k">class</span>          <span class="c"># &#61;&gt; Set&#40;Int32&#41;</span></code></pre>
+<pre><code>set <span class="o">=</span> <span class="t">Set</span>{<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>} <span class="c"># =&gt; Set{1, 2, 3}</span>
+set.<span class="k">class</span>          <span class="c"># =&gt; Set(Int32)</span></code></pre>
 
 <p>The above is the same as this:</p>
 
@@ -142,7 +152,7 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/core_ext/types.cr#L1" target="_blank">core_ext/types.cr</a>
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/core_ext/types.cr#L1" target="_blank">core_ext/types.cr</a>
     
     <br/>
   
@@ -151,7 +161,7 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
 
 
 
-  <h2>Class Method Summary</h2>
+  <h2>Constructors</h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
@@ -167,6 +177,8 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
 
 
 
+
+
 <div class="methods-inherited">
   
     
@@ -175,10 +187,6 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
     
 
 
-  
-    
-
-
     
 
 
@@ -186,10 +194,6 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
     
 
 
-    
-
-
-  
     
 
 
@@ -203,7 +207,33 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
     
 
 
+    
+
+
   
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
     
 
 
@@ -214,9 +244,9 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
 </div>
 
 
-  <h2>Class Method Detail</h2>
+  <h2>Constructor Detail</h2>
   
-    <div class="entry-detail" id="new&#40;argv:Admiral::ArgumentList&#41;-class-method">
+    <div class="entry-detail" id="new(argv:Admiral::ArgumentList)-class-method">
       <div class="signature">
         
         def self.<strong>new</strong>(argv : <a href="Admiral/ArgumentList.html">Admiral::ArgumentList</a>)
@@ -227,11 +257,13 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/d318bfc80824fac22b321de08e24f7254e1b1d22/src/core_ext/types.cr#L2" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/core_ext/types.cr#L2" target="_blank">View source</a>]
         
       </div>
     </div>
   
+
+
 
 
 
