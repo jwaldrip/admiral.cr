@@ -13,6 +13,8 @@ abstract class Admiral::Command
         parse_flags!(validate: true)
         command = arguments.get?(:_COMMAND_)
         next sub(command.to_s, arguments.@__rest__) if command
+        puts_version
+        puts_help
         run
       end
     end

@@ -13,6 +13,9 @@ abstract class Admiral::Command
       ].flat_map(&.keys).map(&.size).sort[-1]? || 0
     end
 
+    protected def puts_help
+    end
+
     private def help_usage
       String.build do |str|
         # Add Usage
@@ -98,14 +101,10 @@ abstract class Admiral::Command
                   long: {{flag}},
                   short: {{short}}
 
-      macro finished
-        protected def parse_and_run : Nil
-          if flags.__help__
-            puts help
-            exit
-          else
-            previous_def
-          end
+      protected def puts_help : Nil
+        if flags.__help__
+          puts help
+          exit
         end
       end
     {% end %}
