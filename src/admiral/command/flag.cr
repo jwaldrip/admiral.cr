@@ -266,7 +266,8 @@ abstract class Admiral::Command
             {% end %}
             end
           {% if is_bool && default == true %}
-            elsif flag == {{falsey}}
+            {{long = falsey}}
+            elsif flag == {{long}}
               del = command.@argv.delete_at index
               if value = arg.split("=")[1]?
                 values << ::Admiral::StringValue.new((!Bool.new(::Admiral::StringValue.new(value))).to_s)
