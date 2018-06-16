@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.24.2">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "";
+</script>
+
   <meta id="repository-name" content="github.com/jwaldrip/admiral.cr">
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="js/doc.js"></script>
   <title>Array(T) - github.com/jwaldrip/admiral.cr</title>
 </head>
 <body>
 
-<div id="types-list">
-  <div id="search-box">
-    <input type="search" id="search-input" placeholder="Search...">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
   </div>
 
-  <ul>
-    <li><a href="index.html">README</a></li>
-  </ul>
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
 
-  <ul>
+  <div class="types-list">
+    <ul>
   
   <li class="parent " data-id="github.com/jwaldrip/admiral.cr/Admiral" data-name="admiral">
       <a href="Admiral.html">Admiral</a>
@@ -72,9 +88,11 @@
   
 </ul>
 
+  </div>
 </div>
 
-<div id="main-content">
+
+<div class="main-content">
 <h1 class="type-name">
 
   <span class="kind">class</span> Array(T)
@@ -99,7 +117,7 @@ relative to the end of the array: -1 indicates the last element,
 
 <pre><code><span class="t">Array</span>(<span class="t">Int32</span>).<span class="k">new</span>  <span class="c"># =&gt; []</span>
 [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]         <span class="c"># Array(Int32)</span>
-[<span class="n">1</span>, <span class="s">&quot;hello&quot;</span>, <span class="s">'x'</span>] <span class="c"># Array(Int32 | String | Char)</span></code></pre>
+[<span class="n">1</span>, <span class="s">&quot;hello&quot;</span>, <span class="s">&#39;x&#39;</span>] <span class="c"># Array(Int32 | String | Char)</span></code></pre>
 
 <p>An <code><a href="Array.html">Array</a></code> can have mixed types, meaning T will be a union of types, but these are determined
 when the array is created, either by specifying T or by using an array literal. In the latter
@@ -123,9 +141,9 @@ set.<span class="k">class</span>          <span class="c"># =&gt; Set(Int32)</sp
 <p>The above is the same as this:</p>
 
 <pre><code>set <span class="o">=</span> <span class="t">Set</span>(<span class="k">typeof</span>(<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>)).<span class="k">new</span>
-set <span class="o"><<</span> <span class="n">1</span>
-set <span class="o"><<</span> <span class="n">2</span>
-set <span class="o"><<</span> <span class="n">3</span></code></pre>
+set <span class="o">&lt;&lt;</span> <span class="n">1</span>
+set <span class="o">&lt;&lt;</span> <span class="n">2</span>
+set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
 
 
 
@@ -152,7 +170,7 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/core_ext/types.cr#L1" target="_blank">core_ext/types.cr</a>
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/core_ext/types.cr#L1" target="_blank">core_ext/types.cr</a>
     
     <br/>
   
@@ -257,7 +275,7 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/core_ext/types.cr#L2" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/core_ext/types.cr#L2" target="_blank">View source</a>]
         
       </div>
     </div>

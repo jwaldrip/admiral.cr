@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.24.2">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
   <meta id="repository-name" content="github.com/jwaldrip/admiral.cr">
-  <link href="../css/style.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="../js/doc.js"></script>
   <title>Admiral::Command - github.com/jwaldrip/admiral.cr</title>
 </head>
 <body>
 
-<div id="types-list">
-  <div id="search-box">
-    <input type="search" id="search-input" placeholder="Search...">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
   </div>
 
-  <ul>
-    <li><a href="../index.html">README</a></li>
-  </ul>
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
 
-  <ul>
+  <div class="types-list">
+    <ul>
   
   <li class="parent open current" data-id="github.com/jwaldrip/admiral.cr/Admiral" data-name="admiral">
       <a href="../Admiral.html">Admiral</a>
@@ -72,9 +88,11 @@
   
 </ul>
 
+  </div>
 </div>
 
-<div id="main-content">
+
+<div class="main-content">
 <h1 class="type-name">
 
   <span class="kind">abstract class</span> Admiral::Command
@@ -103,42 +121,42 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/argument.cr#L1" target="_blank">admiral/command/argument.cr</a>
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/argument.cr#L1" target="_blank">admiral/command/argument.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/flag.cr#L3" target="_blank">admiral/command/flag.cr</a>
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/flag.cr#L3" target="_blank">admiral/command/flag.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/help.cr#L1" target="_blank">admiral/command/help.cr</a>
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/help.cr#L1" target="_blank">admiral/command/help.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/rescue.cr#L1" target="_blank">admiral/command/rescue.cr</a>
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/rescue.cr#L1" target="_blank">admiral/command/rescue.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/runner.cr#L1" target="_blank">admiral/command/runner.cr</a>
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/runner.cr#L1" target="_blank">admiral/command/runner.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/sub_command.cr#L1" target="_blank">admiral/command/sub_command.cr</a>
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/sub_command.cr#L1" target="_blank">admiral/command/sub_command.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/version.cr#L1" target="_blank">admiral/command/version.cr</a>
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/version.cr#L1" target="_blank">admiral/command/version.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command.cr#L4" target="_blank">admiral/command.cr</a>
+      <a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command.cr#L4" target="_blank">admiral/command.cr</a>
     
     <br/>
   
@@ -308,8 +326,6 @@
       <li class="entry-summary">
         <a href="#define_version%28string%2Cflag%3Dversion%2Cshort%3Dnil%29-macro" class="signature"><strong>define_version</strong>(string, flag = version, short = nil)</a>
         
-          <div class="summary"><p>Defines a version for the command.</p></div>
-        
       </li>
     
       <li class="entry-summary">
@@ -373,7 +389,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command.cr#L35" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command.cr#L35" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -391,7 +407,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command.cr#L40" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -409,7 +425,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command.cr#L45" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command.cr#L45" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -430,7 +446,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -456,7 +472,7 @@ You can also access the remaning arguments using <code>.arguments[index]</code>.
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/argument.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/argument.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -474,7 +490,7 @@ You can also access the remaning arguments using <code>.arguments[index]</code>.
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command.cr#L85" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -494,7 +510,7 @@ You can also access the remaning arguments using <code>.arguments[index]</code>.
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/flag.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/flag.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -512,7 +528,7 @@ You can also access the remaning arguments using <code>.arguments[index]</code>.
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command.cr#L108" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command.cr#L108" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -528,7 +544,7 @@ You can also access the remaning arguments using <code>.arguments[index]</code>.
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command.cr#L93" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -546,7 +562,7 @@ You can also access the remaning arguments using <code>.arguments[index]</code>.
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command.cr#L58" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command.cr#L58" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -564,7 +580,7 @@ You can also access the remaning arguments using <code>.arguments[index]</code>.
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command.cr#L67" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -582,7 +598,7 @@ You can also access the remaning arguments using <code>.arguments[index]</code>.
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command.cr#L99" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command.cr#L99" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -600,7 +616,7 @@ You can also access the remaning arguments using <code>.arguments[index]</code>.
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -618,7 +634,7 @@ You can also access the remaning arguments using <code>.arguments[index]</code>.
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command.cr#L76" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command.cr#L76" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -636,7 +652,7 @@ You can also access the remaning arguments using <code>.arguments[index]</code>.
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -654,7 +670,7 @@ You can also access the remaning arguments using <code>.arguments[index]</code>.
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/sub_command.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/sub_command.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -678,18 +694,18 @@ You can also access the remaning arguments using <code>.arguments[index]</code>.
 
 <p>Simple arguments are denoted only by a name and will compile to returning a <code>String | Nil</code>.</p>
 
-<pre><code class='language-crystal'><span class="c"># hello.cr</span>
-<span class="k">class</span> <span class="t">Hello</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+<pre><code class="language-crystal"><span class="c"># hello.cr</span>
+<span class="k">class</span> <span class="t">Hello</span> <span class="o">&lt;</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
   define_argument planet
 
   <span class="k">def</span> <span class="m">run</span>
-    puts <span class="s">&quot;Hello </span><span class="i">#{</span></span>arguments.planet || <span class="s">&quot;World&quot;</span><span class="s"><span class="i">}</span>&quot;</span>
+    puts <span class="s">&quot;Hello </span><span class="i">#{</span>arguments.planet || <span class="s">&quot;World&quot;</span><span class="i">}</span><span class="s">&quot;</span>
   <span class="k">end</span>
 <span class="k">end</span>
 
 <span class="t">HelloWorld</span>.run</code></pre>
 
-<pre><code class='language-sh'>$ crystal build ./world.cr
+<pre><code class="language-sh">$ crystal build ./world.cr
 $ ./hello
 Hello World
 $ ./hello Alderaan
@@ -701,8 +717,8 @@ Hello Alderaan</code></pre>
 calling <code>arguments.arg_name</code>. By default arguments are not required and will return a
 <code>Union</code> including the type and <code>Nil</code>.</p>
 
-<pre><code class='language-crystal'><span class="c"># hello_world.cr</span>
-<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+<pre><code class="language-crystal"><span class="c"># hello_world.cr</span>
+<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o">&lt;</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
   define_argument number_of_greetings : <span class="t">UInt32</span>, default: <span class="n">1_u32</span>
 
   <span class="k">def</span> <span class="m">run</span>
@@ -714,7 +730,7 @@ calling <code>arguments.arg_name</code>. By default arguments are not required a
 
 <span class="t">HelloWorld</span>.run</code></pre>
 
-<pre><code class='language-sh'>$ crystal build ./hello_world.cr
+<pre><code class="language-sh">$ crystal build ./hello_world.cr
 $ ./hello_world  3
 Hello World
 Hello World
@@ -732,8 +748,8 @@ To make any <code>Class</code> or <code>Struct</code> assignable as a argument, 
 
 <h3>Additional Argument Options</h3>
 
-<pre><code class='language-crystal'><span class="c"># hello_world.cr</span>
-<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+<pre><code class="language-crystal"><span class="c"># hello_world.cr</span>
+<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o">&lt;</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
   define_argument number_of_greetings : <span class="t">UInt32</span>,
     description: <span class="s">&quot;The number of times to greet the world&quot;</span>, <span class="c"># The description of the argument to be used in auto generated help.</span>
     default: <span class="n">1_u32</span>,                                        <span class="c"># The default value of the argument.</span>
@@ -754,7 +770,7 @@ Required arguments cannot be defined after optional arguments.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/argument.cr#L153" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/argument.cr#L153" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -777,18 +793,18 @@ defining the flag.</p>
 
 <p>Simple flags are denoted only by a name and will compile to returning a <code>String | Nil</code>.</p>
 
-<pre><code class='language-crystal'><span class="c"># hello_world.cr</span>
-<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+<pre><code class="language-crystal"><span class="c"># hello_world.cr</span>
+<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o">&lt;</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
   define_flag planet
 
   <span class="k">def</span> <span class="m">run</span>
-    puts <span class="s">&quot;Hello </span><span class="i">#{</span></span>flags.planet || <span class="s">&quot;World&quot;</span><span class="s"><span class="i">}</span>&quot;</span>
+    puts <span class="s">&quot;Hello </span><span class="i">#{</span>flags.planet || <span class="s">&quot;World&quot;</span><span class="i">}</span><span class="s">&quot;</span>
   <span class="k">end</span>
 <span class="k">end</span>
 
 <span class="t">HelloWorld</span>.run</code></pre>
 
-<pre><code class='language-sh'>$ crystal build ./hello_world.cr
+<pre><code class="language-sh">$ crystal build ./hello_world.cr
 $ ./hello_world
 Hello World
 $ ./hello_world --planet Alderaan
@@ -800,8 +816,8 @@ Hello Alderaan</code></pre>
 calling <code>flags.flag_name</code>. By default flags are not required and will return a
 <code>Union</code> including the type and <code>Nil</code>.</p>
 
-<pre><code class='language-crystal'><span class="c"># hello_world.cr</span>
-<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+<pre><code class="language-crystal"><span class="c"># hello_world.cr</span>
+<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o">&lt;</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
   define_flag number_of_greetings : <span class="t">UInt32</span>, default: <span class="n">1_u32</span>, long: times
 
   <span class="k">def</span> <span class="m">run</span>
@@ -813,7 +829,7 @@ calling <code>flags.flag_name</code>. By default flags are not required and will
 
 <span class="t">HelloWorld</span>.run</code></pre>
 
-<pre><code class='language-sh'>$ crystal build ./hello_world.cr
+<pre><code class="language-sh">$ crystal build ./hello_world.cr
 $ ./hello_world  --times 3
 Hello World
 Hello World
@@ -835,28 +851,28 @@ To make any <code>Class</code> or <code>Struct</code> assignable as a flag, defi
 example with a defined flag with <code><a href="../Array.html">Array</a>(String)</code> would return an array of <code>String</code>
 values when calling the flag.</p>
 
-<pre><code class='language-crystal'><span class="c"># hello_world.cr</span>
-<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+<pre><code class="language-crystal"><span class="c"># hello_world.cr</span>
+<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o">&lt;</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
   define_flag citizens : <span class="t">Array</span>(<span class="t">String</span>), long: citizen
 
   <span class="k">def</span> <span class="m">run</span>
     flags.citizen.each <span class="k">do</span> <span class="o">|</span>citizen<span class="o">|</span>
-      puts <span class="s">&quot;Hello </span><span class="i">#{</span></span>citizen<span class="s"><span class="i">}</span>, citizen of Earth!&quot;</span>
+      puts <span class="s">&quot;Hello </span><span class="i">#{</span>citizen<span class="i">}</span><span class="s">, citizen of Earth!&quot;</span>
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
 
 <span class="t">HelloWorld</span>.run</code></pre>
 
-<pre><code class='language-sh'>$ crystal build ./hello_world.cr
+<pre><code class="language-sh">$ crystal build ./hello_world.cr
 $ ./hello_world  --citizen Jim --citizen Harry
 Hello Jim, citizen of Earth!
 Hello Harry, citizen of Earth!</code></pre>
 
 <h3>Additional Flag Options</h3>
 
-<pre><code class='language-crystal'><span class="c"># hello_world.cr</span>
-<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+<pre><code class="language-crystal"><span class="c"># hello_world.cr</span>
+<span class="k">class</span> <span class="t">HelloWorld</span> <span class="o">&lt;</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
   define_flag number_of_greetings : <span class="t">UInt32</span>,
     description: <span class="s">&quot;The number of times to greet the world&quot;</span>, <span class="c"># The description of the flag to be used in auto generated help.</span>
     default: <span class="n">1_u32</span>,                                        <span class="c"># The default value of the flag.</span>
@@ -876,7 +892,7 @@ Hello Harry, citizen of Earth!</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/flag.cr#L182" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/flag.cr#L183" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -892,7 +908,7 @@ Hello Harry, citizen of Earth!</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/help.cr#L92" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/help.cr#L95" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -907,17 +923,17 @@ Hello Harry, citizen of Earth!</code></pre>
       
         <div class="doc"><p>Adds a help to the command.</p>
 
-<pre><code class='language-crystal'><span class="c"># hello.cr</span>
-<span class="k">class</span> <span class="t">Hello</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+<pre><code class="language-crystal"><span class="c"># hello.cr</span>
+<span class="k">class</span> <span class="t">Hello</span> <span class="o">&lt;</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
   define_help description: <span class="s">&quot;A command that says hello&quot;</span>
   define_argument planet, default: <span class="s">&quot;World&quot;</span>
 
   <span class="k">def</span> <span class="m">run</span>
-    puts <span class="s">&quot;Hello </span><span class="i">#{</span></span>arguments.planet<span class="s"><span class="i">}</span>&quot;</span>
+    puts <span class="s">&quot;Hello </span><span class="i">#{</span>arguments.planet<span class="i">}</span><span class="s">&quot;</span>
   <span class="k">end</span>
 <span class="k">end</span></code></pre>
 
-<pre><code class='language-sh'>$ crystal build ./hello.cr
+<pre><code class="language-sh">$ crystal build ./hello.cr
 $ ./hello --help
 Usage:
   ./hello [flags...] &lt;planet> [arg...]
@@ -934,8 +950,8 @@ Arguments:
 
 <p>You can also generate your own custom help text.</p>
 
-<pre><code class='language-crystal'><span class="c"># hello.cr</span>
-<span class="k">class</span> <span class="t">Hello</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+<pre><code class="language-crystal"><span class="c"># hello.cr</span>
+<span class="k">class</span> <span class="t">Hello</span> <span class="o">&lt;</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
   define_help custom: <span class="s">&quot;This is the help for my command&quot;</span>
 
   <span class="k">def</span> <span class="m">run</span>
@@ -945,7 +961,7 @@ Arguments:
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/help.cr#L161" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/help.cr#L160" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -958,24 +974,10 @@ Arguments:
         <a class="method-permalink" href="#define_version%28string%2Cflag%3Dversion%2Cshort%3Dnil%29-macro">#</a>
       </div>
       
-        <div class="doc"><p>Defines a version for the command.</p>
-
-<pre><code class='language-crystal'><span class="c"># hello.cr</span>
-<span class="k">class</span> <span class="t">Hello</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
-  define_version <span class="s">&quot;1.0.0&quot;</span>
-
-  <span class="k">def</span> <span class="m">run</span>
-  <span class="k">end</span>
-<span class="k">end</span></code></pre>
-
-<pre><code class='language-sh'>$ crystal build ./hello.cr
-$ hello --version
-1.0.0</code></pre></div>
-      
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/version.cr#L19" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/version.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -990,15 +992,15 @@ $ hello --version
       
         <div class="doc"><p>Registers a subcommand.</p>
 
-<pre><code class='language-crystal'><span class="c"># hello.cr</span>
-<span class="k">class</span> <span class="t">Hello</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
-  <span class="k">class</span> <span class="t">Planetary</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+<pre><code class="language-crystal"><span class="c"># hello.cr</span>
+<span class="k">class</span> <span class="t">Hello</span> <span class="o">&lt;</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+  <span class="k">class</span> <span class="t">Planetary</span> <span class="o">&lt;</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
     <span class="k">def</span> <span class="m">run</span>
       puts <span class="s">&quot;Hello World&quot;</span>
     <span class="k">end</span>
   <span class="k">end</span>
 
-  <span class="k">class</span> <span class="t">Municipality</span> <span class="o"><</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
+  <span class="k">class</span> <span class="t">Municipality</span> <span class="o">&lt;</span> <span class="t">Admiral</span><span class="t">::</span><span class="t">Command</span>
     <span class="k">def</span> <span class="m">run</span>
       puts <span class="s">&quot;Hello Denver&quot;</span>
     <span class="k">end</span>
@@ -1014,7 +1016,7 @@ $ hello --version
 
 <span class="t">HelloWorld</span>.run</code></pre>
 
-<pre><code class='language-sh'>$ crystal build ./hello.cr
+<pre><code class="language-sh">$ crystal build ./hello.cr
 $ ./hello planet
 Hello World
 $ ./hello city
@@ -1023,7 +1025,7 @@ Hello Denver</code></pre></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/sub_command.cr#L82" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/sub_command.cr#L82" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1039,7 +1041,7 @@ Hello Denver</code></pre></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/rescue.cr#L2" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/rescue.cr#L2" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1055,7 +1057,7 @@ Hello Denver</code></pre></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/jwaldrip/admiral.cr/blob/61e95bb5360bb07c2dfce5841f4742139eb1cd23/src/admiral/command/rescue.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/jwaldrip/admiral.cr/blob/07dde44b2d499c0a941b8da6270e1eac0baadcc2/src/admiral/command/rescue.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
