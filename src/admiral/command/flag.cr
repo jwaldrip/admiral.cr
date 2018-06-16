@@ -17,9 +17,10 @@ abstract class Admiral::Command
       end
 
       def validate!(command)
-        pos_index = (command.@argv.index(&.== "--") || 0) - 1
+        last_index = (command.@argv.index(&.== "--") || 0) - 1
+        return self if last_index < 0
         undefined_flags = [] of String
-        command.@argv[0..pos_index].each do |arg|
+        command.@argv[0..last_index].each do |arg|
           if SubCommands.locate(arg)
             break
           elsif arg.starts_with? "-"

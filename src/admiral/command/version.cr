@@ -19,7 +19,7 @@ abstract class Admiral::Command
 
   protected def puts_version : Nil
   end
-  
+
   macro define_version(string, flag = version, short = nil)
     {% if flag %}
       define_flag __version__ : Bool, long: {{flag}}, short: {{short}}, description: "Displays the version of the current application."
