@@ -25,7 +25,9 @@ abstract class Admiral::Command
       macro finished
         def locate
           \{% for name, spec in SPECS %}
-            return \{{ spec[:type].id }} if \{{ name }} == @name
+            if \{{ name }} == @name || \{{ spec[:short] }} == @name
+              return \{{ spec[:type].id }}
+            end
           \{% end %}
         end
       end
