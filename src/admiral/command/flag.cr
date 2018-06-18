@@ -37,69 +37,69 @@ abstract class Admiral::Command
           \{% end %}
           raise_extra_flags!(command)
         end
+      end
 
-        private def value_from_spec(command : ::Admiral::Command, *, type : Enumerable.class, default, short : String, long : String)
-          values = values_from_spec(command, type: type, default: default, short: short, long: long)
-          values.empty? ? default : type.new(values)
-        end
+      private def value_from_spec(command : ::Admiral::Command, *, type : Enumerable.class, default, short : String, long : String)
+        values = values_from_spec(command, type: type, default: default, short: short, long: long)
+        values.empty? ? default : type.new(values)
+      end
 
-        private def value_from_spec(command : ::Admiral::Command, *, type, default, short : String, long : String)
-          values = values_from_spec(command, type: type, default: default, short: short, long: long)
-          values[-1]? != nil ? type.new(values[-1]) : default
-        end
+      private def value_from_spec(command : ::Admiral::Command, *, type, default, short : String, long : String)
+        values = values_from_spec(command, type: type, default: default, short: short, long: long)
+        values[-1]? != nil ? type.new(values[-1]) : default
+      end
 
-        private def values_from_spec(command : ::Admiral::Command, *, type : Bool.class, default, short : String, long : String)
-          falsey_flag = "--no-#{long}"
-          long_flag = "--#{long}"
-          short_flag = "-#{short}" unless short.empty?
-          values = ::Admiral::ArgumentList.new
-          index = 0
-          while arg = command.@argv[index]?
-            flag = arg.split("=", 2)[0]
-            if arg == "--" || SubCommands::NAMES.any? { |name| arg == name }
-              break
-            elsif flag == long_flag || flag == short_flag
-              command.@argv.delete_at index
-              values << ::Admiral::StringValue.new("true")
-            elsif default == true && flag == falsey_flag
-              del = command.@argv.delete_at index
-              if value = arg.split("=")[1]?
-                values << ::Admiral::StringValue.new((!Bool.new(::Admiral::StringValue.new(value))).to_s)
-              else
-                values << ::Admiral::StringValue.new("false")
-              end
+      private def values_from_spec(command : ::Admiral::Command, *, type : Bool.class, default, short : String, long : String)
+        falsey_flag = "--no-#{long}"
+        long_flag = "--#{long}"
+        short_flag = "-#{short}" unless short.empty?
+        values = ::Admiral::ArgumentList.new
+        index = 0
+        while arg = command.@argv[index]?
+          flag = arg.split("=", 2)[0]
+          if arg == "--" || SubCommands::NAMES.any? { |name| arg == name }
+            break
+          elsif flag == long_flag || flag == short_flag
+            command.@argv.delete_at index
+            values << ::Admiral::StringValue.new("true")
+          elsif default == true && flag == falsey_flag
+            del = command.@argv.delete_at index
+            if value = arg.split("=")[1]?
+              values << ::Admiral::StringValue.new((!Bool.new(::Admiral::StringValue.new(value))).to_s)
             else
-              index += 1
+              values << ::Admiral::StringValue.new("false")
             end
+          else
+            index += 1
           end
-          return values
         end
+        return values
+      end
 
-        private def values_from_spec(command : ::Admiral::Command, *, type, default, short : String, long : String)
-          long_flag = "--#{long}"
-          short_flag = "-#{short}" unless short.empty?
-          values = ::Admiral::ArgumentList.new
-          index = 0
-          while arg = command.@argv[index]?
-            flag = arg.split("=", 2)[0]
-            if arg == "--" || SubCommands::NAMES.any? { |name| arg == name }
-              break
-            elsif flag == long_flag || flag == short_flag
-              del = command.@argv.delete_at index
-              if value = arg.split("=", 2)[1]?
-                values << ::Admiral::StringValue.new(value)
-              elsif command.@argv[index]?
-                value = command.@argv.delete_at index
-                values << value
-              else
-                raise ::Admiral::Error.new("Flag: #{flag == long_flag ? long_flag : short_flag} is missing a value")
-              end
+      private def values_from_spec(command : ::Admiral::Command, *, type, default, short : String, long : String)
+        long_flag = "--#{long}"
+        short_flag = "-#{short}" unless short.empty?
+        values = ::Admiral::ArgumentList.new
+        index = 0
+        while arg = command.@argv[index]?
+          flag = arg.split("=", 2)[0]
+          if arg == "--" || SubCommands::NAMES.any? { |name| arg == name }
+            break
+          elsif flag == long_flag || flag == short_flag
+            del = command.@argv.delete_at index
+            if value = arg.split("=", 2)[1]?
+              values << ::Admiral::StringValue.new(value)
+            elsif command.@argv[index]?
+              value = command.@argv.delete_at index
+              values << value
             else
-              index += 1
+              raise ::Admiral::Error.new("Flag: #{flag == long_flag ? long_flag : short_flag} is missing a value")
             end
+          else
+            index += 1
           end
-          return values
         end
+        return values
       end
 
       private def raise_extra_flags!(command)
