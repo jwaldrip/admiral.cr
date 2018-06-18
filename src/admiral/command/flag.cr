@@ -8,15 +8,101 @@ abstract class Admiral::Command
 
   private macro inherited
     struct Flags
-      NAMES = [] of String
+      SPECS = {} of String => NamedTuple(
+        type: String,
+        default: String,
+        description: Tuple(String, String),
+        short: String?,
+        long: String,
+        is_required: Bool
+      )
       DESCRIPTIONS = {} of String => String
-      SHORT_NAMES = [] of String
-      LONG_NAMES = [] of String
 
-      def initialize(command : ::Admiral::Command)
+      macro finished
+        def initialize(command : ::Admiral::Command)
+          \{% for var, spec in SPECS %}
+            @\{{var.id}} = value_from_spec(
+              command,
+              type: \{{ spec[:type].id }},
+              default: \{{ spec[:default].id }},
+              short: \{{ spec[:short] }},
+              long: \{{ spec[:long] }}
+            ) \{% spec[:is_required] %}
+          \{% end %}
+        end
+
+        def validate!(command)
+          \{% for var, spec in SPECS %}
+            raise Admiral::Error.new("Flag required: --\{{spec[:long].id}}") if \{{spec}}[:is_required] && @\{{var.id}}.nil?
+          \{% end %}
+          raise_extra_flags!(command)
+        end
+
+        private def value_from_spec(command : ::Admiral::Command, *, type : Enumerable.class, default, short : String, long : String)
+          values = values_from_spec(command, type: type, default: default, short: short, long: long)
+          values.empty? ? default : type.new(values)
+        end
+
+        private def value_from_spec(command : ::Admiral::Command, *, type, default, short : String, long : String)
+          values = values_from_spec(command, type: type, default: default, short: short, long: long)
+          values[-1]? != nil ? type.new(values[-1]) : default
+        end
+
+        private def values_from_spec(command : ::Admiral::Command, *, type : Bool.class, default, short : String, long : String)
+          falsey_flag = "--no-#{long}"
+          long_flag = "--#{long}"
+          short_flag = "-#{short}" unless short.empty?
+          values = ::Admiral::ArgumentList.new
+          index = 0
+          while arg = command.@argv[index]?
+            flag = arg.split("=", 2)[0]
+            if arg == "--" || SubCommands::NAMES.any? { |name| arg == name }
+              break
+            elsif flag == long_flag || flag == short_flag
+              command.@argv.delete_at index
+              values << ::Admiral::StringValue.new("true")
+            elsif default == true && flag == falsey_flag
+              del = command.@argv.delete_at index
+              if value = arg.split("=")[1]?
+                values << ::Admiral::StringValue.new((!Bool.new(::Admiral::StringValue.new(value))).to_s)
+              else
+                values << ::Admiral::StringValue.new("false")
+              end
+            else
+              index += 1
+            end
+          end
+          return values
+        end
+
+        private def values_from_spec(command : ::Admiral::Command, *, type, default, short : String, long : String)
+          long_flag = "--#{long}"
+          short_flag = "-#{short}" unless short.empty?
+          values = ::Admiral::ArgumentList.new
+          index = 0
+          while arg = command.@argv[index]?
+            flag = arg.split("=", 2)[0]
+            if arg == "--" || SubCommands::NAMES.any? { |name| arg == name }
+              break
+            elsif flag == long_flag || flag == short_flag
+              del = command.@argv.delete_at index
+              if value = arg.split("=", 2)[1]?
+                values << ::Admiral::StringValue.new(value)
+              elsif command.@argv[index]?
+                value = command.@argv.delete_at index
+                values << value
+              else
+                raise ::Admiral::Error.new("Flag: #{flag == long_flag ? long_flag : short_flag} is missing a value")
+              end
+            else
+              index += 1
+            end
+          end
+          return values
+        end
       end
 
-      def validate!(command)
+      private def raise_extra_flags!(command)
         last_index = (command.@argv.index(&.== "--") || 0) - 1
         return self if last_index < 0
         undefined_flags = [] of String
@@ -39,7 +125,7 @@ abstract class Admiral::Command
       def inspect(io)
         io << "<#{self.class}"
         io << "("
-        io << NAMES.join(", ") unless NAMES.empty?
+        io << SPECS.keys.join(", ") unless SPECS.empty?
         io << ")"
         io << ">"
       end
@@ -49,10 +135,8 @@ abstract class Admiral::Command
       @flags ||= Flags.new(self)
     end
 
-    private def parse_flags!(validate = false)
-      flags.tap do |f|
-        f.validate!(self) if validate
-      end
+    private def validate_flags!
+      flags.validate!(self)
     end
   end
 
@@ -181,115 +265,47 @@ abstract class Admiral::Command
   # HelloWorld.run
   # ```
   macro define_flag(flag, description = "", default = nil, short = nil, long = nil, required = false)
-    {% var = flag.is_a?(TypeDeclaration) ? flag.var : flag.id %}
-    {% type = flag.is_a?(TypeDeclaration) ? flag.type : String %}
+    {%
+      # Convert type and var
+      var = flag.is_a?(TypeDeclaration) ? flag.var : flag.id
+      type = flag.is_a?(TypeDeclaration) ? flag.type : String
 
-    {% raise "A flag with the name `#{var}` has already been defined!" if Flags::NAMES.includes? var.stringify %}
-    {% Flags::NAMES << var.stringify %}
+      # Setup Helper Vars
+      is_bool = type.is_a?(Path) && type.resolve == Bool
+      is_enum = type.is_a?(Generic) && type.name.resolve < Enumerable
+      is_nil = type.is_a?(Path) && type == Nil
 
-    # Setup Helper Vars
-    {% is_bool = type.is_a?(Path) && type.resolve == Bool %}
-    {% is_enum = type.is_a?(Generic) && type.name.resolve < Enumerable %}
-    {% is_union = type.is_a?(Union) %}
-    {% is_nil = type.is_a?(Path) && type == Nil %}
+      # Cast defaults
+      required = true if default != nil || is_bool
+      default = default != nil ? default : is_bool ? false : is_enum ? "#{type}.new".id : nil
+      long = (long || var.id.stringify.gsub(/_/, "-")).id.stringify.gsub(/^--/, "").id
 
-    # Cast defaults
-    {% required = true if default != nil || is_bool %}
-    {% default = default != nil ? default : is_bool ? false : is_enum ? "#{type}.new".id : nil %}
-    {% long = (long || var.id.stringify.gsub(/_/, "-")).id.stringify.gsub(/^--/, "").id %}
+      # Validate Flag Formats
+      unless long.id.stringify =~ /^[0-9A-Za-z][-0-9A-Za-z]*[0-9A-Za-z]?$/
+        raise "The long flag #{@type}(#{long}) must match the regex: #{long_reg}"
+      end
 
-    # Validate
-    {% long_reg = /^[0-9A-Za-z][-0-9A-Za-z]*[0-9A-Za-z]?$/ %}
-    {% unless long.id.stringify =~ long_reg %}
-      {% raise "The long flag #{@type}(#{long}) must match the regex: #{long_reg}" %}
-    {% end %}
+      unless short == nil || short.id.stringify =~ /^[0-9A-Za-z][-0-9A-Za-z]?$/
+        raise "The short flag of #{@type}(#{long}) can only be a single character, you specified: `#{short}`"
+      end
 
-    {% if short != nil && short.id.stringify.size > 1 %}
-      {% raise "The short flag of #{@type}(#{long}) can only be a single character, you specified: `#{short}`" %}
-    {% end %}
+      # Set spec
+      Flags::SPECS[var.id.stringify] = {
+        type: type.id.stringify,
+        default: default.stringify,
+        description: {
+          "--#{long.id}" + (short ? ", -#{short.id}" : "") + (default != nil && !is_bool ? " (default: #{default})" : default == nil && required == true ? " (required)": ""),
+          description
+        },
+        short: short.id.stringify,
+        long: long.id.stringify,
+        is_required: required
+      }
+    %}
 
-    # Make short and long into flag strings
-    {% falsey = "--no-" + long.stringify %}
-    {% long = "--" + long.stringify %}
-    {% short = "-" + short.id.stringify.gsub(/^-/, "") if short != nil %}
-    {% raise "The long flag: `#{long.id}` has already been defined!" if Flags::LONG_NAMES.includes? long.stringify %}
-    {% raise "The short flag: `#{short.id}` has already been defined!" if Flags::SHORT_NAMES.includes? short.stringify %}
-    {% Flags::LONG_NAMES << long.stringify %}
-    {% Flags::SHORT_NAMES << short.stringify if short != nil %}
-
-    # Validate types and set type var
-    {% if is_union %}
-      {% union_types = flag.type.types.reject { |t| t.is_a?(Path) && t.resolve == Nil } %}
-      {% if union_types.size == 1 %}
-        {% type = union_types.first %}
-      {% else %}
-        {% raise "The flag #{@type}(#{long}) specified a union type, this is not supported." %}
-      {% end %}
-    {% else %}
-      {% type = type %}
-    {% end %}
-
-    # Extend the flags class to include the flag
+    # Extend the flags struct to include the flag
     struct Flags
-      @{{var}} : {{ type }} | Nil{% if default != nil %} = {{ default }}{% end %}
-
-      def initialize(command : ::Admiral::Command)
-        {% for f in Flags::NAMES %}
-        @{{ f.id }} = parse_{{ f.id }}(command){% end %}
-      end
-
-      def {{var}} : {{ type }}{% unless required %}| Nil{% end %}
-        val = @{{var}}
-        {% if required %}raise ::Admiral::Error.new("Flag: {{ long.id }} is required") if val.nil?{% end %}
-        val
-      end
-
-      private def parse_{{var}}(command : ::Admiral::Command) : {{ type }} | Nil
-        values = ::Admiral::ArgumentList.new
-        index = 0
-        while arg = command.@argv[index]?
-          flag = arg.split("=", 2)[0]
-          if arg == "--" || SubCommands::NAMES.any? { |name| arg == name }
-            break
-          elsif flag == {{ long }}{% if short %} || flag.starts_with?({{short}}){% end %}
-            del = command.@argv.delete_at index
-            if value = arg.split("=", 2)[1]?
-              values << ::Admiral::StringValue.new(value)
-            {% if is_bool %}
-              else
-                values << ::Admiral::StringValue.new("true")
-            {% else %}
-              elsif command.@argv[index]?
-                value = command.@argv.delete_at index
-                values << value
-              else
-                raise ::Admiral::Error.new("Flag: {{ long.id }} is missing a value")
-            {% end %}
-            end
-          {% if is_bool && default == true %}
-            {{long = falsey}}
-            elsif flag == {{long}}
-              del = command.@argv.delete_at index
-              if value = arg.split("=")[1]?
-                values << ::Admiral::StringValue.new((!Bool.new(::Admiral::StringValue.new(value))).to_s)
-              else
-                values << ::Admiral::StringValue.new("false")
-              end
-          {% end %}
-          else
-            index += 1
-          end
-        end
-
-        {% if is_enum %} # Enum Type Flag
-          values.empty? ? {{ default }} : {{ type }}.new(values)
-        {% else %} # Boolean and value type flags
-          values[-1]? != nil ? {{ type }}.new(values[-1]) : {% unless default.nil? %}{{ default }}{% else %}nil{% end %}
-        {% end %}
-      end
+      getter {{var}} : {{ type }} | Nil{% if default != nil %} = {{ default }}{% end %}
     end
-
-    # Add the flag to the description constant
-    Flags::DESCRIPTIONS[{{ long + (short ? ", #{short.id}" : "") }}{% if default != nil && !is_bool %} + " (default: #{{{default}}})"{% elsif default == nil && required == true %}+ " (required)"{% end %}] = {{ description }}
   end
 end

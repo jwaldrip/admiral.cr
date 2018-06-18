@@ -102,7 +102,7 @@ describe "flags" do
           Tempfile.open("test") do |io|
             RequiredTypedFlaggedCommand.run([] of String, error: io)
             io.rewind
-            io.gets_to_end.should eq "Flag: --aa is required".colorize(:red).to_s + "\n"
+            io.gets_to_end.should eq "Flag required: --aa".colorize(:red).to_s + "\n"
           end
         end
 

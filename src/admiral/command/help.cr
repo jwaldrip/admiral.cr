@@ -7,7 +7,7 @@ abstract class Admiral::Command
 
     protected def self.left_col_len
       [
-        Flags::DESCRIPTIONS,
+        Flags::SPECS.values.each_with_object({} of String => String) { |spec, obj| obj[spec[:description][0]] = spec[:description][1] },
         Arguments::DESCRIPTIONS,
         SubCommands::DESCRIPTIONS
       ].flat_map(&.keys).map(&.size).sort[-1]? || 0
@@ -32,7 +32,7 @@ abstract class Admiral::Command
         end
         commands.each do |cmd|
           str << "\n  #{@program_name}"
-          str << " [flags...]" unless Flags::NAMES.empty?
+          str << " [flags...]" unless Flags::SPECS.empty?
           str << cmd unless cmd.empty?
         end
         str << "\n"
@@ -41,11 +41,11 @@ abstract class Admiral::Command
 
     private def help_flags
       String.build do |str|
-        unless Flags::NAMES.empty?
+        unless Flags::SPECS.empty?
           str << "Flags:\n"
-          Flags::DESCRIPTIONS.keys.sort.each do |key|
-            string = key
-            desc = Flags::DESCRIPTIONS[key]
+          Flags::SPECS.values.sort_by { |spec| spec[:long] }.each do |spec|
+            string = spec[:description][0]
+            desc = spec[:description][1]
             str << "  #{string}"
             if desc.size > 1
               str << " " * (self.class.left_col_len - string.size)

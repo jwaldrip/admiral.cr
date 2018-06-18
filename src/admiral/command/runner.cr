@@ -10,11 +10,11 @@ abstract class Admiral::Command
 
     protected def parse_and_run : Nil
       with_rescue do
-        parse_flags!(validate: true)
         command = arguments.get?(:_COMMAND_)
-        next sub(command.to_s, arguments.@__rest__) if command
         puts_version
         puts_help
+        validate_flags!
+        next sub(command.to_s, arguments.@__rest__) if command
         run
       end
     end
