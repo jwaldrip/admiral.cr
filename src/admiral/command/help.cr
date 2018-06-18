@@ -8,7 +8,7 @@ abstract class Admiral::Command
     protected def self.left_col_len
       [
         Flags::SPECS.values.each_with_object({} of String => String) { |spec, obj| obj[spec[:description][0]] = spec[:description][1] },
-        Arguments::DESCRIPTIONS,
+        Arguments::SPECS.values.each_with_object({} of String => String) { |spec, obj| obj[spec[:description][0]] = spec[:description][1] },
         SubCommands::DESCRIPTIONS
       ].flat_map(&.keys).map(&.size).sort[-1]? || 0
     end
@@ -23,8 +23,8 @@ abstract class Admiral::Command
         commands = [] of String
         commands << begin
           String.build do |cmd|
-            Arguments::NAMES.each do |attr|
-              attr = attr.gsub(/_([A-Z_]+)_/, "\\1")
+            Arguments::SPECS.each do |name, _|
+              attr = name.gsub(/_([A-Z_]+)_/, "\\1")
               cmd << " <#{attr}>"
             end
             cmd << " [arg...]"
@@ -59,9 +59,11 @@ abstract class Admiral::Command
 
     private def help_arguments
       String.build do |str|
-        unless Arguments::NAMES.empty?
+        unless Arguments::SPECS.empty?
           str << "Arguments:\n"
-          Arguments::DESCRIPTIONS.each do |string, desc|
+          Arguments::SPECS.values.each do |spec|
+            string = spec[:description][0]
+            desc = spec[:description][1]
             str << "  #{string}"
             if desc.size > 1
               str << " " * (self.class.left_col_len - string.size)

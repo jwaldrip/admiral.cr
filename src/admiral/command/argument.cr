@@ -12,20 +12,61 @@ abstract class Admiral::Command
       include Enumerable(String)
       include Iterable(String)
 
-      NAMES = [] of String
-      REQUIRED_NAMES = [] of String
-      DESCRIPTIONS = {} of String => String
+      SPECS = {} of String => NamedTuple(
+        type: String,
+        description: Tuple(String, String),
+        default: String,
+        is_required: Bool
+      )
 
       delegate :[], :each, to: @__rest__
-
       @__rest__ : Array(String) = [] of String
 
-      def initialize(command : ::Admiral::Command)
-        @__rest__ = parse_rest(command)
+      macro finished
+        def initialize(command : ::Admiral::Command)
+          \{% for var, spec in SPECS %}
+            @\{{var.id}} = value_from_spec(
+              command,
+              arg: \{{var}},
+              type: \{{ spec[:type].id }},
+              default: \{{ spec[:default].id }},
+              is_required: Bool
+            )
+          \{% end %}
+          command.@argv.select(&.!= "--").map(&.value)
+        end
+
+        def get(name : Symbol)
+          \{% if !SPECS.empty? %}
+            {
+              \{% for var, spec in SPECS %}
+                \{{var}}: @\{{var}}
+              \{% end %}
+            }[name]?
+          \{% end %}
+        end
+
+        def get?(name : Symbol)
+          exists?(name) ? get(name) : false
+        end
+
+        def exists?(name : Symbol)
+          !!SPECS[name]?
+        end
+
+        def validate!(command : ::Admiral::Command)
+        end
       end
 
-      private def parse_rest(command : ::Admiral::Command)
-        command.@argv.select(&.!= "--").map(&.value)
+      def value_from_spec(command : ::Admiral::Command, *, arg : String, type, default, is_required : Bool)
+        pos_only = false
+        index = 0
+        while command.@argv[index]?.to_s.starts_with?("-") && !pos_only
+          index += 1
+          pos_only = command.@argv[index]? == "--"
+        end
+        value = command.@argv.delete_at index if command.@argv[index]?
+        type.new(value)
       end
 
       def get(name : Symbol) : Nil
@@ -151,49 +192,22 @@ abstract class Admiral::Command
   # **Note:**
   # Required arguments cannot be defined after optional arguments.
   macro define_argument(attr, description = "", default = nil, required = false)
-    {% var = attr.is_a?(TypeDeclaration) ? attr.var : attr.id %}
-    {% type = attr.is_a?(TypeDeclaration) ? attr.type : String %}
-    {% raise "Cannot define required argument `#{var}` after optional arguments" if required && Arguments::NAMES != Arguments::REQUIRED_NAMES %}
-    {% raise "A argument with the name `#{var}` has already been defined" if Arguments::NAMES.includes? var.stringify %}
-    {% Arguments::NAMES << var.stringify %}
-    {% Arguments::REQUIRED_NAMES << var.stringify if required == true && !Arguments::REQUIRED_NAMES.includes?(var.stringify) %}
+    {%
+      var = attr.is_a?(TypeDeclaration) ? attr.var : attr.id
+      type = attr.is_a?(TypeDeclaration) ? attr.type : String
+      Arguments::SPECS[var.id.stringify] = {
+        type: type.stringify,
+        description: {
+          var.stringify.gsub(/_([A-Z_]+)_/, "\\1") + (required ? " (required)" : ""),
+          description
+        },
+        default: default.id,
+        is_required: required
+      }
+    %}
 
     struct Arguments
       getter {{ var }} : {{ type }}{% unless required %} | Nil{% end %}
-
-      def initialize(command : ::Admiral::Command)
-        {% for a in Arguments::NAMES %}
-        @{{ a.id }} = parse_{{ a.id }}(command){% end %}
-        @__rest__ = parse_rest(command)
-      end
-
-      def exists?(name : Symbol)
-        previous_def || name == :{{ var.stringify }}
-      end
-
-      def get(name : Symbol)
-        previous_def
-      rescue MissingArgument
-        name == :{{ var.stringify }} ? @{{ var }} : raise MissingArgument.new
-      end
-
-      def parse_{{ var }}(command : ::Admiral::Command) : {{ type }}{% unless required %} | Nil{% end %}
-        pos_only = false
-        index = 0
-        while command.@argv[index]?.to_s.starts_with?("-") && !pos_only
-          index += 1
-          pos_only = command.@argv[index]? == "--"
-        end
-        value = if command.@argv[index]?
-                  command.@argv.delete_at index
-                else
-                  {% if required %}raise Admiral::Error.new "Missing required attribute: <{{var}}>"{% else %}return nil{% end %}
-                end
-        {{ type }}.new(value)
-      end
     end
-
-    # Add the attr to the description constant
-    Arguments::DESCRIPTIONS[{{ var.stringify.gsub(/_([A-Z_]+)_/, "\\1") }}{% if required %} + " (required)"{% end %}] = {{ description }}
   end
 end
