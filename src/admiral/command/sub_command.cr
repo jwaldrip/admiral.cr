@@ -1,7 +1,7 @@
 abstract class Admiral::Command
   private module Run
     def run
-      raise ::Admiral::Error.new("Missing subcommand.")
+      raise Error.new "Invalid subcommand: #{@argv[0]?}"
     end
   end
 

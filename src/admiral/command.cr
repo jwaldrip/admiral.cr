@@ -56,11 +56,7 @@ abstract class Admiral::Command
 
   # Returns the parent command if one is specified, or returns an error.
   def parent
-    if (parent = @parent)
-      parent
-    else
-      raise Error.new "No parent record"
-    end
+    @parent.not_nil!
   end
 
   # Prints to the command's output `IO`.
