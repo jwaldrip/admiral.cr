@@ -203,7 +203,7 @@ abstract class Admiral::Command
           var.stringify.gsub(/_([A-Z_]+)_/, "\\1") + (required ? " (required)" : ""),
           description
         },
-        default: default.id.stringify,
+        default: default.stringify,
         is_required: required
       }
     %}
