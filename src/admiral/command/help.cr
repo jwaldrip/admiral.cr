@@ -7,10 +7,12 @@ abstract class Admiral::Command
 
     protected def self.left_col_len
       [
-        Flags::SPECS.values.each_with_object({} of String => String) { |spec, obj| obj[spec[:description][0]] = spec[:description][1] },
-        Arguments::SPECS.values.each_with_object({} of String => String) { |spec, obj| obj[spec[:description][0]] = spec[:description][1] },
-        SubCommands::DESCRIPTIONS
-      ].flat_map(&.keys).map(&.size).sort[-1]? || 0
+        Flags::SPECS,
+        Arguments::SPECS,
+        SubCommands::SPECS,
+      ].flat_map(&.values.map(&.[:description])).map do |description|
+        description[0].size.as(Int32)
+      end.sort[-1]? || 0
     end
 
     protected def puts_help
@@ -77,11 +79,12 @@ abstract class Admiral::Command
 
     private def help_sub_commands
       String.build do |str|
-        unless SubCommands::NAMES.empty?
+        unless SubCommands::SPECS.empty?
           str << "Subcommands:\n"
-          SubCommands::DESCRIPTIONS.keys.sort.each do |key|
-            string = key
-            desc = SubCommands::DESCRIPTIONS[key]
+          SubCommands::SPECS.keys.sort.each do |name|
+            spec = SubCommands::SPECS[name]
+            string = spec[:description][0]
+            desc = spec[:description][1]
             str << "  #{string}"
             if desc.size > 1
               str << " " * (self.class.left_col_len - string.size)

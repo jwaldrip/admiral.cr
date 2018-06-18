@@ -30,17 +30,17 @@ abstract class Admiral::Command
               arg: \{{var}},
               type: \{{ spec[:type].id }},
               default: \{{ spec[:default].id }},
-              is_required: Bool
+              is_required: \{{ spec[:is_required].id }}
             )
           \{% end %}
-          command.@argv.select(&.!= "--").map(&.value)
+          @__rest__ = command.@argv.map(&.value)
         end
 
         def get(name : Symbol)
           \{% if !SPECS.empty? %}
             {
               \{% for var, spec in SPECS %}
-                \{{var}}: @\{{var}}
+                \{{var.id}}: @\{{var.id}},
               \{% end %}
             }[name]?
           \{% end %}
@@ -65,8 +65,10 @@ abstract class Admiral::Command
           index += 1
           pos_only = command.@argv[index]? == "--"
         end
-        value = command.@argv.delete_at index if command.@argv[index]?
-        type.new(value)
+        if command.@argv[index]?
+          value = command.@argv.delete_at index
+          type.new(value)
+        end
       end
 
       def get(name : Symbol) : Nil
@@ -82,7 +84,7 @@ abstract class Admiral::Command
       end
 
       def inspect(io)
-        names = NAMES.clone
+        names = SPECS.keys
         names << "..." if size > 0
         io << "<#{self.class}"
         io << "("
@@ -201,13 +203,17 @@ abstract class Admiral::Command
           var.stringify.gsub(/_([A-Z_]+)_/, "\\1") + (required ? " (required)" : ""),
           description
         },
-        default: default.id,
+        default: default.id.stringify,
         is_required: required
       }
     %}
 
     struct Arguments
-      getter {{ var }} : {{ type }}{% unless required %} | Nil{% end %}
+      @{{ var }} : {{ type }} | Nil
+
+      def {{var}} : {{ type }}{% unless required %} | Nil{% end %}
+        @{{var}}{% if required %} || raise ::Admiral::Error.new("Argument required: {{ var }}") {% end %}
+      end
     end
   end
 end

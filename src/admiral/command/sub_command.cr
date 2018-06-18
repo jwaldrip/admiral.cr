@@ -9,12 +9,29 @@ abstract class Admiral::Command
   abstract def sub(command, *args, **params)
 
   private macro inherited
+    macro finished
+      \{% if !SubCommands::SPECS.empty? %}
+        include Run
+      \{% end %}
+    end
+
     private struct SubCommands
-      NAMES = [] of String
-      DESCRIPTIONS = {} of String => String
+      SPECS = {} of String => NamedTuple(
+        type: String,
+        description: Tuple(String, String),
+        short: String?
+      )
+
+      macro finished
+        def locate
+          \{% for name, spec in SPECS %}
+            return \{{ spec[:type].id }} if \{{ name }} == @name
+          \{% end %}
+        end
+      end
 
       def self.locate(name)
-        new(name).locate
+        new(name.to_s).locate
       end
 
       def self.invoke(name, *args, **params)
@@ -35,8 +52,6 @@ abstract class Admiral::Command
           raise ::Admiral::Error.new("Invalid subcommand: #{@name}.")
         end
       end
-
-      def locate : Nil; end
     end
 
     def sub(command, *args, **params)
@@ -80,32 +95,18 @@ abstract class Admiral::Command
   # Hello Denver
   # ```
   macro register_sub_command(command, type = nil, *, description = nil, short = nil)
-    {% if command.is_a? TypeDeclaration %}
-      {% name = command.var.stringify %}
-      {% type = command.type %}
-    {% else %}
-      {% name = command.id.stringify %}
-    {% end %}
+    {%
+      name = command.is_a?(TypeDeclaration) ? command.var.stringify : command.id.stringify
+      type = command.is_a?(TypeDeclaration) ? command.type : type
 
-    {% SubCommands::NAMES << name unless SubCommands::NAMES.includes? name %}
-
-    # Add the subcommand to the description constant
-    SubCommands::DESCRIPTIONS[{{ name }}{% if short %} + ", {{ short.id }}" {% end %}] = {{ description }} || {{ type }}::HELP["description"]
-
-    {% unless Arguments::NAMES.includes? "_COMMAND_" %}
-      define_argument "_COMMAND_", "The sub command to run."
-    {% end %}
-
-    private struct SubCommands
-      def locate
-        previous_def || begin
-          if @name == {{ name }} {% if short %}|| @name == {{ short.id.stringify }} {% end %}
-            {{ type }}
-          end
-        end
-      end
-    end
-
-    include Run
+      SubCommands::SPECS[name] = {
+        type: type.stringify,
+        description: {
+          name + (short ? ", #{short.id}" : ""),
+          description || "#{type}::HELP[\"description\"]".id
+        },
+        short: short
+      }
+    %}
   end
 end

@@ -57,7 +57,7 @@ abstract class Admiral::Command
         index = 0
         while arg = command.@argv[index]?
           flag = arg.split("=", 2)[0]
-          if arg == "--" || SubCommands::NAMES.any? { |name| arg == name }
+          if arg == "--" || SubCommands::SPECS.any? { |name, _| arg == name }
             break
           elsif flag == long_flag || flag == short_flag
             command.@argv.delete_at index
@@ -83,7 +83,7 @@ abstract class Admiral::Command
         index = 0
         while arg = command.@argv[index]?
           flag = arg.split("=", 2)[0]
-          if arg == "--" || SubCommands::NAMES.any? { |name| arg == name }
+          if arg == "--" || SubCommands::SPECS.any? { |name, _| arg == name }
             break
           elsif flag == long_flag || flag == short_flag
             del = command.@argv.delete_at index
@@ -305,7 +305,11 @@ abstract class Admiral::Command
 
     # Extend the flags struct to include the flag
     struct Flags
-      getter {{var}} : {{ type }} | Nil{% if default != nil %} = {{ default }}{% end %}
+      @{{var}} : {{ type }} | Nil{% if default != nil %} = {{ default }}{% end %}
+
+      def {{var}} : {{ type }}{% unless required %} | Nil{% end %}
+        @{{var}}{% if required %} || raise ::Admiral::Error.new("Flag required: --{{long.id}}") {% end %}
+      end
     end
   end
 end
