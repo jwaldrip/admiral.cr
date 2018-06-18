@@ -1,8 +1,7 @@
 abstract class Admiral::Command
   private macro inherited
     HELP = {
-      "description" => "",
-      "overview" => ""
+      "description" => ""
     }
 
     protected def self.left_col_len
@@ -13,6 +12,10 @@ abstract class Admiral::Command
       ].flat_map(&.values.map(&.[:description])).map do |description|
         description[0].size.as(Int32)
       end.sort[-1]? || 0
+    end
+
+    def self.description
+      HELP["description"]
     end
 
     protected def puts_help
@@ -47,7 +50,7 @@ abstract class Admiral::Command
           str << "Flags:\n"
           Flags::SPECS.values.sort_by { |spec| spec[:long] }.each do |spec|
             string = spec[:description][0]
-            desc = spec[:description][1]
+            desc = spec[:description][1] || ""
             str << "  #{string}"
             if desc.size > 1
               str << " " * (self.class.left_col_len - string.size)
@@ -65,7 +68,7 @@ abstract class Admiral::Command
           str << "Arguments:\n"
           Arguments::SPECS.values.each do |spec|
             string = spec[:description][0]
-            desc = spec[:description][1]
+            desc = spec[:description][1] || ""
             str << "  #{string}"
             if desc.size > 1
               str << " " * (self.class.left_col_len - string.size)
@@ -84,7 +87,7 @@ abstract class Admiral::Command
           SubCommands::SPECS.keys.sort.each do |name|
             spec = SubCommands::SPECS[name]
             string = spec[:description][0]
-            desc = spec[:description][1]
+            desc = spec[:description][1] || spec[:type].description
             str << "  #{string}"
             if desc.size > 1
               str << " " * (self.class.left_col_len - string.size)

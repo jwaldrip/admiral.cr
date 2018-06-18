@@ -17,8 +17,8 @@ abstract class Admiral::Command
 
     private struct SubCommands
       SPECS = {} of String => NamedTuple(
-        type: String,
-        description: Tuple(String, String),
+        type: Admiral::Command.class,
+        description: Tuple(String, String?),
         short: String?
       )
 
@@ -100,10 +100,10 @@ abstract class Admiral::Command
       type = command.is_a?(TypeDeclaration) ? command.type : type
 
       SubCommands::SPECS[name] = {
-        type: type.stringify,
+        type: type,
         description: {
           name + (short ? ", #{short.id}" : ""),
-          description || "#{type}::HELP[\"description\"]".id
+          description
         },
         short: short
       }

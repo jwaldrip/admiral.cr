@@ -11,7 +11,7 @@ abstract class Admiral::Command
       SPECS = {} of String => NamedTuple(
         type: String,
         default: String,
-        description: Tuple(String, String),
+        description: Tuple(String, String?),
         short: String?,
         long: String,
         is_required: Bool
