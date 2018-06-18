@@ -308,11 +308,7 @@ abstract class Admiral::Command
       @{{var}} : {{ type }} | Nil{% if default != nil %} = {{ default }}{% end %}
 
       def {{var}}
-        if @{{var}}.nil?
-          {% if required %}raise ::Admiral::Error.new("Flag required: --{{long.id}}"){% end %}
-        else
-          @{{var}}
-        end
+        @{{var}}{% if required %}.not_nil!{% end %}
       end
     end
   end
