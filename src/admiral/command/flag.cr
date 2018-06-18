@@ -307,8 +307,12 @@ abstract class Admiral::Command
     struct Flags
       @{{var}} : {{ type }} | Nil{% if default != nil %} = {{ default }}{% end %}
 
-      def {{var}} : {{ type }}{% unless required %} | Nil{% end %}
-        @{{var}}{% if required %} || raise ::Admiral::Error.new("Flag required: --{{long.id}}") {% end %}
+      def {{var}}
+        if @{{var}}.nil?
+          {% if required %}raise ::Admiral::Error.new("Flag required: --{{long.id}}"){% end %}
+        else
+          @{{var}}
+        end
       end
     end
   end

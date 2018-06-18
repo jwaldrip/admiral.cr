@@ -211,8 +211,12 @@ abstract class Admiral::Command
     struct Arguments
       @{{ var }} : {{ type }} | Nil
 
-      def {{var}} : {{ type }}{% unless required %} | Nil{% end %}
-        @{{var}}{% if required %} || raise ::Admiral::Error.new("Argument required: {{ var }}") {% end %}
+      def {{var}}
+        if @{{var}}.nil?
+          {% if required %}raise ::Admiral::Error.new("Argument required: --{{long.id}}"){% end %}
+        else
+          @{{var}}
+        end
       end
     end
   end
