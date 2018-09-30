@@ -55,6 +55,9 @@ abstract class Admiral::Command
         end
 
         def validate!(command : ::Admiral::Command)
+          \{% for var, spec in SPECS %}
+            raise Admiral::Error.new("Argument required: \{{var.id}}") if \{{spec}}[:is_required] && @\{{var.id}}.nil?
+          \{% end %}
         end
       end
 
@@ -96,6 +99,10 @@ abstract class Admiral::Command
 
     def arguments
       @arguments ||= Arguments.new(self)
+    end
+
+    def validate_arguments!
+      arguments.validate!(self)
     end
   end
 
