@@ -101,7 +101,7 @@ abstract class Admiral::Command
       @arguments ||= Arguments.new(self)
     end
 
-    def validate_arguments!
+    private def validate_arguments!
       arguments.validate!(self)
     end
   end
