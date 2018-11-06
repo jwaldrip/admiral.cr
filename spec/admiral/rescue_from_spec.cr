@@ -1,5 +1,4 @@
 require "spec"
-require "tempfile"
 require "../fixtures/*"
 
 class Admiral::Command
@@ -10,7 +9,7 @@ end
 
 describe "rescue_from" do
   it "should handle the rescue" do
-    Tempfile.open("test") do |io|
+    File.tempfile("test") do |io|
       RescuedCommand.run("", output: io)
       io.rewind
       io.gets_to_end.should eq "it failed\n"
