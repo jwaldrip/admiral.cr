@@ -9,6 +9,7 @@ abstract class Admiral::Command
   private macro inherited
     struct Flags
       SPECS = {} of String => NamedTuple(
+        kind: String,
         type: String,
         default: String,
         description: Tuple(String, String?),
@@ -33,7 +34,15 @@ abstract class Admiral::Command
 
         def validate!(command)
           \{% for var, spec in SPECS %}
-            raise Admiral::Error.new("Flag required: --\{{spec[:long].id}}") if \{{spec}}[:is_required] && @\{{var.id}}.nil?
+            \{% if spec[:is_required] && spec[:kind] == "enum" %}
+              if ! @\{{var.id}}.nil?
+                if @\{{var.id}}.not_nil!.empty?
+                  raise Admiral::Error.new("Flag required: --\{{spec[:long].id}}")
+                end
+              end
+            \{% elsif spec[:is_required] %}
+              raise Admiral::Error.new("Flag required: --\{{spec[:long].id}}") if @\{{var.id}}.nil?
+            \{% end %}
           \{% end %}
           raise_extra_flags!(command)
         end
@@ -291,6 +300,7 @@ abstract class Admiral::Command
 
       # Set spec
       Flags::SPECS[var.id.stringify] = {
+        kind: is_bool ? "bool" : is_enum ? "enum" : "nil",
         type: type.id.stringify,
         default: default.stringify,
         description: {
