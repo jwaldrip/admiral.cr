@@ -117,4 +117,16 @@ describe "flags" do
       end
     end
   end
+
+  context "enumerable flags" do
+    context "when required" do
+      it "should raise an error" do
+        File.tempfile("test") do |io|
+          EnumerableCommand.run([] of String, error: io)
+          io.rewind
+          io.gets_to_end.should eq "Flag required: --services".colorize(:red).to_s + "\n"
+        end
+      end
+    end
+  end
 end
