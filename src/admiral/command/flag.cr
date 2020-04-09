@@ -318,7 +318,7 @@ abstract class Admiral::Command
       @{{var}} : {{ type }} | Nil{% if default != nil %} = {{ default }}{% end %}
 
       def {{var}}
-        @{{var}}{% if required %}.not_nil!{% end %}
+        @{{var}}{% if required || is_enum %}.not_nil!{% end %}
       end
     end
   end
