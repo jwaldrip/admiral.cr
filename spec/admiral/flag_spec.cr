@@ -48,7 +48,7 @@ describe "flags" do
         end
       end
 
-      it "should raise an error" do
+      it "should not raise an error" do
         File.tempfile("test") do |io|
           BasicWithDefaultFlaggedCommand.run([] of String, output: io)
           io.rewind

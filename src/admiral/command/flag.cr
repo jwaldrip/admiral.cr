@@ -285,7 +285,7 @@ abstract class Admiral::Command
       is_nil = type.is_a?(Path) && type == Nil
 
       # Cast defaults
-      required = true if default != nil || is_bool
+      required = true if (default != nil && !is_enum) || is_bool
       default = default != nil ? default : is_bool ? false : is_enum ? "#{type}.new".id : nil
       long = (long || var.id.stringify.gsub(/_/, "-")).id.stringify.gsub(/^--/, "").id
 
