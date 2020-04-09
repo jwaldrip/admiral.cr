@@ -276,42 +276,42 @@ abstract class Admiral::Command
   macro define_flag(flag, description = "", default = nil, short = nil, long = nil, required = false)
     {% # Convert type and var
 
-var = flag.is_a?(TypeDeclaration) ? flag.var : flag.id
-type = flag.is_a?(TypeDeclaration) ? flag.type : String
+ var = flag.is_a?(TypeDeclaration) ? flag.var : flag.id
+ type = flag.is_a?(TypeDeclaration) ? flag.type : String
 
-# Setup Helper Vars
-is_bool = type.is_a?(Path) && type.resolve == Bool
-is_enum = type.is_a?(Generic) && type.name.resolve < Enumerable
-is_nil = type.is_a?(Path) && type == Nil
+ # Setup Helper Vars
+ is_bool = type.is_a?(Path) && type.resolve == Bool
+ is_enum = type.is_a?(Generic) && type.name.resolve < Enumerable
+ is_nil = type.is_a?(Path) && type == Nil
 
-# Cast defaults
-required = true if (default != nil && !is_enum) || is_bool
-default = default != nil ? default : is_bool ? false : is_enum ? "#{type}.new".id : nil
-long = (long || var.id.stringify.gsub(/_/, "-")).id.stringify.gsub(/^--/, "").id
+ # Cast defaults
+ required = true if (default != nil && !is_enum) || is_bool
+ default = default != nil ? default : is_bool ? false : is_enum ? "#{type}.new".id : nil
+ long = (long || var.id.stringify.gsub(/_/, "-")).id.stringify.gsub(/^--/, "").id
 
-# Validate Flag Formats
-unless long.id.stringify =~ /^[0-9A-Za-z][-0-9A-Za-z]*[0-9A-Za-z]?$/
-  raise "The long flag #{@type}(#{long}) must match the regex: #{long_reg}"
-end
+ # Validate Flag Formats
+ long_reg = /^[0-9A-Za-z][-0-9A-Za-z]*[0-9A-Za-z]?$/
+ unless long.id.stringify =~ long_reg
+   raise "The long flag #{@type}(#{long}) must match the regex: #{long_reg}"
+ end
 
-unless short == nil || short.id.stringify =~ /^[0-9A-Za-z][-0-9A-Za-z]?$/
-  raise "The short flag of #{@type}(#{long}) can only be a single character, you specified: `#{short}`"
-end
+ unless short == nil || short.id.stringify =~ /^[0-9A-Za-z][-0-9A-Za-z]?$/
+   raise "The short flag of #{@type}(#{long}) can only be a single character, you specified: `#{short}`"
+ end
 
-# Set spec
-Flags::SPECS[var.id.stringify] = {
-  kind:        is_bool ? "bool" : is_enum ? "enum" : "nil",
-  type:        type.id.stringify,
-  default:     default.stringify,
-  description: {
-    "--#{long.id}" + (short ? ", -#{short.id}" : "") + (default != nil && !is_bool ? " (default: #{default})" : default == nil && required == true ? " (required)" : ""),
-    description,
-  },
-  short:       short.id.stringify,
-  long:        long.id.stringify,
-  is_required: required,
-}
-    %}
+ # Set spec
+ Flags::SPECS[var.id.stringify] = {
+   kind:        is_bool ? "bool" : is_enum ? "enum" : "nil",
+   type:        type.id.stringify,
+   default:     default.stringify,
+   description: {
+     "--#{long.id}" + (short ? ", -#{short.id}" : "") + (default != nil && !is_bool ? " (default: #{default})" : default == nil && required == true ? " (required)" : ""),
+     description,
+   },
+   short:       short.id.stringify,
+   long:        long.id.stringify,
+   is_required: required,
+ } %}
 
     # Extend the flags struct to include the flag
     struct Flags
