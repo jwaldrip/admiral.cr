@@ -274,43 +274,43 @@ abstract class Admiral::Command
   # HelloWorld.run
   # ```
   macro define_flag(flag, description = "", default = nil, short = nil, long = nil, required = false)
-    {%
-      # Convert type and var
-      var = flag.is_a?(TypeDeclaration) ? flag.var : flag.id
-      type = flag.is_a?(TypeDeclaration) ? flag.type : String
+    {% # Convert type and var
 
-      # Setup Helper Vars
-      is_bool = type.is_a?(Path) && type.resolve == Bool
-      is_enum = type.is_a?(Generic) && type.name.resolve < Enumerable
-      is_nil = type.is_a?(Path) && type == Nil
+var = flag.is_a?(TypeDeclaration) ? flag.var : flag.id
+type = flag.is_a?(TypeDeclaration) ? flag.type : String
 
-      # Cast defaults
-      required = true if (default != nil && !is_enum) || is_bool
-      default = default != nil ? default : is_bool ? false : is_enum ? "#{type}.new".id : nil
-      long = (long || var.id.stringify.gsub(/_/, "-")).id.stringify.gsub(/^--/, "").id
+# Setup Helper Vars
+is_bool = type.is_a?(Path) && type.resolve == Bool
+is_enum = type.is_a?(Generic) && type.name.resolve < Enumerable
+is_nil = type.is_a?(Path) && type == Nil
 
-      # Validate Flag Formats
-      unless long.id.stringify =~ /^[0-9A-Za-z][-0-9A-Za-z]*[0-9A-Za-z]?$/
-        raise "The long flag #{@type}(#{long}) must match the regex: #{long_reg}"
-      end
+# Cast defaults
+required = true if (default != nil && !is_enum) || is_bool
+default = default != nil ? default : is_bool ? false : is_enum ? "#{type}.new".id : nil
+long = (long || var.id.stringify.gsub(/_/, "-")).id.stringify.gsub(/^--/, "").id
 
-      unless short == nil || short.id.stringify =~ /^[0-9A-Za-z][-0-9A-Za-z]?$/
-        raise "The short flag of #{@type}(#{long}) can only be a single character, you specified: `#{short}`"
-      end
+# Validate Flag Formats
+unless long.id.stringify =~ /^[0-9A-Za-z][-0-9A-Za-z]*[0-9A-Za-z]?$/
+  raise "The long flag #{@type}(#{long}) must match the regex: #{long_reg}"
+end
 
-      # Set spec
-      Flags::SPECS[var.id.stringify] = {
-        kind: is_bool ? "bool" : is_enum ? "enum" : "nil",
-        type: type.id.stringify,
-        default: default.stringify,
-        description: {
-          "--#{long.id}" + (short ? ", -#{short.id}" : "") + (default != nil && !is_bool ? " (default: #{default})" : default == nil && required == true ? " (required)": ""),
-          description
-        },
-        short: short.id.stringify,
-        long: long.id.stringify,
-        is_required: required
-      }
+unless short == nil || short.id.stringify =~ /^[0-9A-Za-z][-0-9A-Za-z]?$/
+  raise "The short flag of #{@type}(#{long}) can only be a single character, you specified: `#{short}`"
+end
+
+# Set spec
+Flags::SPECS[var.id.stringify] = {
+  kind:        is_bool ? "bool" : is_enum ? "enum" : "nil",
+  type:        type.id.stringify,
+  default:     default.stringify,
+  description: {
+    "--#{long.id}" + (short ? ", -#{short.id}" : "") + (default != nil && !is_bool ? " (default: #{default})" : default == nil && required == true ? " (required)" : ""),
+    description,
+  },
+  short:       short.id.stringify,
+  long:        long.id.stringify,
+  is_required: required,
+}
     %}
 
     # Extend the flags struct to include the flag

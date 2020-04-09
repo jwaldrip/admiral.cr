@@ -12,8 +12,8 @@ abstract class Admiral::Command
       with_rescue do
         puts_version
         puts_help
-        validate_arguments!
         validate_flags!
+        validate_arguments!
         command = @argv.shift if SubCommands.locate(@argv[0]?)
         next sub(command.to_s, @argv) if command
         run

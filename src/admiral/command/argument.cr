@@ -59,6 +59,10 @@ abstract class Admiral::Command
             raise Admiral::Error.new("Argument required: \{{var.id}}") if \{{spec}}[:is_required] && @\{{var.id}}.nil?
           \{% end %}
         end
+
+        def rest
+          @__rest__
+        end
       end
 
       def value_from_spec(command : ::Admiral::Command, *, arg : String, type, default, is_required : Bool)
@@ -205,13 +209,13 @@ abstract class Admiral::Command
       var = attr.is_a?(TypeDeclaration) ? attr.var : attr.id
       type = attr.is_a?(TypeDeclaration) ? attr.type : String
       Arguments::SPECS[var.id.stringify] = {
-        type: type.stringify,
+        type:        type.stringify,
         description: {
           var.stringify.gsub(/_([A-Z_]+)_/, "\\1") + (required ? " (required)" : ""),
-          description
+          description,
         },
-        default: default.stringify,
-        is_required: required
+        default:     default.stringify,
+        is_required: required,
       }
     %}
 

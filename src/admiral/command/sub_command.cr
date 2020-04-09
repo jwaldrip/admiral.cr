@@ -102,12 +102,12 @@ abstract class Admiral::Command
       type = command.is_a?(TypeDeclaration) ? command.type : type
 
       SubCommands::SPECS[name] = {
-        type: type,
+        type:        type,
         description: {
           name + (short ? ", #{short.id}" : ""),
-          description
+          description,
         },
-        short: short
+        short: short,
       }
     %}
   end
