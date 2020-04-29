@@ -1,8 +1,18 @@
 name: admiral
-version: 1.10.1
+version: 1.11.2
 crystal: 0.34.0
 authors:
   - Jason Waldrip <jason@waldrip.net>
 description: |
   A robust command line DSL for command line interfaces written in Crystal.
+homepage: https://jwaldrip.github.io/admiral.cr
+documentation: https://jwaldrip.github.io/admiral.cr
+tags:
+  - command
+  - option
+  - parser
+  - cli
+  - argument
+  - args
+  - argv
 license: MIT
