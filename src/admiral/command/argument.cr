@@ -75,6 +75,8 @@ abstract class Admiral::Command
         if command.@argv[index]?
           value = command.@argv.delete_at index
           type.new(value)
+        else
+          default
         end
       end
 
