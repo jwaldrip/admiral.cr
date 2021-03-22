@@ -2,6 +2,8 @@
 [![Build Status](https://travis-ci.org/jwaldrip/admiral.cr.svg?branch=master)](https://travis-ci.org/jwaldrip/admiral.cr)
 [![Crystal Docs](https://img.shields.io/badge/Crystal-Docs-8A2BE2.svg)](https://jwaldrip.github.com/admiral.cr)
 
+:star: Work's with Crystal 1.0.0 and with support back to 0.34.0
+
 A robust DSL for writing command line interfaces written in [Crystal](https://crystal-lang.org).
 
 ---
