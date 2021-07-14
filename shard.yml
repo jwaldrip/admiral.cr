@@ -1,6 +1,6 @@
 name: admiral
-version: 1.11.4
-crystal: ">= 0.34.0"
+version: 1.11.5
+crystal: ">= 0.36.0 - 1.0"
 authors:
   - Jason Waldrip <jason@waldrip.net>
 description: |
